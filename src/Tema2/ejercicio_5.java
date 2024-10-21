@@ -9,10 +9,10 @@ public class ejercicio_5 {
     public static void main(String[]args){
         System.out.println("Dime tres números");
         Scanner in = new  Scanner (System.in);
-        Double num_1=in.nextDouble();
-        Double num_2=in.nextDouble();
-        Double num_3=in.nextDouble();
-        Double resul_1=(num_1+num_2+num_3)/3;
+        double num_1=in.nextDouble();
+        double num_2=in.nextDouble();
+        double num_3=in.nextDouble();
+        double resul_1=(num_1+num_2+num_3)/3;
         /* Este método redondea al entero más cercano Math.round()
          Luego convertimos el resultado a (int) para quitar los decimales*/
         Integer resul_2= (int) Math.round(resul_1);

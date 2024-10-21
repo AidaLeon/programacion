@@ -8,8 +8,8 @@ public class ejercicio_2 {
     public static void main(String[]args){
         System.out.println("Dime la base y la altura de tu rectángulo");
         Scanner in = new Scanner(System.in);
-        Double altura = in.nextDouble();
-        Double base = in.nextDouble();
+        double altura = in.nextDouble();
+        double base = in.nextDouble();
         System.out.println("Tu superficie es de " + (altura*base));
         System.out.println("El perímetro de tu rectangulo es de " + ((altura*2)+(base*2)));
     }

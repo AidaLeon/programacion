@@ -7,7 +7,7 @@ public class ejercicio_6 {
     public static void main(String[]args){
         System.out.println("Dime el número que desess");
         Scanner in = new Scanner(System.in);
-        Double num = in.nextDouble();
+        double num = in.nextDouble();
         if (num<0){
             System.out.println("Tu número " + num + " es negativo");
         } else if (num>0) {

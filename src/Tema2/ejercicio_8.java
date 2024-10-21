@@ -7,7 +7,7 @@ public class ejercicio_8 {
     public static void main(String[]args){
         System.out.println("Dime la cantidad de euros que quieras");
         Scanner in = new Scanner(System.in);
-        Double euros = in.nextDouble();
+        double euros = in.nextDouble();
         System.out.println("Tus " + euros + " euros son " + (euros*1.09) + " dolares");
         in.close();
     }

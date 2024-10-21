@@ -8,8 +8,8 @@ public class ejercicio_3 {
     public static void main (String[]args){
         System.out.println("Dime la base y la altura que desees para tu triángulo");
         Scanner in = new Scanner(System.in);
-        Double base = in.nextDouble();
-        Double altura = in.nextDouble();
+        double base = in.nextDouble();
+        double altura = in.nextDouble();
         System.out.println("La superficie de tu triángulo es de " + (0.5*base*altura));
         /*Cerrar escaner*/
         in.close();

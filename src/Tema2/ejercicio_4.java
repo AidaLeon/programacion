@@ -7,9 +7,9 @@ public class ejercicio_4 {
     public static void main(String[]args){
         System.out.println("Dime tres números a tu elección");
         Scanner in = new Scanner(System.in);
-        Double num_1=in.nextDouble();
-        Double num_2=in.nextDouble();
-        Double num_3=in.nextDouble();
+        double num_1=in.nextDouble();
+        double num_2=in.nextDouble();
+        double num_3=in.nextDouble();
         if (num_1>num_2 && num_1>num_3 && num_2>num_3){
             System.out.println("Tu número mayor es " + num_1);
         } else if (num_2>num_1 && num_2>num_3) {
