@@ -14,7 +14,7 @@ public class ejercicio_12 {
             System.out.println("Tus números ordenados de mayor a menor " + num_1 + " " + num_2 + " " + num_3);
         } else if (num_2>num_1 && num_2>=num_3 && num_1>=num_3) {
             System.out.println("Tus números ordenados de mayor a menor " + num_2 + " " + num_1 + " " + num_3);
-        } else if (num_2>num_1 && num_2>num_3 && num_3>num_1) {
+        } else if (num_2 > num_3 && num_3 > num_1) {
             System.out.println("Tus números ordenados de mayor a menor " + num_2 + " " + num_3 + " " + num_1);
         } else {
             System.out.println("Tus números ordenados de mayor a menor " + num_3 + " " + num_2 + " " + num_1);
