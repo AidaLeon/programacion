@@ -3,7 +3,7 @@ package Tema2;
 import java.util.Scanner;
 
 /*Realiza un programa que lee el número de un mes y el año
- e indica por consola el número de días del mes (piensa en que el año puede ser bisiesto).*/
+e indica por consola el número de días del mes (piensa en que el año puede ser bisiesto).*/
 public class ejercicio_15 {
     public static void main(String[] args) {
         System.out.println("Dime el número de un mes (del 1 al 12)");
