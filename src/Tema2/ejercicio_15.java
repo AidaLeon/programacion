@@ -29,5 +29,4 @@ public class ejercicio_15 {
         System.out.println("Tu año " + anio + "junto a tu mes " + mes + " tiene " + dias + " dias.");
         in.close();
     }
-
 }
