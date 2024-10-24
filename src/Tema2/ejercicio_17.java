@@ -40,5 +40,6 @@ public class ejercicio_17 {
             double resultado_sup_tri=altura_tri*base_tri;
             System.out.println("Tu superficie es de " + resultado_sup_tri + "y tu perímetro es de " + resultado_per_tri);
         }
+        in.close();
     }
 }

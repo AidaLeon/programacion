@@ -15,5 +15,6 @@ public class ejercicio_18 {
             double resultado=Math.sqrt(num);
             System.out.println(resultado);
         }
+        in.close();
     }
 }
