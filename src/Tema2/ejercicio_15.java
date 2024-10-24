@@ -12,21 +12,23 @@ public class ejercicio_15 {
         System.out.println("Dime ahora un año, añadiendo los 4 dígitos");
         int anio = in.nextInt();
         int dias = 0;
+        System.out.println("prueba:" + mes);
         switch (mes) {
             case 1: case 3: case 5: case 7: case 8: case 10: case 12:
                 dias = 31;
                 break;
                 /*No entiendo por qué no funciona*/
             case 2:
-                if (anio % 4 == 0 && anio % 400 == 0 && anio % 100 != 0) {
+                if (anio % 4 == 0 && anio % 100 != 0 || anio % 400 == 0) {
                     dias = 29;
                 } else {
                     dias = 28;
                 }
+                break;
             default:
                 dias=30;
         }
-        System.out.println("Tu año " + anio + "junto a tu mes " + mes + " tiene " + dias + " dias.");
+        System.out.println("Tu año " + anio + " junto a tu mes " + mes + " tiene " + dias + " dias.");
         in.close();
     }
 }
