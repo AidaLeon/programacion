@@ -12,11 +12,15 @@ public class ejercicio_12 {
         double num_3= in.nextDouble();
         if (num_1>=num_2 && num_1>=num_3 && num_2>=num_3){
             System.out.println("Tus números ordenados de mayor a menor " + num_1 + " " + num_2 + " " + num_3);
+        } else if (num_1>num_2 && num_3>=num_2 && num_1>=num_3) {
+            System.out.println("Tus números ordenados de mayor a menor " + num_1 + " " + num_3 + " " + num_2);
         } else if (num_2>num_1 && num_2>=num_3 && num_1>=num_3) {
             System.out.println("Tus números ordenados de mayor a menor " + num_2 + " " + num_1 + " " + num_3);
-        } else if (num_2 > num_3 && num_3 > num_1) {
+        } else if (num_2>num_1 && num_2 > num_3 && num_3 > num_1) {
             System.out.println("Tus números ordenados de mayor a menor " + num_2 + " " + num_3 + " " + num_1);
-        } else {
+        } else if (num_3>num_1 && num_3 > num_2 && num_1 > num_2) {
+            System.out.println("Tus números ordenados de mayor a menor " + num_3 + " " + num_1 + " " + num_2);
+        } else if (num_3>num_1 && num_3 > num_3 && num_2 > num_1) {
             System.out.println("Tus números ordenados de mayor a menor " + num_3 + " " + num_2 + " " + num_1);
         }
         in.close();
