@@ -10,24 +10,24 @@ public class ejercicio_2 {
         System.out.println("Dime dos números enteros a tu elección");
         int num_1= in.nextInt();
         int num_2= in.nextInt();
-        if (num_1==num_2 && num_1%2!=0) {
-            System.out.println("Tus números son iguales y son impares " + num_1);
-            System.out.println("Tus números son iguales y no son impares " + num_1);
-        } //else (num_1==num_2 && num_1%2==0){}
-
         while (num_1>num_2){
             System.out.println("Tu primer número es mayor al segundo. " +
                     "Si quieres los numeros impares ingresa el número mayor en segundo lugar ");
             num_1= in.nextInt();
             num_2= in.nextInt();
         }
-        while (num_1 < num_2) {
+
+        for (num_1; num_1>num_2; num_1=num_1+2 ){
+
+        }
+        while (num_1 <= num_2) {
                 if (num_1 % 2 != 0) {
                     System.out.println(num_1);
                     num_1 = num_1 + 2;
+                } else {
+                    System.out.println("No tienes impares.");
                 }
         }
-
     }
 }
 
