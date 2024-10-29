@@ -1,7 +1,7 @@
-package Tema3;
+package Tema2;
 /* Escribe un programa que calcula la suma de todos los números pares
 entre 1 y 1000 y la muestra por consola.*/
-public class ejercicio_3 {
+public class ejercicio_21 {
     public static void main(String[]args) {
         int num = 2;
         int num_2 = 0;

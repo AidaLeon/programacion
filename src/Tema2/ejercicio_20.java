@@ -1,10 +1,10 @@
-package Tema3;
+package Tema2;
 
 import java.util.Scanner;
 
 /*Realiza un programa que lee por consola dos números enteros (A y B).
 Si B es mayor que A, muestra todos los números impares entre ellos*/
-public class ejercicio_2 {
+public class ejercicio_20 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Dime dos números enteros a tu elección");
