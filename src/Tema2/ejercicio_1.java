@@ -11,5 +11,6 @@ public class ejercicio_1 {
         double lado = in.nextDouble();
         System.out.println("La superficie de tu cuadrado es " + (lado*lado) );
         System.out.println("El perímetro de tu cuadrado es " + (lado*4));
+
     }
 }
