@@ -7,6 +7,7 @@ factorial. Por ejemplo el factorial de 5 es:
 public class ejercicio_25 {
     public static void main(String[]args){
         Scanner in= new Scanner(System.in);
+        /*
         int variable=1;
         System.out.println("Dime el número entero que desees");
         int num = in.nextInt();
@@ -16,5 +17,14 @@ public class ejercicio_25 {
             variable++;
         }
         System.out.println("Tu factorial es de " + num );
+        */
+        int variable=1;
+        System.out.println("Dime el número entero que desees");
+        int num= in.nextInt();
+        int factorial=num;
+        for (int i=1; i<num; i++){
+            factorial=i*factorial;
+        }
+        System.out.println(factorial);
     }
 }

@@ -20,7 +20,7 @@ public class juego {
         int puntosvida_2;
         int puntostotal_1;
         int puntostotal_2;
-
+        /*Preguntar valores*/
         System.out.println("Dime los valores de los atributos, del jugador 1. Recuerda que el rango de los atributos es de 200," +
                 "y la suma de todos ellos no puede superar 500");
         System.out.println("¿Velocidad cuanto quieres?");
@@ -32,6 +32,7 @@ public class juego {
         System.out.println("¿Puntos de vida cuanto quieres?");
         puntosvida_1 = in.nextInt();
         puntostotal_1 = velocidad_1 + ataque_1 + defensa_1 + puntosvida_1;
+        /*comprobar todos los valores y sus sumas jugador_1*/
         while (velocidad_1 > 200 || ataque_1 > 200 || defensa_1 > 200 || puntosvida_1 > 200 || puntostotal_1 > 500) {
             System.out.println("Lo siento tus valores no son validos. Repite los valores de los atributos, del jugador 1. Recuerda que el rango de los atributos es de 200," +
                     "y la suma de todos ellos no puede superar 500");
@@ -45,6 +46,7 @@ public class juego {
             puntosvida_1 = in.nextInt();
             puntostotal_1 = velocidad_1 + ataque_1 + defensa_1 + puntosvida_1;
         }
+        /*Preguntar valores*/
         System.out.println("Dime los valores de los atributos, del jugador 2. Recuerda que el rango de los atributos es de 200," +
                 "y la suma de todos ellos no puede superar 500");
         System.out.println("¿Velocidad cuanto quieres?");
@@ -56,6 +58,7 @@ public class juego {
         System.out.println("¿Puntos de vida cuanto quieres?");
         puntosvida_2 = in.nextInt();
         puntostotal_2 = velocidad_2 + ataque_2 + defensa_2 + puntosvida_2;
+        /*comprobar todos los valores y sus sumas jugador_2*/
         while (velocidad_2 > 200 || ataque_2 > 200 || defensa_2 > 200 || puntosvida_2 > 200 || puntostotal_2 > 500) {
             System.out.println("Lo siento tus valores no son validos. Repite los valores de los atributos, del jugador 2. Recuerda que el rango de los atributos es de 200," +
                     "y la suma de todos ellos no puede superar 500");
@@ -69,11 +72,13 @@ public class juego {
             puntosvida_2 = in.nextInt();
             puntostotal_2 = velocidad_1 + ataque_1 + defensa_1 + puntosvida_1;
         }
+        /*Empieza batalla*/
         int ronda = 1;
         System.out.println("*******************************");
         System.out.println("Ronda " + ronda);
         System.out.println("Jugador 1: " + puntosvida_1 + "---------------------------------");
         System.out.println("Jugador 2: " + puntosvida_2 + "---------------------------------");
+        /*¿quién empieza*/
         while (puntosvida_1 > 0 && puntosvida_2 > 0) {
             ronda++;
             if (velocidad_1 >= velocidad_2) {

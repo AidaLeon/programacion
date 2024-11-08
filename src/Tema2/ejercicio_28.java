@@ -22,6 +22,8 @@ public class ejercicio_28 {
             }
             contador++;
         }
+
+        //for (opcional)
         in.close();
     }
 }

@@ -16,8 +16,10 @@ public class ejercicio_20 {
             num_1 = in.nextInt();
             num_2 = in.nextInt();
         }
+
         if (num_1==num_2 && num_2%2!=0){
             System.out.println(num_1);
+            //en este if nunca entra
             if (num_2%2==0){
                 System.out.println("No hay impares");
             }
@@ -34,6 +36,12 @@ public class ejercicio_20 {
                 num_1++;
                 System.out.print(num_1 + " ");
                 num_1++;
+            }
+        }
+        //solución
+        for(int i=num_1; i<=num_2;i++){
+            if(i%2!=0){
+                System.out.println(i);
             }
         }
     }
