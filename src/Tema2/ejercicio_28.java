@@ -12,6 +12,8 @@ public class ejercicio_28 {
         Scanner in = new Scanner(System.in);
         int loteria = random.nextInt(999999);
         int contador=1;
+        /*
+        int contador=1;
         while (contador<6){
             System.out.println("Dime tu número de la loteria");
             int num= in.nextInt();
@@ -22,6 +24,18 @@ public class ejercicio_28 {
             }
             contador++;
         }
+        */
+        System.out.println("Dime tu número de la loteria");
+        int num= in.nextInt();
+        for (contador=1; contador<=5; contador++) {
+            if (num != loteria) {
+                System.out.println("Tu número " + num + " no es un número premiado es el " + loteria);
+                System.out.println("Dime tu número de la loteria");
+                num = in.nextInt();
+            }
+        }
+        System.out.println("Tu número " + num + " si es un número premiado");
+
 
         //for (opcional)
         in.close();

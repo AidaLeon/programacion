@@ -11,7 +11,6 @@ public class ejercicio_27 {
         int divisor;
         while (contador<21){
             boolean primo= true;
-            //??
             for (divisor=2; divisor<num; divisor++){
                 if (num%divisor==0){
                     primo=false;
