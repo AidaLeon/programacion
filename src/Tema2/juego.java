@@ -22,9 +22,13 @@ public class juego {
         int puntostotal_1=1;
         int puntostotal_2=1;
         String corazon=" ♥ ";
-        String name = "";
-        int jugada_especial=0;
+        String name_1 = "";
+        String name_2 = "";
+        String name_win="";
+        int jugada_especial_1=0;
+        int jugada_especial_2=0;
         int jugada_1;
+        int jugada_2;
 
 
         /*Presentación*/
@@ -348,7 +352,8 @@ public class juego {
                         ataque_1=200;
                         defensa_1=100;
                         puntosvida_1=80;
-                        name="Mario";
+                        name_1="Mario";
+                        name_win="Mario";
                         System.out.println("\n" +
 
                                 "███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ \n" +
@@ -364,7 +369,8 @@ public class juego {
                         ataque_1=120;
                         defensa_1=30;
                         puntosvida_1=100;
-                        name="Luigi";
+                        name_1="Luigi";
+                        name_win="Luigi";
                         System.out.println("" +
                                 "\n" +
                                 "██╗     ██╗   ██╗██╗ ██████╗ ██╗\n" +
@@ -380,7 +386,8 @@ public class juego {
                         ataque_1=60;
                         defensa_1=200;
                         puntosvida_1=110;
-                        name="Peach";
+                        name_1="Peach";
+                        name_win="Peach";
                         System.out.println("\n" +
                                 "██████╗ ███████╗ █████╗  ██████╗██╗  ██╗\n" +
                                 "██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║\n" +
@@ -395,7 +402,8 @@ public class juego {
                         ataque_1=40;
                         defensa_1=130;
                         puntosvida_1=200;
-                        name="Daisy";
+                        name_1="Daisy";
+                        name_win="Daisy";
                         System.out.println("\n" +
                                 "██████╗  █████╗ ██╗███████╗██╗   ██╗\n" +
                                 "██╔══██╗██╔══██╗██║██╔════╝╚██╗ ██╔╝\n" +
@@ -413,7 +421,8 @@ public class juego {
                         velocidad_2 = 30;
                         ataque_2 = 200;
                         defensa_2 = 100;
-                        puntosvida_1 = 80;
+                        puntosvida_2 = 80;
+                        name_2="Mario";
                         System.out.println("\n" +
 
                                 "███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ \n" +
@@ -429,6 +438,7 @@ public class juego {
                         ataque_2 = 120;
                         defensa_2 = 30;
                         puntosvida_2 = 100;
+                        name_2="Luigi";
                         System.out.println("" +
                                 "\n" +
                                 "██╗     ██╗   ██╗██╗ ██████╗ ██╗\n" +
@@ -444,6 +454,7 @@ public class juego {
                         ataque_2 = 60;
                         defensa_2 = 200;
                         puntosvida_2 = 110;
+                        name_2="Peach";
                         System.out.println("\n" +
                                 "██████╗ ███████╗ █████╗  ██████╗██╗  ██╗\n" +
                                 "██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║\n" +
@@ -458,6 +469,7 @@ public class juego {
                         ataque_2 = 40;
                         defensa_2 = 130;
                         puntosvida_2 = 200;
+                        name_2="Daisy";
                         System.out.println("\n" +
                                 "██████╗  █████╗ ██╗███████╗██╗   ██╗\n" +
                                 "██╔══██╗██╔══██╗██║██╔════╝╚██╗ ██╔╝\n" +
@@ -470,280 +482,281 @@ public class juego {
 
             }
         }
-
-
-        /*Cabecera batalla*/
-
+        int ronda = 0;
         String vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
         String vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
-        int ronda = 1;
         System.out.println("****************************************************************************************************************");
         System.out.println("Ronda " + ronda);
         System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
         System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
         System.out.println("****************************************************************************************************************");
 
-
         /*Comprobar que los jugadores aun tiene vida*/
 
         while (puntosvida_1 != 0 && puntosvida_2 != 0) {
-
+            ronda++;
 
 
             /* Jugado 1 empieza*/
 
             if (velocidad_1 >= velocidad_2) {
 
+                /*ATAQUE ESPECIAL*/
+                /*SOLO SE ENTRA SI SE HA JUGADO TRES RONDAS Y NO SE HA GASTADO LA JUGADA ESPECIAL*/
 
-                /*Opción de ataque especial*/
 
-                if (ronda>=3 && jugada_especial==0 ){
-                    switch (name){
-                       case "Mario"->{
-                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
-                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
-                           jugada_1= in.nextInt();
-                           switch (jugada_1){
-                               case 1 -> {
-                                   if (ataque_1 < 50) {
-                                       int dano = random.nextInt(11);
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int dano = random.nextInt(21) + 10;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else {
-                                       int dano = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   }
-                               }
-                               case 2 -> {
-                                   if (defensa_1 < 50) {
-                                       int vida = random.nextInt(11);
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
-                                       int vida = random.nextInt(21) + 10;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else {
-                                       int vida = random.nextInt(21) + 20;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   }
-                               }
-                               case 3 -> {
-                                   if (ataque_1 < 50) {
-                                       int danox2 = random.nextInt(21);
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int danox2 = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else {
-                                       int danox2 = random.nextInt(11) + 40;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   }
-                               }
-                               case 4 ->{
-                                   puntosvida_1=puntosvida_1+20;
-                                   ataque_1=ataque_1-60;
-                               }
-                           }
-                       }
-                       case "Luigi"->{
-                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
-                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
-                           jugada_1= in.nextInt();
-                           switch (jugada_1){
-                               case 1 -> {
-                                   if (ataque_1 < 50) {
-                                       int dano = random.nextInt(11);
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int dano = random.nextInt(21) + 10;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else {
-                                       int dano = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   }
-                               }
-                               case 2 -> {
-                                   if (defensa_1 < 50) {
-                                       int vida = random.nextInt(11);
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
-                                       int vida = random.nextInt(21) + 10;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else {
-                                       int vida = random.nextInt(21) + 20;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   }
-                               }
-                               case 3 -> {
-                                   if (ataque_1 < 50) {
-                                       int danox2 = random.nextInt(21);
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int danox2 = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else {
-                                       int danox2 = random.nextInt(11) + 40;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   }
-                               }
-                               case 4 ->{
-                                   velocidad_1=velocidad_1-60;
-                                   defensa_1=defensa_1+70;
-                               }
-                           }
-                       }
-                       case "Peach"->{
-                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
-                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
-                           jugada_1= in.nextInt();
-                           switch (jugada_1){
-                               case 1 -> {
-                                   if (ataque_1 < 50) {
-                                       int dano = random.nextInt(11);
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int dano = random.nextInt(21) + 10;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else {
-                                       int dano = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   }
-                               }
-                               case 2 -> {
-                                   if (defensa_1 < 50) {
-                                       int vida = random.nextInt(11);
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
-                                       int vida = random.nextInt(21) + 10;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else {
-                                       int vida = random.nextInt(21) + 20;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   }
-                               }
-                               case 3 -> {
-                                   if (ataque_1 < 50) {
-                                       int danox2 = random.nextInt(21);
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int danox2 = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else {
-                                       int danox2 = random.nextInt(11) + 40;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   }
-                               }
-                               case 4 ->{
-                                   defensa_1=defensa_1-60;
-                                   velocidad_1=velocidad_1+60;
-                               }
-                           }
-                       }
-                       case "Daisy"->{
-                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
-                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
-                           jugada_1= in.nextInt();
-                           switch (jugada_1){
-                               case 1 -> {
-                                   if (ataque_1 < 50) {
-                                       int dano = random.nextInt(11);
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int dano = random.nextInt(21) + 10;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   } else {
-                                       int dano = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + dano + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - dano;
-                                   }
-                               }
-                               case 2 -> {
-                                   if (defensa_1 < 50) {
-                                       int vida = random.nextInt(11);
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
-                                       int vida = random.nextInt(21) + 10;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   } else {
-                                       int vida = random.nextInt(21) + 20;
-                                       System.out.println("Te has dado " + vida + " puntos de vida.");
-                                       puntosvida_1 = puntosvida_1 + vida;
-                                   }
-                               }
-                               case 3 -> {
-                                   if (ataque_1 < 50) {
-                                       int danox2 = random.nextInt(21);
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
-                                       int danox2 = random.nextInt(21) + 20;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   } else {
-                                       int danox2 = random.nextInt(11) + 40;
-                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                       puntosvida_2 = puntosvida_2 - danox2;
-                                   }
-                               }
-                               case 4 ->{
-                                   puntosvida_1=puntosvida_1-20;
-                                   ataque_1=ataque_1+60;
-                               }
-                           }
-                       }
+                if (ronda >= 3 && jugada_especial_1 == 0) {
+                    switch (name_1) {
+                        case "Mario" -> {
+                            System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_1 = in.nextInt();
+                            switch (jugada_1) {
+                                case 1 -> {
+                                    if (ataque_1 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_1 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_1 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    }
+                                }
+                                case 4 -> {
+                                    puntosvida_1 = puntosvida_1 + 20;
+                                    ataque_1 = ataque_1 - 60;
+                                    jugada_especial_1++;
+                                }
+                            }
+                        }
+                        case "Luigi" -> {
+                            System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_1 = in.nextInt();
+                            switch (jugada_1) {
+                                case 1 -> {
+                                    if (ataque_1 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_1 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_1 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    }
+                                }
+                                case 4 -> {
+                                    velocidad_1 = velocidad_1 - 60;
+                                    defensa_1 = defensa_1 + 70;
+                                    jugada_especial_1++;
+                                }
+                            }
+                        }
+                        case "Peach" -> {
+                            System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_1 = in.nextInt();
+                            switch (jugada_1) {
+                                case 1 -> {
+                                    if (ataque_1 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_1 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_1 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    }
+                                }
+                                case 4 -> {
+                                    defensa_1 = defensa_1 - 60;
+                                    velocidad_1 = velocidad_1 + 60;
+                                    jugada_especial_1++;
+                                }
+                            }
+                        }
+                        case "Daisy" -> {
+                            System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_1 = in.nextInt();
+                            switch (jugada_1) {
+                                case 1 -> {
+                                    if (ataque_1 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_1 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_1 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_2 = puntosvida_2 - danox2;
+                                    }
+                                }
+                                case 4 -> {
+                                    puntosvida_1 = puntosvida_1 - 20;
+                                    ataque_1 = ataque_1 + 60;
+                                    jugada_especial_1++;
+                                }
+                            }
+                        }
                     }
+                } else {
+
+                                                /*JUGADA NORMAL*/
+                                            /* Elije ataque jugador 1*/
 
 
-                }
                 System.out.println("Jugador 1, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                        " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
                 jugada_1 = in.nextInt();
 
-
-
-                /* Elije ataque jugador 1*/
                 switch (jugada_1) {
 
-                        /*En caso de apretar 1 (ataque), el personaje mirará sus estadisticas de ataque, si el
-                        jugador tiene menos de 50 su ataque será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
-                         será su ataque entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
-                         20 y 40 (random)*/
+                            /*En caso de apretar 1 (ataque), el personaje mirará sus estadisticas de ataque, si el
+                            jugador tiene menos de 50 su ataque será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
+                             será su ataque entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
+                             20 y 40 (random)*/
+
                     case 1 -> {
                         if (ataque_1 < 50) {
                             int dano = random.nextInt(11);
@@ -790,7 +803,7 @@ public class juego {
                         }
                     }
                 }
-
+            }
 
                 /*Para que el valor de la vida no salga negativo*/
                 if (puntosvida_2 <= 0) {
@@ -807,27 +820,586 @@ public class juego {
                 System.out.println("****************************************************************************************************************");
 
 
-                /*Jugador 2 juega*/
+                                                    /*Jugador 2 juega*/
 
                 if (puntosvida_2 > 0) {
+
+
+                                                    /*ATAQUE ESPECIAL*/
+                         /*SOLO SE ENTRA SI SE HA JUGADO TRES RONDAS Y NO SE HA GASTADO LA JUGADA ESPECIAL*/
+
+                    if (ronda >= 3 && jugada_especial_2 == 0) {
+                        switch (name_2) {
+                            case "Mario" -> {
+                                System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                                switch (jugada_2) {
+                                    case 1 -> {
+                                        if (ataque_2 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_2 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_2 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        puntosvida_2 = puntosvida_2 + 20;
+                                        ataque_2 = ataque_2 - 60;
+                                        jugada_especial_2++;
+                                    }
+                                }
+                            }
+                            case "Luigi" -> {
+                                System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                                switch (jugada_1) {
+                                    case 1 -> {
+                                        if (ataque_2 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_2 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_2 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else if (ataque_2 < 150 && ataque_1 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        velocidad_2 = velocidad_2 - 60;
+                                        defensa_2 = defensa_2 + 70;
+                                        jugada_especial_2++;
+                                    }
+                                }
+                            }
+                            case "Peach" -> {
+                                System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                                switch (jugada_2) {
+                                    case 1 -> {
+                                        if (ataque_2 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_2 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_2 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        defensa_2 = defensa_2 - 60;
+                                        velocidad_2 = velocidad_2 + 60;
+                                        jugada_especial_2++;
+                                    }
+                                }
+                            }
+                            case "Daisy" -> {
+                                System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                                switch (jugada_2) {
+                                    case 1 -> {
+                                        if (ataque_2 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_2 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_2 = puntosvida_2 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_2 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_1 = puntosvida_1 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        puntosvida_2 = puntosvida_2 - 20;
+                                        ataque_2 = ataque_2 + 60;
+                                        jugada_especial_2++;
+                                    }
+                                }
+                            }
+                        }
+
+
+                                                    /*ATAQUES NORMALES*/
+                                                        /*Jugador 2*/
+
+
+                    } else {
+                        System.out.println("Jugador 2, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                        jugada_2 = in.nextInt();
+
+                        switch (jugada_2) {
+                            case 1 -> {
+                                if (ataque_2 < 50) {
+                                    int dano = random.nextInt(11);
+                                    System.out.println("Le has hecho " + dano + " puntos de daño");
+                                    puntosvida_1 = puntosvida_1 - dano;
+                                } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                    int dano = random.nextInt(11) + 10;
+                                    System.out.println("Le has hecho " + dano + " puntos de daño");
+                                    puntosvida_1 = puntosvida_1 - dano;
+                                } else {
+                                    int dano = random.nextInt(21) + 20;
+                                    System.out.println("Le has hecho " + dano + " puntos de daño");
+                                    puntosvida_1 = puntosvida_1 - dano;
+                                }
+                            }
+                            case 2 -> {
+                                if (defensa_2 < 50) {
+                                    int vida = random.nextInt(11);
+                                    System.out.println("Te has dado " + vida + " puntos de vida.");
+                                    puntosvida_2 = puntosvida_2 + vida;
+                                } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                    int vida = random.nextInt(11) + 10;
+                                    System.out.println("Te has dado " + vida + " puntos de vida.");
+                                    puntosvida_2 = puntosvida_2 + vida;
+                                } else {
+                                    int vida = random.nextInt(21) + 20;
+                                    System.out.println("Te has dado " + vida + " puntos de vida.");
+                                    puntosvida_2 = puntosvida_2 + vida;
+                                }
+                            }
+                            case 3 -> {
+                                if (ataque_2 < 50) {
+                                    int danox2 = random.nextInt(21);
+                                    System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                    puntosvida_1 = puntosvida_1 - danox2;
+                                } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                    int danox2 = random.nextInt(21) + 20;
+                                    System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                    puntosvida_1 = puntosvida_1 - danox2;
+                                } else {
+                                    int danox2 = random.nextInt(11) + 40;
+                                    System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                    puntosvida_1 = puntosvida_1 - danox2;
+                                }
+                            }
+                        }
+                    }
+
+                    if (puntosvida_1 < 0) {
+                        puntosvida_1 = 0;
+                    }
+                    vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
+                    vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
+                    System.out.println("****************************************************************************************************************");
+                    System.out.println("Ronda " + ronda);
+                    System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
+                    System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
+                    System.out.println("****************************************************************************************************************");
+                }
+
+
+
+                                            /* EMPIEZA JUGADOR 2 EL JUEGO*/
+
+            } else {
+                ronda++;
+
+                if (ronda>=3 && jugada_especial_2==0 ){
+                    switch (name_2){
+                        case "Mario"->{
+                            System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_2= in.nextInt();
+                            switch (jugada_2){
+                                case 1 -> {
+                                    if (ataque_2 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_2 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_1 = puntosvida_1 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_2 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    }
+                                }
+                                case 4 ->{
+                                    puntosvida_2=puntosvida_2+20;
+                                    ataque_2=ataque_2-60;
+                                    jugada_especial_2++;
+                                }
+                            }
+                        }
+                        case "Luigi"->{
+                            System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_2= in.nextInt();
+                            switch (jugada_2){
+                                case 1 -> {
+                                    if (ataque_2 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_2 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_2 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else if (ataque_2 < 150 && ataque_1 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    }
+                                }
+                                case 4 ->{
+                                    velocidad_2=velocidad_2-60;
+                                    defensa_2=defensa_2+70;
+                                    jugada_especial_2++;
+                                }
+                            }
+                        }
+                        case "Peach"->{
+                            System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_2= in.nextInt();
+                            switch (jugada_2){
+                                case 1 -> {
+                                    if (ataque_2 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_2 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_2 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    }
+                                }
+                                case 4 ->{
+                                    defensa_2=defensa_2-60;
+                                    velocidad_2=velocidad_2+60;
+                                    jugada_especial_2++;
+                                }
+                            }
+                        }
+                        case "Daisy"->{
+                            System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
+                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                            jugada_2= in.nextInt();
+                            switch (jugada_2){
+                                case 1 -> {
+                                    if (ataque_2 < 50) {
+                                        int dano = random.nextInt(11);
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int dano = random.nextInt(21) + 10;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    } else {
+                                        int dano = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + dano + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - dano;
+                                    }
+                                }
+                                case 2 -> {
+                                    if (defensa_2 < 50) {
+                                        int vida = random.nextInt(11);
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else if (defensa_2 < 150 && defensa_2 >= 50) {
+                                        int vida = random.nextInt(21) + 10;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    } else {
+                                        int vida = random.nextInt(21) + 20;
+                                        System.out.println("Te has dado " + vida + " puntos de vida.");
+                                        puntosvida_2 = puntosvida_2 + vida;
+                                    }
+                                }
+                                case 3 -> {
+                                    if (ataque_2 < 50) {
+                                        int danox2 = random.nextInt(21);
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else if (ataque_2 < 150 && ataque_2 >= 50) {
+                                        int danox2 = random.nextInt(21) + 20;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    } else {
+                                        int danox2 = random.nextInt(11) + 40;
+                                        System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                        puntosvida_1 = puntosvida_1 - danox2;
+                                    }
+                                }
+                                case 4 ->{
+                                    puntosvida_2=puntosvida_2-20;
+                                    ataque_2=ataque_2+60;
+                                    jugada_especial_2++;
+                                }
+                            }
+                        }
+                    }
+                } else {
+
+                                                /*JUGADA NORMAL JUGADOR 2*/
+
                     System.out.println("Jugador 2, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                            " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3");
-                    int jugada_2 = in.nextInt();
+                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                    jugada_2 = in.nextInt();
 
                     switch (jugada_2) {
+
                         case 1 -> {
                             if (ataque_2 < 50) {
-                                int dano = random.nextInt(11);
-                                System.out.println("Le has hecho " + dano + " puntos de daño");
-                                puntosvida_1 = puntosvida_1 - dano;
+                            int dano = random.nextInt(11);
+                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                            puntosvida_1 = puntosvida_1 - dano;
                             } else if (ataque_2 < 150 && ataque_2 >= 50) {
-                                int dano = random.nextInt(11) + 10;
-                                System.out.println("Le has hecho " + dano + " puntos de daño");
-                                puntosvida_1 = puntosvida_1 - dano;
+                            int dano = random.nextInt(21) + 10;
+                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                            puntosvida_1 = puntosvida_1 - dano;
                             } else {
-                                int dano = random.nextInt(21) + 20;
-                                System.out.println("Le has hecho " + dano + " puntos de daño");
-                                puntosvida_1 = puntosvida_1 - dano;
+                            int dano = random.nextInt(21) + 20;
+                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                            puntosvida_1 = puntosvida_1 - dano;
                             }
                         }
                         case 2 -> {
@@ -836,7 +1408,7 @@ public class juego {
                                 System.out.println("Te has dado " + vida + " puntos de vida.");
                                 puntosvida_2 = puntosvida_2 + vida;
                             } else if (defensa_2 < 150 && defensa_2 >= 50) {
-                                int vida = random.nextInt(11) + 10;
+                                int vida = random.nextInt(21) + 10;
                                 System.out.println("Te has dado " + vida + " puntos de vida.");
                                 puntosvida_2 = puntosvida_2 + vida;
                             } else {
@@ -859,80 +1431,6 @@ public class juego {
                                 System.out.println("Le has hecho " + danox2 + " puntos de daño");
                                 puntosvida_1 = puntosvida_1 - danox2;
                             }
-                        }
-                    }
-                    if (puntosvida_1 < 0) {
-                        puntosvida_1 = 0;
-                    }
-                    vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
-                    vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
-                    System.out.println("****************************************************************************************************************");
-                    System.out.println("Ronda " + ronda);
-                    System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
-                    System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
-                    System.out.println("****************************************************************************************************************");
-
-                    ronda++;
-                }
-
-
-
-                /* Jugado 2 empieza*/
-
-            } else {
-
-                System.out.println("Jugador 2, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                        " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3");
-                int jugada_2 = in.nextInt();
-
-
-                /* Elije ataque jugador 2*/
-
-                switch (jugada_2) {
-
-                    case 1 -> {
-                        if (ataque_2 < 50) {
-                            int dano = random.nextInt(11);
-                            System.out.println("Le has hecho " + dano + " puntos de daño");
-                            puntosvida_1 = puntosvida_1 - dano;
-                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
-                            int dano = random.nextInt(21) + 10;
-                            System.out.println("Le has hecho " + dano + " puntos de daño");
-                            puntosvida_1 = puntosvida_1 - dano;
-                        } else {
-                            int dano = random.nextInt(21) + 20;
-                            System.out.println("Le has hecho " + dano + " puntos de daño");
-                            puntosvida_1 = puntosvida_1 - dano;
-                        }
-                    }
-                    case 2 -> {
-                        if (defensa_2 < 50) {
-                            int vida = random.nextInt(11);
-                            System.out.println("Te has dado " + vida + " puntos de vida.");
-                            puntosvida_2 = puntosvida_2 + vida;
-                        } else if (defensa_2 < 150 && defensa_2 >= 50) {
-                            int vida = random.nextInt(21) + 10;
-                            System.out.println("Te has dado " + vida + " puntos de vida.");
-                            puntosvida_2 = puntosvida_2 + vida;
-                        } else {
-                            int vida = random.nextInt(21) + 20;
-                            System.out.println("Te has dado " + vida + " puntos de vida.");
-                            puntosvida_2 = puntosvida_2 + vida;
-                        }
-                    }
-                    case 3 -> {
-                        if (ataque_2 < 50) {
-                            int danox2 = random.nextInt(21);
-                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                            puntosvida_1 = puntosvida_1 - danox2;
-                        } else if (ataque_2 < 150 && ataque_2 >= 50) {
-                            int danox2 = random.nextInt(21) + 20;
-                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                            puntosvida_1 = puntosvida_1 - danox2;
-                        } else {
-                            int danox2 = random.nextInt(11) + 40;
-                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                            puntosvida_1 = puntosvida_1 - danox2;
                         }
                     }
                 }
@@ -953,66 +1451,309 @@ public class juego {
                 System.out.println("****************************************************************************************************************");
 
 
-                /*Jugador 1 juega*/
+                                                  /*JUGADOR 1 JUEGA*/
 
                 if (puntosvida_1 > 0) {
-                    System.out.println("Jugardor 1, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
-                            " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3");
-                    jugada_1 = in.nextInt();
 
-                    switch (jugada_1) {
-                        case 1 -> {
-                            if (ataque_1 < 50) {
-                                int dano = random.nextInt(11);
-                                System.out.println("Le has hecho " + dano + " puntos de daño");
-                                puntosvida_2 = puntosvida_2 - dano;
-                            } else if (ataque_1 < 150 && ataque_1 > 50) {
-                                int dano = random.nextInt(11) + 10;
-                                System.out.println("Le has hecho " + dano + " puntos de daño");
-                                puntosvida_2 = puntosvida_2 - dano;
-                            } else {
-                                int dano = random.nextInt(21) + 20;
-                                System.out.println("Le has hecho " + dano + " puntos de daño");
-                                puntosvida_2 = puntosvida_2 - dano;
+                    if (ronda >= 3 && jugada_especial_1 == 0) {
+                        switch (name_1) {
+                            case "Mario" -> {
+                                System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                                switch (jugada_1) {
+                                    case 1 -> {
+                                        if (ataque_1 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_1 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_1 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        puntosvida_1 = puntosvida_1 + 20;
+                                        ataque_1 = ataque_1 - 60;
+                                        jugada_especial_1++;
+                                    }
+                                }
+                            }
+                            case "Luigi" -> {
+                                System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                                switch (jugada_1) {
+                                    case 1 -> {
+                                        if (ataque_1 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_1 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_1 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        velocidad_1 = velocidad_1 - 60;
+                                        defensa_1 = defensa_1 + 70;
+                                        jugada_especial_1++;
+                                    }
+                                }
+                            }
+                            case "Peach" -> {
+                                System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                                switch (jugada_1) {
+                                    case 1 -> {
+                                        if (ataque_1 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_1 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_1 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        defensa_1 = defensa_1 - 60;
+                                        velocidad_1 = velocidad_1 + 60;
+                                        jugada_especial_1++;
+                                    }
+                                }
+                            }
+                            case "Daisy" -> {
+                                System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                                switch (jugada_1) {
+                                    case 1 -> {
+                                        if (ataque_1 < 50) {
+                                            int dano = random.nextInt(11);
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int dano = random.nextInt(21) + 10;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        } else {
+                                            int dano = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + dano + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - dano;
+                                        }
+                                    }
+                                    case 2 -> {
+                                        if (defensa_1 < 50) {
+                                            int vida = random.nextInt(11);
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                            int vida = random.nextInt(21) + 10;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        } else {
+                                            int vida = random.nextInt(21) + 20;
+                                            System.out.println("Te has dado " + vida + " puntos de vida.");
+                                            puntosvida_1 = puntosvida_1 + vida;
+                                        }
+                                    }
+                                    case 3 -> {
+                                        if (ataque_1 < 50) {
+                                            int danox2 = random.nextInt(21);
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                            int danox2 = random.nextInt(21) + 20;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        } else {
+                                            int danox2 = random.nextInt(11) + 40;
+                                            System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                            puntosvida_2 = puntosvida_2 - danox2;
+                                        }
+                                    }
+                                    case 4 -> {
+                                        puntosvida_1 = puntosvida_1 - 20;
+                                        ataque_1 = ataque_1 + 60;
+                                        jugada_especial_1++;
+                                    }
+                                }
                             }
                         }
-                        case 2 -> {
-                            if (defensa_1 < 50) {
-                                int vida = random.nextInt(11);
-                                System.out.println("Te has dado " + vida + " puntos de vida.");
-                                puntosvida_1 = puntosvida_1 + vida;
-                            } else if (defensa_1 < 150 && defensa_1 > 50) {
-                                int vida = random.nextInt(11) + 10;
-                                System.out.println("Te has dado " + vida + " puntos de vida.");
-                                puntosvida_1 = puntosvida_1 + vida;
-                            } else {
-                                int vida = random.nextInt(21) + 20;
-                                System.out.println("Te has dado " + vida + " puntos de vida.");
-                                puntosvida_1 = puntosvida_1 + vida;
+                    } else {
+
+                                                /*JUGADA NORMAL*/
+                                                /*Jugador 1 */
+
+                        System.out.println("Jugardor 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                        jugada_1 = in.nextInt();
+
+                        switch (jugada_1) {
+                            case 1 -> {
+                                if (ataque_1 < 50) {
+                                    int dano = random.nextInt(11);
+                                    System.out.println("Le has hecho " + dano + " puntos de daño");
+                                    puntosvida_2 = puntosvida_2 - dano;
+                                } else if (ataque_1 < 150 && ataque_1 > 50) {
+                                    int dano = random.nextInt(11) + 10;
+                                    System.out.println("Le has hecho " + dano + " puntos de daño");
+                                    puntosvida_2 = puntosvida_2 - dano;
+                                } else {
+                                    int dano = random.nextInt(21) + 20;
+                                    System.out.println("Le has hecho " + dano + " puntos de daño");
+                                    puntosvida_2 = puntosvida_2 - dano;
+                                }
                             }
-                        }
-                        case 3 -> {
-                            if (ataque_1 < 50) {
-                                int danox2 = random.nextInt(21);
-                                System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                puntosvida_2 = puntosvida_2 - danox2;
-                            } else if (ataque_1 < 150 && ataque_1 > 50) {
-                                int danox2 = random.nextInt(21) + 20;
-                                System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                puntosvida_2 = puntosvida_2 - danox2;
-                            } else {
-                                int danox2 = random.nextInt(11) + 40;
-                                System.out.println("Le has hecho " + danox2 + " puntos de daño");
-                                puntosvida_2 = puntosvida_2 - danox2;
+                            case 2 -> {
+                                if (defensa_1 < 50) {
+                                    int vida = random.nextInt(11);
+                                    System.out.println("Te has dado " + vida + " puntos de vida.");
+                                    puntosvida_1 = puntosvida_1 + vida;
+                                } else if (defensa_1 < 150 && defensa_1 > 50) {
+                                    int vida = random.nextInt(11) + 10;
+                                    System.out.println("Te has dado " + vida + " puntos de vida.");
+                                    puntosvida_1 = puntosvida_1 + vida;
+                                } else {
+                                    int vida = random.nextInt(21) + 20;
+                                    System.out.println("Te has dado " + vida + " puntos de vida.");
+                                    puntosvida_1 = puntosvida_1 + vida;
+                                }
+                            }
+                            case 3 -> {
+                                if (ataque_1 < 50) {
+                                    int danox2 = random.nextInt(21);
+                                    System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                    puntosvida_2 = puntosvida_2 - danox2;
+                                } else if (ataque_1 < 150 && ataque_1 > 50) {
+                                    int danox2 = random.nextInt(21) + 20;
+                                    System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                    puntosvida_2 = puntosvida_2 - danox2;
+                                } else {
+                                    int danox2 = random.nextInt(11) + 40;
+                                    System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                    puntosvida_2 = puntosvida_2 - danox2;
+                                }
                             }
                         }
                     }
+
 
                     if (puntosvida_2 < 0) {
                         puntosvida_2 = 0;
                     }
 
-
+                                             /*CABECERA*/
                     vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
                     vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
                     System.out.println("****************************************************************************************************************");
@@ -1021,9 +1762,7 @@ public class juego {
                     System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
                     System.out.println("****************************************************************************************************************");
                 }
-                ronda++;
             }
-
         }
         if (puntosvida_1 == 0) {
             System.out.println("" +
@@ -1040,6 +1779,159 @@ public class juego {
                     "██   ██║██║   ██║██║   ██║██╔══██║██║  ██║██║   ██║██╔══██╗    ██╔═══╝          \n" +
                     "╚█████╔╝╚██████╔╝╚██████╔╝██║  ██║██████╔╝╚██████╔╝██║  ██║    ███████╗         \n" +
                     " ╚════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝    ╚══════╝         ");
+            switch (name_win){
+
+                case "Mario" -> {
+
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬜⬜\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬜⬜⬜⬜\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬛⬛⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5⬛⬛⬜⬜\uD83C\uDFFB\uD83C\uDFFB⬜⬜⬛⬛\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛⬛\uD83C\uDFFB\uD83C\uDFFB⬜⬛\uD83C\uDFFB\uD83C\uDFFB⬛⬜\uD83C\uDFFB\uD83C\uDFFB⬛⬛⬜⬜\n" +
+                            "⬜⬛\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB⬜⬛\uD83C\uDFFB\uD83C\uDFFB⬛⬜\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬜\n" +
+                            "⬜⬛\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB⬛⬜\n" +
+                            "⬜⬜⬛⬛\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB⬛⬛⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83C\uDFFB⬛⬛⬛⬛⬛⬛⬛⬛\uD83C\uDFFB⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83C\uDFFB⬛⬛⬛⬛⬛⬛\uD83C\uDFFB⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛⬛\uD83D\uDFE5⬛⬛⬛⬛⬛⬛\uD83D\uDFE5⬛⬛⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜\n" +
+                            "⬛\uD83D\uDFE5⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE5⬛⬛\uD83D\uDFE5⬛\n" +
+                            "⬜⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6⬛⬜⬜⬛⬜\n" +
+                            "⬛⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬜⬛\n" +
+                            "⬛⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬜⬛\n" +
+                            "⬛⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬛\n" +
+                            "⬜⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜\n" +
+                            "⬜⬛⬛⬛⬛⬛⬛⬛⬜⬜⬛⬛⬛⬛⬛⬛⬛⬜");
+
+                }
+
+                case "Luigi" -> {
+
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83D\uDFE9\uD83C\uDF2B\uFE0F\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83D\uDFE9\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83D\uDFE9⬛⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83C\uDFFC⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬛⬜\n" +
+                            "⬜⬜⬜⬛⬛\uD83C\uDFFC⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83C\uDFFC⬛⬜\n" +
+                            "⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛\n" +
+                            "⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛\uD83C\uDFFC⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛\n" +
+                            "⬜⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬜\n" +
+                            "⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛\uD83D\uDFE6⬛\uD83D\uDFE9⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛⬜\n" +
+                            "⬜⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛\n" +
+                            "⬜⬛\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\n" +
+                            "⬜⬜⬛⬛⬛⬛\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9⬛\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛⬜\n" +
+                            "⬜⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛⬜⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛\uD83D\uDFE6⬛⬜⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛⬜⬜⬜⬛⬛⬛\uD83D\uDFE6⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜");
+
+
+                }
+
+                case "Peach"->{
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE7⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE6⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE6⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛\uD83D\uDFE7⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜⬜⬜\n" +
+                            "⬜⬛⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬛⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬛\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬛\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFE7⬛⬛⬛\uD83D\uDFE7⬛⬛\uD83D\uDFE7⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛⬛\uD83D\uDFE7⬛⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83D\uDFE7⬛\uD83C\uDFFB⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8⬛\uD83D\uDFE7⬛\uD83D\uDFE8\uD83D\uDFE8⬛\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬛⬜⬜⬜\n" +
+                            "⬛⬛⬛⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE6⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFE7⬛\uD83D\uDFE7⬛⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛\uD83D\uDFE7\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83D\uDFE7⬛\uD83D\uDFE6⬛⬜⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE6⬛\uD83D\uDFE7⬛\uD83D\uDFE7\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFE7⬛⬛\uD83D\uDFE6⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛\uD83D\uDFE8\uD83D\uDFE7⬛⬛⬛⬛⬛\uD83D\uDFE7⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFE7⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬛⬛⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDFFD⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7\uD83C\uDFFD\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛⬜⬜⬜⬜\n" +
+                            "⬛⬛⬛⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛⬛\uD83C\uDFFD\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDF2B\uFE0F⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83C\uDFFD⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
+                            "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
+                            "⬜⬜⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA⬛⬛⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜");
+                }
+
+                case "Daisy"->{
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8⬜\uD83D\uDFE8\uD83D\uDFE8⬜\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFEB⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜⬜\n" +
+                            "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
+                            "\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\n" +
+                            "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE6\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
+                            "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE8\uD83D\uDFE8⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜⬜\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE8⬜\uD83D\uDFE6\uD83D\uDFE6⬜\uD83D\uDFE8\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDF2B\uFE0F⬜⬜\n" +
+                            "⬜\uD83C\uDF2B\uFE0F⬜⬜\uD83C\uDF2B\uFE0F\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬜⬜\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDF2B\uFE0F⬜⬜\uD83C\uDF2B\uFE0F⬜\n" +
+                            "⬜\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬜\n" +
+                            "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬜⬜⬜\n" +
+                            "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜⬜");
+                }
+            }
         } else {
             System.out.println("" +
                     "██╗  ██╗ █████╗ ███████╗     ██████╗  █████╗ ███╗   ██╗ █████╗ ██████╗  ██████╗ \n" +
@@ -1055,165 +1947,160 @@ public class juego {
                     "██   ██║██║   ██║██║   ██║██╔══██║██║  ██║██║   ██║██╔══██╗     ██║             \n" +
                     "╚█████╔╝╚██████╔╝╚██████╔╝██║  ██║██████╔╝╚██████╔╝██║  ██║     ██║             \n" +
                     " ╚════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝     ╚═╝ ");
+            switch (name_win){
+
+                case "Mario" -> {
+
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬜⬜\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬜⬜⬜⬜\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬛⬛⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE5⬛⬛⬜⬜\uD83C\uDFFB\uD83C\uDFFB⬜⬜⬛⬛\uD83D\uDFE5⬛⬜⬜\n" +
+                            "⬜⬜⬛⬛\uD83C\uDFFB\uD83C\uDFFB⬜⬛\uD83C\uDFFB\uD83C\uDFFB⬛⬜\uD83C\uDFFB\uD83C\uDFFB⬛⬛⬜⬜\n" +
+                            "⬜⬛\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB⬜⬛\uD83C\uDFFB\uD83C\uDFFB⬛⬜\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬜\n" +
+                            "⬜⬛\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB⬛⬜\n" +
+                            "⬜⬜⬛⬛\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB⬛⬛⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83C\uDFFB⬛⬛⬛⬛⬛⬛⬛⬛\uD83C\uDFFB⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83C\uDFFB⬛⬛⬛⬛⬛⬛\uD83C\uDFFB⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛⬛\uD83D\uDFE5⬛⬛⬛⬛⬛⬛\uD83D\uDFE5⬛⬛⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜\n" +
+                            "⬛\uD83D\uDFE5⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE5⬛⬛\uD83D\uDFE5⬛\n" +
+                            "⬜⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6⬛⬜⬜⬛⬜\n" +
+                            "⬛⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬜⬛\n" +
+                            "⬛⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬜⬛\n" +
+                            "⬛⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬛\n" +
+                            "⬜⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜\n" +
+                            "⬜⬛⬛⬛⬛⬛⬛⬛⬜⬜⬛⬛⬛⬛⬛⬛⬛⬜");
+
+                }
+
+                case "Luigi" -> {
+
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83D\uDFE9\uD83C\uDF2B\uFE0F\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83D\uDFE9\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83D\uDFE9⬛⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83C\uDFFC⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬛⬜\n" +
+                            "⬜⬜⬜⬛⬛\uD83C\uDFFC⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83C\uDFFC⬛⬜\n" +
+                            "⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛\n" +
+                            "⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛\uD83C\uDFFC⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛\n" +
+                            "⬜⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬜\n" +
+                            "⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛\uD83D\uDFE6⬛\uD83D\uDFE9⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛⬜\n" +
+                            "⬜⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛\n" +
+                            "⬜⬛\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\n" +
+                            "⬜⬜⬛⬛⬛⬛\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9⬛\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛⬜\n" +
+                            "⬜⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛⬜⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛\uD83D\uDFE6⬛⬜⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬜\n" +
+                            "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛⬜⬜⬜⬛⬛⬛\uD83D\uDFE6⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜");
+
+
+                }
+
+                case "Peach"->{
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE7⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE6⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE6⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛\uD83D\uDFE7⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬛⬜⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜⬜⬜\n" +
+                            "⬜⬛⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬛⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬛\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬛\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFE7⬛⬛⬛\uD83D\uDFE7⬛⬛\uD83D\uDFE7⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛⬛\uD83D\uDFE7⬛⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83D\uDFE7⬛\uD83C\uDFFB⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8⬛\uD83D\uDFE7⬛\uD83D\uDFE8\uD83D\uDFE8⬛\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬛⬜⬜⬜\n" +
+                            "⬛⬛⬛⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE6⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFE7⬛\uD83D\uDFE7⬛⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛\uD83D\uDFE7\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83D\uDFE7⬛\uD83D\uDFE6⬛⬜⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE6⬛\uD83D\uDFE7⬛\uD83D\uDFE7\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFE7⬛⬛\uD83D\uDFE6⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬛⬛\uD83D\uDFE8\uD83D\uDFE7⬛⬛⬛⬛⬛\uD83D\uDFE7⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFE7⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬛⬛⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDFFD⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7\uD83C\uDFFD\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛⬜⬜⬜⬜\n" +
+                            "⬛⬛⬛⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛⬛\uD83C\uDFFD\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDF2B\uFE0F⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83C\uDFFD⬛⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA⬛⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜\n" +
+                            "⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
+                            "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
+                            "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
+                            "⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
+                            "⬜⬜⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA⬛⬛⬜\n" +
+                            "⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜");
+                }
+
+                case "Daisy"->{
+                    System.out.println("" +
+                            "⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8⬜\uD83D\uDFE8\uD83D\uDFE8⬜\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFEB⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜⬜\n" +
+                            "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
+                            "\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\n" +
+                            "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE6\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
+                            "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
+                            "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE8\uD83D\uDFE8⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
+                            "⬜⬜\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE8⬜\uD83D\uDFE6\uD83D\uDFE6⬜\uD83D\uDFE8\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDF2B\uFE0F⬜⬜\n" +
+                            "⬜\uD83C\uDF2B\uFE0F⬜⬜\uD83C\uDF2B\uFE0F\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬜⬜\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDF2B\uFE0F⬜⬜\uD83C\uDF2B\uFE0F⬜\n" +
+                            "⬜\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬜\n" +
+                            "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬜⬜⬜\n" +
+                            "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜\n" +
+                            "⬜⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜⬜");
+                }
+            }
         }
-
-        switch (name){
-
-            case "Mario" -> {
-
-                System.out.println("" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬜⬜\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬜⬜⬜⬜\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬛⬛⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE5\uD83D\uDFE5⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE5\uD83D\uDFE5⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE5⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE5⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE5⬛⬛⬜⬜\uD83C\uDFFB\uD83C\uDFFB⬜⬜⬛⬛\uD83D\uDFE5⬛⬜⬜\n" +
-                        "⬜⬜⬛⬛\uD83C\uDFFB\uD83C\uDFFB⬜⬛\uD83C\uDFFB\uD83C\uDFFB⬛⬜\uD83C\uDFFB\uD83C\uDFFB⬛⬛⬜⬜\n" +
-                        "⬜⬛\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB⬜⬛\uD83C\uDFFB\uD83C\uDFFB⬛⬜\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬜\n" +
-                        "⬜⬛\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB⬛⬜\n" +
-                        "⬜⬜⬛⬛\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB⬛⬛⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83C\uDFFB⬛⬛⬛⬛⬛⬛⬛⬛\uD83C\uDFFB⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬛\uD83C\uDFFB⬛⬛⬛⬛⬛⬛\uD83C\uDFFB⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬛⬛⬛\uD83D\uDFE5⬛⬛⬛⬛⬛⬛\uD83D\uDFE5⬛⬛⬛⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5⬛⬜\n" +
-                        "⬛\uD83D\uDFE5⬛⬛\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE5⬛⬛\uD83D\uDFE5⬛\n" +
-                        "⬜⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6⬛⬜⬜⬛⬜\n" +
-                        "⬛⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬜⬛\n" +
-                        "⬛⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬜⬛\n" +
-                        "⬛⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜⬛\n" +
-                        "⬜⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜⬜⬛\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB⬛⬜\n" +
-                        "⬜⬛⬛⬛⬛⬛⬛⬛⬜⬜⬛⬛⬛⬛⬛⬛⬛⬜");
-
-            }
-
-            case "Luigi" -> {
-
-                System.out.println("" +
-                        "⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬛\uD83D\uDFE9\uD83C\uDF2B\uFE0F\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬛\uD83D\uDFE9\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9⬛⬜⬜\n" +
-                        "⬜⬜⬜⬛⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83D\uDFE9⬛⬜⬜\n" +
-                        "⬜⬜⬜⬜⬛\uD83C\uDFFC⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬛⬜\n" +
-                        "⬜⬜⬜⬛⬛\uD83C\uDFFC⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83C\uDFFC⬛⬜\n" +
-                        "⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛\n" +
-                        "⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛\uD83C\uDFFC⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛\n" +
-                        "⬜⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬛\uD83C\uDFFC⬛\uD83C\uDFFC\uD83C\uDFFC⬛⬜\n" +
-                        "⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬜\n" +
-                        "⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFC\uD83C\uDFFC\uD83C\uDFFC⬛⬛⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛\uD83D\uDFE6⬛\uD83D\uDFE9⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛⬜\n" +
-                        "⬜⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛⬛⬛\uD83D\uDFE9\uD83D\uDFE9\uD83D\uDFE9⬛\n" +
-                        "⬜⬛\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9\uD83D\uDFE9⬛\n" +
-                        "⬜⬜⬛⬛⬛⬛\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83D\uDFE9⬛\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛⬜\n" +
-                        "⬜⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE6⬛\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛⬜⬜\n" +
-                        "⬛\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬛\uD83D\uDFE6⬛⬜⬜\n" +
-                        "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬜⬜\n" +
-                        "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛⬛⬜\n" +
-                        "⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛⬛⬛⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
-                        "⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛⬜⬜⬜⬛⬛⬛\uD83D\uDFE6⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
-                        "⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜");
-
-
-            }
-
-            case "Peach"->{
-                System.out.println("" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE7⬛⬜⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE6⬛⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE6⬛⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛\uD83D\uDFE7⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬛⬜⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜⬜⬜\n" +
-                        "⬜⬛⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬛⬜⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛⬛\uD83D\uDFE8\uD83D\uDFE7⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬛\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFE7⬛⬛⬛\uD83D\uDFE7⬛⬛\uD83D\uDFE7⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬛⬛\uD83D\uDFE7⬛⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬛\uD83D\uDFE7⬛\uD83C\uDFFB⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE8⬛\uD83D\uDFE7⬛\uD83D\uDFE8\uD83D\uDFE8⬛\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB⬛⬛⬛⬜⬜⬜\n" +
-                        "⬛⬛⬛⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE6⬛\uD83D\uDFE8⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFE7⬛\uD83D\uDFE7⬛⬜⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE6⬛\uD83D\uDFE7\uD83C\uDFFB\uD83C\uDFFB⬛⬛\uD83C\uDFFB\uD83D\uDFE7⬛\uD83D\uDFE6⬛⬜⬜⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7⬛\uD83D\uDFE6⬛\uD83D\uDFE7⬛\uD83D\uDFE7\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFE7⬛⬛\uD83D\uDFE6⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬛⬛\uD83D\uDFE8\uD83D\uDFE7⬛⬛⬛⬛⬛\uD83D\uDFE7⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFE7⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE7\uD83D\uDFE7⬛⬛⬛⬛\uD83C\uDFFB\uD83C\uDFFB⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDFFD⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFE7\uD83C\uDFFD\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛⬜⬜⬜⬜\n" +
-                        "⬛⬛⬛⬛\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛⬛\uD83C\uDFFD\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDF2B\uFE0F⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬛\uD83C\uDFFD⬛⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFE8⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA⬛⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83C\uDFFD\uD83C\uDF2B\uFE0F\uD83C\uDFFD⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜\n" +
-                        "⬜⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜⬜\n" +
-                        "⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
-                        "⬜⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
-                        "⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
-                        "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA⬛⬜\n" +
-                        "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
-                        "⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
-                        "⬜⬛\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\n" +
-                        "⬜⬜⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA⬛⬛⬜\n" +
-                        "⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜");
-            }
-
-            case "Daisy"->{
-                System.out.println("" +
-                        "⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8⬜\uD83D\uDFE8\uD83D\uDFE8⬜\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFE6\uD83D\uDFE6\uD83D\uDFE8\uD83D\uDFE5\uD83D\uDFE8\uD83D\uDFEB⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜⬜\n" +
-                        "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
-                        "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
-                        "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
-                        "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
-                        "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
-                        "⬜⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFEB⬜⬜\n" +
-                        "\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFEB\n" +
-                        "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB⬛\uD83C\uDFFB\uD83D\uDFEB\uD83C\uDFFB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
-                        "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE6\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE6\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
-                        "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFEB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFB\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
-                        "\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFEB\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFEB\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFEB\n" +
-                        "⬜\uD83D\uDFEB\uD83D\uDFE7\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE8\uD83D\uDFE8⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE7\uD83D\uDFEB⬜\n" +
-                        "⬜⬜\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDFFC\uD83D\uDFE8⬜\uD83D\uDFE6\uD83D\uDFE6⬜\uD83D\uDFE8\uD83C\uDFFC\uD83C\uDFFB\uD83C\uDFFB\uD83C\uDF2B\uFE0F⬜⬜\n" +
-                        "⬜\uD83C\uDF2B\uFE0F⬜⬜\uD83C\uDF2B\uFE0F\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬜⬜\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDF2B\uFE0F⬜⬜\uD83C\uDF2B\uFE0F⬜\n" +
-                        "⬜\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F\uD83C\uDF2B\uFE0F⬜\n" +
-                        "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8⬜⬜⬜\n" +
-                        "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜\n" +
-                        "⬜⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜⬜");
-            }
-
-
-
-        }
-
     }
 
 }
