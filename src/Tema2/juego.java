@@ -23,6 +23,8 @@ public class juego {
         int puntostotal_2=1;
         String corazon=" ♥ ";
         String name = "";
+        int jugada_especial=0;
+        int jugada_1;
 
 
         /*Presentación*/
@@ -163,7 +165,9 @@ public class juego {
                 System.out.println("Velocidad -> 30");
                 System.out.println("Ataque -> 200");
                 System.out.println("Defensa -> 100");
-                System.out.println("Puntos de vida -> 80 \n");
+                System.out.println("Puntos de vida -> 80");
+                System.out.println("Jugada especial 'Recargar'. Apartir de la jugada 3 puedes usar esta especialidad pero solo puedes usarlo 1 vez.");
+                System.out.println("Recargar da a Mario 20 puntos de vida, pero le quita 60 puntos de ataque\n");
 
 
                 /*Luigi*/
@@ -213,7 +217,9 @@ public class juego {
                 System.out.println("Velocidad -> 200");
                 System.out.println("Ataque -> 120");
                 System.out.println("Defensa -> 30");
-                System.out.println("Puntos de vida -> 100 \n");
+                System.out.println("Puntos de vida -> 100");
+                System.out.println("Jugada especial 'Protección'. Apartir de la jugada 3 puedes usar esta especialidad pero solo puedes usarlo 1 vez.");
+                System.out.println("Protección da a Luigi 70 puntos de defensa, pero le quita 60 puntos de velocidad\n");
 
 
                 /*Princesa Peach*/
@@ -281,8 +287,10 @@ public class juego {
                 System.out.println("Velocidad -> 100");
                 System.out.println("Ataque -> 60");
                 System.out.println("Defensa -> 200");
-                System.out.println("Puntos de vida -> 110 \n");
-
+                System.out.println("Puntos de vida -> 110");
+                System.out.println("Jugada especial 'Rapidez'. Apartir de la jugada 3 puedes usar esta especialidad pero solo puedes usarlo 1 vez.");
+                System.out.println("Rapidez da a Peach 60 puntos de velocidad, pero le quita 60 puntos de velocidad\n");
+                System.out.println("****************************************************************************************************************\n");
 
                 /*Princesa Daisy*/
 
@@ -323,7 +331,11 @@ public class juego {
                 System.out.println("Velocidad -> 80");
                 System.out.println("Ataque -> 40");
                 System.out.println("Defensa -> 130");
-                System.out.println("Puntos de vida -> 300 \n");
+                System.out.println("Puntos de vida -> 200");
+                System.out.println("Jugada especial 'Fuerza'. Apartir de la jugada 3 puedes usar esta especialidad pero solo puedes usarlo 1 vez.");
+                System.out.println("Fuerza da a Daisy 60 puntos de ataque, pero le quita 40 puntos de velocidad\n");
+                System.out.println("****************************************************************************************************************\n");
+
 
                 /*Escoge personaje, Jugador 1*/
 
@@ -337,6 +349,14 @@ public class juego {
                         defensa_1=100;
                         puntosvida_1=80;
                         name="Mario";
+                        System.out.println("\n" +
+
+                                "███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ \n" +
+                                "████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗\n" +
+                                "██╔████╔██║███████║██████╔╝██║██║   ██║\n" +
+                                "██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║\n" +
+                                "██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝\n" +
+                                "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ \n" );
                     }
                     case 2->{
                         /*Luigi*/
@@ -345,6 +365,14 @@ public class juego {
                         defensa_1=30;
                         puntosvida_1=100;
                         name="Luigi";
+                        System.out.println("" +
+                                "\n" +
+                                "██╗     ██╗   ██╗██╗ ██████╗ ██╗\n" +
+                                "██║     ██║   ██║██║██╔════╝ ██║\n" +
+                                "██║     ██║   ██║██║██║  ███╗██║\n" +
+                                "██║     ██║   ██║██║██║   ██║██║\n" +
+                                "███████╗╚██████╔╝██║╚██████╔╝██║\n" +
+                                "╚══════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚═╝\n");
                     }
                     case 3->{
                         /*Princesa Peach*/
@@ -353,6 +381,13 @@ public class juego {
                         defensa_1=200;
                         puntosvida_1=110;
                         name="Peach";
+                        System.out.println("\n" +
+                                "██████╗ ███████╗ █████╗  ██████╗██╗  ██╗\n" +
+                                "██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║\n" +
+                                "██████╔╝█████╗  ███████║██║     ███████║\n" +
+                                "██╔═══╝ ██╔══╝  ██╔══██║██║     ██╔══██║\n" +
+                                "██║     ███████╗██║  ██║╚██████╗██║  ██║\n" +
+                                "╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝\n");
                     }
                     case 4->{
                         /*Princesa Daisy*/
@@ -361,6 +396,13 @@ public class juego {
                         defensa_1=130;
                         puntosvida_1=200;
                         name="Daisy";
+                        System.out.println("\n" +
+                                "██████╗  █████╗ ██╗███████╗██╗   ██╗\n" +
+                                "██╔══██╗██╔══██╗██║██╔════╝╚██╗ ██╔╝\n" +
+                                "██║  ██║███████║██║███████╗ ╚████╔╝ \n" +
+                                "██║  ██║██╔══██║██║╚════██║  ╚██╔╝  \n" +
+                                "██████╔╝██║  ██║██║███████║   ██║   \n" +
+                                "╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   \n");
                     }
                 }
                 System.out.println("¿Qué personaje, jugador 2, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
@@ -372,6 +414,14 @@ public class juego {
                         ataque_2 = 200;
                         defensa_2 = 100;
                         puntosvida_1 = 80;
+                        System.out.println("\n" +
+
+                                "███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ \n" +
+                                "████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗\n" +
+                                "██╔████╔██║███████║██████╔╝██║██║   ██║\n" +
+                                "██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║\n" +
+                                "██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝\n" +
+                                "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ \n" );
                     }
                     case 2 -> {
                         /*Luigi*/
@@ -379,6 +429,14 @@ public class juego {
                         ataque_2 = 120;
                         defensa_2 = 30;
                         puntosvida_2 = 100;
+                        System.out.println("" +
+                                "\n" +
+                                "██╗     ██╗   ██╗██╗ ██████╗ ██╗\n" +
+                                "██║     ██║   ██║██║██╔════╝ ██║\n" +
+                                "██║     ██║   ██║██║██║  ███╗██║\n" +
+                                "██║     ██║   ██║██║██║   ██║██║\n" +
+                                "███████╗╚██████╔╝██║╚██████╔╝██║\n" +
+                                "╚══════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚═╝\n");
                     }
                     case 3 -> {
                         /*Princesa Peach*/
@@ -386,6 +444,13 @@ public class juego {
                         ataque_2 = 60;
                         defensa_2 = 200;
                         puntosvida_2 = 110;
+                        System.out.println("\n" +
+                                "██████╗ ███████╗ █████╗  ██████╗██╗  ██╗\n" +
+                                "██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║\n" +
+                                "██████╔╝█████╗  ███████║██║     ███████║\n" +
+                                "██╔═══╝ ██╔══╝  ██╔══██║██║     ██╔══██║\n" +
+                                "██║     ███████╗██║  ██║╚██████╗██║  ██║\n" +
+                                "╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝\n");
                     }
                     case 4 -> {
                         /*Princesa Daisy*/
@@ -393,6 +458,13 @@ public class juego {
                         ataque_2 = 40;
                         defensa_2 = 130;
                         puntosvida_2 = 200;
+                        System.out.println("\n" +
+                                "██████╗  █████╗ ██╗███████╗██╗   ██╗\n" +
+                                "██╔══██╗██╔══██╗██║██╔════╝╚██╗ ██╔╝\n" +
+                                "██║  ██║███████║██║███████╗ ╚████╔╝ \n" +
+                                "██║  ██║██╔══██║██║╚════██║  ╚██╔╝  \n" +
+                                "██████╔╝██║  ██║██║███████║   ██║   \n" +
+                                "╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   \n");
                     }
                 }
 
@@ -405,10 +477,11 @@ public class juego {
         String vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
         String vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
         int ronda = 1;
-        System.out.println("*******************************");
+        System.out.println("****************************************************************************************************************");
         System.out.println("Ronda " + ronda);
         System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
         System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
+        System.out.println("****************************************************************************************************************");
 
 
         /*Comprobar que los jugadores aun tiene vida*/
@@ -420,16 +493,256 @@ public class juego {
             /* Jugado 1 empieza*/
 
             if (velocidad_1 >= velocidad_2) {
+
+
+                /*Opción de ataque especial*/
+
+                if (ronda>=3 && jugada_especial==0 ){
+                    switch (name){
+                       case "Mario"->{
+                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
+                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                           jugada_1= in.nextInt();
+                           switch (jugada_1){
+                               case 1 -> {
+                                   if (ataque_1 < 50) {
+                                       int dano = random.nextInt(11);
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int dano = random.nextInt(21) + 10;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else {
+                                       int dano = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   }
+                               }
+                               case 2 -> {
+                                   if (defensa_1 < 50) {
+                                       int vida = random.nextInt(11);
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                       int vida = random.nextInt(21) + 10;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else {
+                                       int vida = random.nextInt(21) + 20;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   }
+                               }
+                               case 3 -> {
+                                   if (ataque_1 < 50) {
+                                       int danox2 = random.nextInt(21);
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int danox2 = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else {
+                                       int danox2 = random.nextInt(11) + 40;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   }
+                               }
+                               case 4 ->{
+                                   puntosvida_1=puntosvida_1+20;
+                                   ataque_1=ataque_1-60;
+                               }
+                           }
+                       }
+                       case "Luigi"->{
+                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
+                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                           jugada_1= in.nextInt();
+                           switch (jugada_1){
+                               case 1 -> {
+                                   if (ataque_1 < 50) {
+                                       int dano = random.nextInt(11);
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int dano = random.nextInt(21) + 10;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else {
+                                       int dano = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   }
+                               }
+                               case 2 -> {
+                                   if (defensa_1 < 50) {
+                                       int vida = random.nextInt(11);
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                       int vida = random.nextInt(21) + 10;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else {
+                                       int vida = random.nextInt(21) + 20;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   }
+                               }
+                               case 3 -> {
+                                   if (ataque_1 < 50) {
+                                       int danox2 = random.nextInt(21);
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int danox2 = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else {
+                                       int danox2 = random.nextInt(11) + 40;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   }
+                               }
+                               case 4 ->{
+                                   velocidad_1=velocidad_1-60;
+                                   defensa_1=defensa_1+70;
+                               }
+                           }
+                       }
+                       case "Peach"->{
+                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
+                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                           jugada_1= in.nextInt();
+                           switch (jugada_1){
+                               case 1 -> {
+                                   if (ataque_1 < 50) {
+                                       int dano = random.nextInt(11);
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int dano = random.nextInt(21) + 10;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else {
+                                       int dano = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   }
+                               }
+                               case 2 -> {
+                                   if (defensa_1 < 50) {
+                                       int vida = random.nextInt(11);
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                       int vida = random.nextInt(21) + 10;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else {
+                                       int vida = random.nextInt(21) + 20;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   }
+                               }
+                               case 3 -> {
+                                   if (ataque_1 < 50) {
+                                       int danox2 = random.nextInt(21);
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int danox2 = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else {
+                                       int danox2 = random.nextInt(11) + 40;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   }
+                               }
+                               case 4 ->{
+                                   defensa_1=defensa_1-60;
+                                   velocidad_1=velocidad_1+60;
+                               }
+                           }
+                       }
+                       case "Daisy"->{
+                           System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                   " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3."+
+                                   "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                           jugada_1= in.nextInt();
+                           switch (jugada_1){
+                               case 1 -> {
+                                   if (ataque_1 < 50) {
+                                       int dano = random.nextInt(11);
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int dano = random.nextInt(21) + 10;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   } else {
+                                       int dano = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + dano + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - dano;
+                                   }
+                               }
+                               case 2 -> {
+                                   if (defensa_1 < 50) {
+                                       int vida = random.nextInt(11);
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else if (defensa_1 < 150 && defensa_1 >= 50) {
+                                       int vida = random.nextInt(21) + 10;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   } else {
+                                       int vida = random.nextInt(21) + 20;
+                                       System.out.println("Te has dado " + vida + " puntos de vida.");
+                                       puntosvida_1 = puntosvida_1 + vida;
+                                   }
+                               }
+                               case 3 -> {
+                                   if (ataque_1 < 50) {
+                                       int danox2 = random.nextInt(21);
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else if (ataque_1 < 150 && ataque_1 >= 50) {
+                                       int danox2 = random.nextInt(21) + 20;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   } else {
+                                       int danox2 = random.nextInt(11) + 40;
+                                       System.out.println("Le has hecho " + danox2 + " puntos de daño");
+                                       puntosvida_2 = puntosvida_2 - danox2;
+                                   }
+                               }
+                               case 4 ->{
+                                   puntosvida_1=puntosvida_1-20;
+                                   ataque_1=ataque_1+60;
+                               }
+                           }
+                       }
+                    }
+
+
+                }
                 System.out.println("Jugador 1, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                         " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3");
-                int jugada_1 = in.nextInt();
+                jugada_1 = in.nextInt();
+
+
 
                 /* Elije ataque jugador 1*/
                 switch (jugada_1) {
 
-                        /*En caso de apretar 1 (ataque), el personaje mirara sus estadisticas de ataque, si el
-                        jugador tiene menos de 50 su ataque sera de 1 a 10 (radom), si tiene más de 50 pero menos de 150
-                         sera su ataque entre 10 y 20 (random) y en caso de tener más de 150 su ataque sera entre
+                        /*En caso de apretar 1 (ataque), el personaje mirará sus estadisticas de ataque, si el
+                        jugador tiene menos de 50 su ataque será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
+                         será su ataque entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
                          20 y 40 (random)*/
                     case 1 -> {
                         if (ataque_1 < 50) {
@@ -487,10 +800,11 @@ public class juego {
 
                 vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
                 vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
-                System.out.println("*******************************");
+                System.out.println("****************************************************************************************************************");
                 System.out.println("Ronda " + ronda);
                 System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
                 System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
+                System.out.println("****************************************************************************************************************");
 
 
                 /*Jugador 2 juega*/
@@ -552,13 +866,15 @@ public class juego {
                     }
                     vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
                     vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
-                    System.out.println("*******************************");
+                    System.out.println("****************************************************************************************************************");
                     System.out.println("Ronda " + ronda);
                     System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
                     System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
+                    System.out.println("****************************************************************************************************************");
+
+                    ronda++;
                 }
 
-                ronda++;
 
 
                 /* Jugado 2 empieza*/
@@ -630,10 +946,11 @@ public class juego {
 
                 vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
                 vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
-                System.out.println("*******************************");
+                System.out.println("****************************************************************************************************************");
                 System.out.println("Ronda " + ronda);
                 System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
                 System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
+                System.out.println("****************************************************************************************************************");
 
 
                 /*Jugador 1 juega*/
@@ -641,7 +958,7 @@ public class juego {
                 if (puntosvida_1 > 0) {
                     System.out.println("Jugardor 1, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                             " hacer un crítico (probabilidad de causar un ataque que genera el doble de daño) apreta 3");
-                    int jugada_1 = in.nextInt();
+                    jugada_1 = in.nextInt();
 
                     switch (jugada_1) {
                         case 1 -> {
@@ -698,13 +1015,15 @@ public class juego {
 
                     vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
                     vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
-                    System.out.println("*******************************");
+                    System.out.println("****************************************************************************************************************");
                     System.out.println("Ronda " + ronda);
                     System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
                     System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
+                    System.out.println("****************************************************************************************************************");
                 }
                 ronda++;
             }
+
         }
         if (puntosvida_1 == 0) {
             System.out.println("" +
