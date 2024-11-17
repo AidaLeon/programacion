@@ -16,7 +16,7 @@ public class juego {
         int ataque_2=1;
         int defensa_1=1;
         int defensa_2=1;
-        int modo_de_juego=1;
+        int modo_de_juego;
         int puntosvida_1=1;
         int puntosvida_2=1;
         int puntostotal_1=1;
@@ -24,11 +24,14 @@ public class juego {
         String corazon=" ♥ ";
         String name_1 = "";
         String name_2 = "";
-        String name_win="";
+        String name_win_1="";
+        String name_win_2="";
         int jugada_especial_1=0;
         int jugada_especial_2=0;
         int jugada_1;
         int jugada_2;
+        boolean personaje = false;
+
 
 
         /*Presentación*/
@@ -45,6 +48,11 @@ public class juego {
 
         System.out.println("Quieres hacerte tu propio personaje (presiona 1), o quieres un personaje predeterminado (presiona 2). ");
         modo_de_juego=in.nextInt();
+
+        while (modo_de_juego!=1 && modo_de_juego!=2){
+            System.out.println("Lo siento, recuerda si quieres hacerte tu propio personaje (presiona 1), o si quieres un personaje predeterminado (presiona 2). ");
+            modo_de_juego=in.nextInt();
+        }
 
 
         switch (modo_de_juego){
@@ -117,7 +125,7 @@ public class juego {
                 }
             }
             case 2 -> {
-
+                personaje=true;
 
                 /*Personajes predefinidos*/
 
@@ -341,10 +349,21 @@ public class juego {
                 System.out.println("****************************************************************************************************************\n");
 
 
-                /*Escoge personaje, Jugador 1*/
+                                                  /*Escoge personaje, Jugador 1*/
 
                 System.out.println("¿Qué personaje, jugador 1, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
                 int personaje_1= in.nextInt();
+
+                                        /*Comprobar valores correctos*/
+
+                while (personaje_1!=1 && personaje_1!=2 && personaje_1!=3 && personaje_1!=4){
+                    System.out.println("¿Qué personaje, jugador 1, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
+                    personaje_1= in.nextInt();
+                }
+
+
+                                                    /*Elecciones*/
+
                 switch (personaje_1){
                     case 1->{
                         /*Mario*/
@@ -353,7 +372,7 @@ public class juego {
                         defensa_1=100;
                         puntosvida_1=80;
                         name_1="Mario";
-                        name_win="Mario";
+                        name_win_1="Mario";
                         System.out.println("\n" +
 
                                 "███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ \n" +
@@ -370,7 +389,7 @@ public class juego {
                         defensa_1=30;
                         puntosvida_1=100;
                         name_1="Luigi";
-                        name_win="Luigi";
+                        name_win_1="Luigi";
                         System.out.println("" +
                                 "\n" +
                                 "██╗     ██╗   ██╗██╗ ██████╗ ██╗\n" +
@@ -387,7 +406,7 @@ public class juego {
                         defensa_1=200;
                         puntosvida_1=110;
                         name_1="Peach";
-                        name_win="Peach";
+                        name_win_1="Peach";
                         System.out.println("\n" +
                                 "██████╗ ███████╗ █████╗  ██████╗██╗  ██╗\n" +
                                 "██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║\n" +
@@ -403,7 +422,7 @@ public class juego {
                         defensa_1=130;
                         puntosvida_1=200;
                         name_1="Daisy";
-                        name_win="Daisy";
+                        name_win_1="Daisy";
                         System.out.println("\n" +
                                 "██████╗  █████╗ ██╗███████╗██╗   ██╗\n" +
                                 "██╔══██╗██╔══██╗██║██╔════╝╚██╗ ██╔╝\n" +
@@ -415,6 +434,12 @@ public class juego {
                 }
                 System.out.println("¿Qué personaje, jugador 2, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
                 int personaje_2= in.nextInt();
+
+                while (personaje_2!=1 && personaje_2!=2 && personaje_2!=3 && personaje_2!=4){
+                    System.out.println("¿Qué personaje, jugador 1, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
+                    personaje_2= in.nextInt();
+                }
+
                 switch (personaje_2) {
                     case 1 -> {
                         /*Mario*/
@@ -423,6 +448,7 @@ public class juego {
                         defensa_2 = 100;
                         puntosvida_2 = 80;
                         name_2="Mario";
+                        name_win_2="Mario";
                         System.out.println("\n" +
 
                                 "███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ \n" +
@@ -439,6 +465,7 @@ public class juego {
                         defensa_2 = 30;
                         puntosvida_2 = 100;
                         name_2="Luigi";
+                        name_win_2="Luigi";
                         System.out.println("" +
                                 "\n" +
                                 "██╗     ██╗   ██╗██╗ ██████╗ ██╗\n" +
@@ -455,6 +482,7 @@ public class juego {
                         defensa_2 = 200;
                         puntosvida_2 = 110;
                         name_2="Peach";
+                        name_win_2="Peach";
                         System.out.println("\n" +
                                 "██████╗ ███████╗ █████╗  ██████╗██╗  ██╗\n" +
                                 "██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║\n" +
@@ -470,6 +498,7 @@ public class juego {
                         defensa_2 = 130;
                         puntosvida_2 = 200;
                         name_2="Daisy";
+                        name_win_2="Daisy";
                         System.out.println("\n" +
                                 "██████╗  █████╗ ██╗███████╗██╗   ██╗\n" +
                                 "██╔══██╗██╔══██╗██║██╔════╝╚██╗ ██╔╝\n" +
@@ -482,7 +511,7 @@ public class juego {
 
             }
         }
-        int ronda = 0;
+        int ronda = 1;
         String vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
         String vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
         System.out.println("****************************************************************************************************************");
@@ -494,24 +523,33 @@ public class juego {
         /*Comprobar que los jugadores aun tiene vida*/
 
         while (puntosvida_1 != 0 && puntosvida_2 != 0) {
-            ronda++;
 
 
             /* Jugado 1 empieza*/
 
             if (velocidad_1 >= velocidad_2) {
 
-                /*ATAQUE ESPECIAL*/
+                                             /*ATAQUE ESPECIAL*/
                 /*SOLO SE ENTRA SI SE HA JUGADO TRES RONDAS Y NO SE HA GASTADO LA JUGADA ESPECIAL*/
 
 
-                if (ronda >= 3 && jugada_especial_1 == 0) {
+                if (ronda >= 3 && jugada_especial_1 == 0 && personaje==true ) {
                     switch (name_1) {
                         case "Mario" -> {
                             System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
                                     "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
+
+
+                                              /*Comprobar que los valores son correctos*/
+
+                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                                System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                            }
                             switch (jugada_1) {
                                 case 1 -> {
                                     if (ataque_1 < 50) {
@@ -561,6 +599,9 @@ public class juego {
                                 case 4 -> {
                                     puntosvida_1 = puntosvida_1 + 20;
                                     ataque_1 = ataque_1 - 60;
+
+                                        /*Para que no se pueda hacer otro ataque especial se le suma 1*/
+
                                     jugada_especial_1++;
                                 }
                             }
@@ -568,8 +609,16 @@ public class juego {
                         case "Luigi" -> {
                             System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
-                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    "Has desbloqueado protección, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
+
+                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                                System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado protección, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                            }
+
                             switch (jugada_1) {
                                 case 1 -> {
                                     if (ataque_1 < 50) {
@@ -626,8 +675,16 @@ public class juego {
                         case "Peach" -> {
                             System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
-                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    "Has desbloqueado rapidez, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
+
+                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                                System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado rapidez, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                            }
+
                             switch (jugada_1) {
                                 case 1 -> {
                                     if (ataque_1 < 50) {
@@ -684,8 +741,16 @@ public class juego {
                         case "Daisy" -> {
                             System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
-                                    "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    "Has desbloqueado fuerza, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
+
+                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                                System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado fuerza, si deseas utilizarlo apreta 4");
+                                jugada_1 = in.nextInt();
+                            }
+
                             switch (jugada_1) {
                                 case 1 -> {
                                     if (ataque_1 < 50) {
@@ -746,9 +811,16 @@ public class juego {
                                             /* Elije ataque jugador 1*/
 
 
-                System.out.println("Jugador 1, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
                 jugada_1 = in.nextInt();
+
+                while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3){
+                    System.out.println("Jugador 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                    jugada_1 = in.nextInt();
+                }
+
 
                 switch (jugada_1) {
 
@@ -828,13 +900,21 @@ public class juego {
                                                     /*ATAQUE ESPECIAL*/
                          /*SOLO SE ENTRA SI SE HA JUGADO TRES RONDAS Y NO SE HA GASTADO LA JUGADA ESPECIAL*/
 
-                    if (ronda >= 3 && jugada_especial_2 == 0) {
+                    if (ronda >= 3 && jugada_especial_2 == 0 && personaje==true) {
                         switch (name_2) {
                             case "Mario" -> {
                                 System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
                                         "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
                                 jugada_2 = in.nextInt();
+
+                                while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4) {
+                                    System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                            "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    jugada_2 = in.nextInt();
+                                }
+
                                 switch (jugada_2) {
                                     case 1 -> {
                                         if (ataque_2 < 50) {
@@ -891,9 +971,17 @@ public class juego {
                             case "Luigi" -> {
                                 System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
-                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
-                                jugada_1 = in.nextInt();
-                                switch (jugada_1) {
+                                        "\nHas desbloqueado protección, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+
+                                while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4) {
+                                    System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                            "\nHas desbloqueado protección, si deseas utilizarlo apreta 4");
+                                    jugada_2 = in.nextInt();
+                                }
+
+                                switch (jugada_2) {
                                     case 1 -> {
                                         if (ataque_2 < 50) {
                                             int dano = random.nextInt(11);
@@ -949,8 +1037,16 @@ public class juego {
                             case "Peach" -> {
                                 System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
-                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                        "\nHas desbloqueado rapidez, si deseas utilizarlo apreta 4");
                                 jugada_2 = in.nextInt();
+
+                                while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4) {
+                                    System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                            "\nHas desbloqueado rapidez, si deseas utilizarlo apreta 4");
+                                    jugada_2 = in.nextInt();
+                                }
+
                                 switch (jugada_2) {
                                     case 1 -> {
                                         if (ataque_2 < 50) {
@@ -1007,8 +1103,16 @@ public class juego {
                             case "Daisy" -> {
                                 System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
-                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                        "\nHas desbloqueado fuerza, si deseas utilizarlo apreta 4");
                                 jugada_2 = in.nextInt();
+
+                                while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4) {
+                                    System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                            "\nHas desbloqueado fuerza, si deseas utilizarlo apreta 4");
+                                    jugada_2 = in.nextInt();
+                                }
+
                                 switch (jugada_2) {
                                     case 1 -> {
                                         if (ataque_2 < 50) {
@@ -1070,9 +1174,15 @@ public class juego {
 
 
                     } else {
-                        System.out.println("Jugador 2, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                        System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                 " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
                         jugada_2 = in.nextInt();
+
+                        while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3){
+                            System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                            jugada_2 = in.nextInt();
+                        }
 
                         switch (jugada_2) {
                             case 1 -> {
@@ -1142,13 +1252,21 @@ public class juego {
             } else {
                 ronda++;
 
-                if (ronda>=3 && jugada_especial_2==0 ){
+                if (ronda>=3 && jugada_especial_2==0 && personaje==true ){
                     switch (name_2){
                         case "Mario"->{
                             System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
                                     "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
                             jugada_2= in.nextInt();
+
+                            while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4){
+                                System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                            }
+
                             switch (jugada_2){
                                 case 1 -> {
                                     if (ataque_2 < 50) {
@@ -1205,8 +1323,16 @@ public class juego {
                         case "Luigi"->{
                             System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
-                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    "\nHas desbloqueado protección, si deseas utilizarlo apreta 4");
                             jugada_2= in.nextInt();
+
+                            while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4){
+                                System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado protección, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                            }
+
                             switch (jugada_2){
                                 case 1 -> {
                                     if (ataque_2 < 50) {
@@ -1263,8 +1389,16 @@ public class juego {
                         case "Peach"->{
                             System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
-                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    "\nHas desbloqueado rapidez, si deseas utilizarlo apreta 4");
                             jugada_2= in.nextInt();
+
+                            while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4){
+                                System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado rapidez, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                            }
+
                             switch (jugada_2){
                                 case 1 -> {
                                     if (ataque_2 < 50) {
@@ -1321,8 +1455,16 @@ public class juego {
                         case "Daisy"->{
                             System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3." +
-                                    "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    "\nHas desbloqueado fuerza, si deseas utilizarlo apreta 4");
                             jugada_2= in.nextInt();
+
+                            while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3 && jugada_2!=4){
+                                System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                        " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
+                                        "\nHas desbloqueado fuerza, si deseas utilizarlo apreta 4");
+                                jugada_2 = in.nextInt();
+                            }
+
                             switch (jugada_2){
                                 case 1 -> {
                                     if (ataque_2 < 50) {
@@ -1381,9 +1523,16 @@ public class juego {
 
                                                 /*JUGADA NORMAL JUGADOR 2*/
 
-                    System.out.println("Jugador 2, es tu turno.Si desees atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                    System.out.println("Jugador 2, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
                     jugada_2 = in.nextInt();
+
+                    while (jugada_2!=1 && jugada_2!=2 && jugada_2!=3){
+                        System.out.println("Jugardor 2, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                        jugada_2 = in.nextInt();
+
+                    }
 
                     switch (jugada_2) {
 
@@ -1455,13 +1604,21 @@ public class juego {
 
                 if (puntosvida_1 > 0) {
 
-                    if (ronda >= 3 && jugada_especial_1 == 0) {
+                    if (ronda >= 3 && jugada_especial_1 == 0 && personaje==true) {
                         switch (name_1) {
                             case "Mario" -> {
                                 System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
                                         "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
                                 jugada_1 = in.nextInt();
+
+                                while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4){
+                                    System.out.println("Jugador 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                            "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                    jugada_1 = in.nextInt();
+                                }
+
                                 switch (jugada_1) {
                                     case 1 -> {
                                         if (ataque_1 < 50) {
@@ -1518,8 +1675,16 @@ public class juego {
                             case "Luigi" -> {
                                 System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
-                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                        "Has desbloqueado protección, si deseas utilizarlo apreta 4");
                                 jugada_1 = in.nextInt();
+
+                                while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4){
+                                    System.out.println("Jugador 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                            "Has desbloqueado protección, si deseas utilizarlo apreta 4");
+                                    jugada_1 = in.nextInt();
+                                }
+
                                 switch (jugada_1) {
                                     case 1 -> {
                                         if (ataque_1 < 50) {
@@ -1576,8 +1741,16 @@ public class juego {
                             case "Peach" -> {
                                 System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
-                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                        "Has desbloqueado rapidez, si deseas utilizarlo apreta 4");
                                 jugada_1 = in.nextInt();
+
+                                while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4){
+                                    System.out.println("Jugador 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                            "Has desbloqueado rapidez, si deseas utilizarlo apreta 4");
+                                    jugada_1 = in.nextInt();
+                                }
+
                                 switch (jugada_1) {
                                     case 1 -> {
                                         if (ataque_1 < 50) {
@@ -1634,8 +1807,16 @@ public class juego {
                             case "Daisy" -> {
                                 System.out.println("Jugador 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
-                                        "Has desbloqueado recarga, si deseas utilizarlo apreta 4");
+                                        "Has desbloqueado fuerza, si deseas utilizarlo apreta 4");
                                 jugada_1 = in.nextInt();
+
+                                while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4){
+                                    System.out.println("Jugador 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                            " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3.\n" +
+                                            "Has desbloqueado fuerza, si deseas utilizarlo apreta 4");
+                                    jugada_1 = in.nextInt();
+                                }
+
                                 switch (jugada_1) {
                                     case 1 -> {
                                         if (ataque_1 < 50) {
@@ -1698,6 +1879,13 @@ public class juego {
                         System.out.println("Jugardor 1, es tu turno.Si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                 " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
                         jugada_1 = in.nextInt();
+
+                        while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3){
+                            System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
+                                    " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
+                            jugada_1 = in.nextInt();
+
+                        }
 
                         switch (jugada_1) {
                             case 1 -> {
@@ -1763,6 +1951,7 @@ public class juego {
                     System.out.println("****************************************************************************************************************");
                 }
             }
+            ronda++;
         }
         if (puntosvida_1 == 0) {
             System.out.println("" +
@@ -1779,7 +1968,7 @@ public class juego {
                     "██   ██║██║   ██║██║   ██║██╔══██║██║  ██║██║   ██║██╔══██╗    ██╔═══╝          \n" +
                     "╚█████╔╝╚██████╔╝╚██████╔╝██║  ██║██████╔╝╚██████╔╝██║  ██║    ███████╗         \n" +
                     " ╚════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝    ╚══════╝         ");
-            switch (name_win){
+            switch (name_win_2){
 
                 case "Mario" -> {
 
@@ -1947,7 +2136,7 @@ public class juego {
                     "██   ██║██║   ██║██║   ██║██╔══██║██║  ██║██║   ██║██╔══██╗     ██║             \n" +
                     "╚█████╔╝╚██████╔╝╚██████╔╝██║  ██║██████╔╝╚██████╔╝██║  ██║     ██║             \n" +
                     " ╚════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝     ╚═╝ ");
-            switch (name_win){
+            switch (name_win_1){
 
                 case "Mario" -> {
 
