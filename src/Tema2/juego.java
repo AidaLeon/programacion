@@ -3,9 +3,6 @@ package Tema2;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
-Realiza una aplicación que simula un combate entre dos jugadores. Primero leerá los valores de los
-dos jugadores y a continuación empezará a simular un combate por turnos.*/
 public class juego {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -17,6 +14,7 @@ public class juego {
         int defensa_1=1;
         int defensa_2=1;
         int modo_de_juego;
+        int ronda = 1;
         int puntosvida_1=1;
         int puntosvida_2=1;
         int puntostotal_1=1;
@@ -44,10 +42,13 @@ public class juego {
                 "╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝");
 
 
-        /*Escoger el modo de juego*/
+                                                /*Escoger el modo de juego*/
 
         System.out.println("Quieres hacerte tu propio personaje (presiona 1), o quieres un personaje predeterminado (presiona 2). ");
         modo_de_juego=in.nextInt();
+
+
+                                                /*Comprobar opción de juego*/
 
         while (modo_de_juego!=1 && modo_de_juego!=2){
             System.out.println("Lo siento, recuerda si quieres hacerte tu propio personaje (presiona 1), o si quieres un personaje predeterminado (presiona 2). ");
@@ -58,10 +59,11 @@ public class juego {
         switch (modo_de_juego){
 
 
-            /*Propio personaje*/
+                                                /*Propio personaje*/
 
             case 1 -> {
-                /*Preguntar valores jugador 1*/
+
+                                            /*Preguntar valores jugador 1*/
 
                 System.out.println("Dime los valores de los atributos, del jugador 1. Recuerda que el rango de los atributos es de 200," +
                         "y la suma de todos ellos no puede superar 500");
@@ -76,7 +78,7 @@ public class juego {
                 puntostotal_1 = velocidad_1 + ataque_1 + defensa_1 + puntosvida_1;
 
 
-                /*comprobar todos los valores y sus sumas jugador_1*/
+                                 /*comprobar todos los valores y sus sumas jugador_1, son correctos*/
 
                 while (velocidad_1 > 200 || ataque_1 > 200 || defensa_1 > 200 || puntosvida_1 > 200 || puntostotal_1 > 500) {
                     System.out.println("Lo siento tus valores no son validos. Repite los valores de los atributos, del jugador 1. Recuerda que el rango de los atributos es de 200," +
@@ -93,7 +95,7 @@ public class juego {
                 }
 
 
-                /*Pedir valores jugador_2*/
+                                                    /*Pedir valores jugador_2*/
 
                 System.out.println("Dime los valores de los atributos, del jugador 2. Recuerda que el rango de los atributos es de 200," +
                         "y la suma de todos ellos no puede superar 500");
@@ -108,7 +110,7 @@ public class juego {
                 puntostotal_2 = velocidad_2 + ataque_2 + defensa_2 + puntosvida_2;
 
 
-                /*comprobar todos los valores y sus sumas jugador_2*/
+                                      /*comprobar todos los valores y sus sumas jugador_2*/
 
                 while (velocidad_2 > 200 || ataque_2 > 200 || defensa_2 > 200 || puntosvida_2 > 200 || puntostotal_2 > 500) {
                     System.out.println("Lo siento tus valores no son validos. Repite los valores de los atributos, del jugador 2. Recuerda que el rango de los atributos es de 200," +
@@ -125,9 +127,12 @@ public class juego {
                 }
             }
             case 2 -> {
+
+
+                     /*Se cambia para poder tener ataque especial, y entrar en el bucle que aparece posteriormente */
                 personaje=true;
 
-                /*Personajes predefinidos*/
+                                            /*Personajes predefinidos*/
 
                 /*Mario Bros*/
                 System.out.println("****************************************************************************************************************");
@@ -172,7 +177,7 @@ public class juego {
                         "⬜⬛⬛⬛⬛⬛⬛⬛⬜⬜⬛⬛⬛⬛⬛⬛⬛⬜");
 
 
-                /*Valores*/
+                                                                /*Valores*/
                 System.out.println("****************************************************************************************************************\n");
                 System.out.println("Velocidad -> 30");
                 System.out.println("Ataque -> 200");
@@ -225,6 +230,9 @@ public class juego {
                         "⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬛⬛\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
                         "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛\uD83C\uDFFE\uD83C\uDFFE\uD83C\uDFFE⬛\n" +
                         "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜");
+
+
+                                                               /*Valores*/
                 System.out.println("****************************************************************************************************************\n");
                 System.out.println("Velocidad -> 200");
                 System.out.println("Ataque -> 120");
@@ -295,6 +303,8 @@ public class juego {
                         "⬜⬜⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛\uD83D\uDFEA⬛⬛⬜\n" +
                         "⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA\uD83D\uDFEA⬛⬛⬛⬜⬜⬜\n" +
                         "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜");
+
+                                                                  /*Valores*/
                 System.out.println("****************************************************************************************************************\n");
                 System.out.println("Velocidad -> 100");
                 System.out.println("Ataque -> 60");
@@ -339,6 +349,8 @@ public class juego {
                         "⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE7\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜\n" +
                         "⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜\n" +
                         "⬜⬜⬜⬜⬜⬜\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8\uD83D\uDFE8⬜⬜⬜⬜⬜⬜");
+
+                                                             /*Valores*/
                 System.out.println("****************************************************************************************************************\n");
                 System.out.println("Velocidad -> 80");
                 System.out.println("Ataque -> 40");
@@ -357,7 +369,7 @@ public class juego {
                                         /*Comprobar valores correctos*/
 
                 while (personaje_1!=1 && personaje_1!=2 && personaje_1!=3 && personaje_1!=4){
-                    System.out.println("¿Qué personaje, jugador 1, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
+                    System.out.println("Recuerda: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
                     personaje_1= in.nextInt();
                 }
 
@@ -432,11 +444,15 @@ public class juego {
                                 "╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   \n");
                     }
                 }
+
+
+                                                     /*JUGADOR 2 ELIGE*/
+
                 System.out.println("¿Qué personaje, jugador 2, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
                 int personaje_2= in.nextInt();
 
                 while (personaje_2!=1 && personaje_2!=2 && personaje_2!=3 && personaje_2!=4){
-                    System.out.println("¿Qué personaje, jugador 1, escoges: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
+                    System.out.println("Recuerda: Mario (presiona 1), Luigi (presiona 2), Princesa Peach (presiona 3) o Princesa Daisy (presiona 4)");
                     personaje_2= in.nextInt();
                 }
 
@@ -511,26 +527,33 @@ public class juego {
 
             }
         }
-        int ronda = 1;
+
+
+                                              /*BARRA DE CORAZONES*/
+             /*Coge los puntos de vida, los divide entre 10 para que no aparezcan tantos en una misma línea.*/
+
         String vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
         String vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
+
+
+                                                    /*CABECERA*/
         System.out.println("****************************************************************************************************************");
         System.out.println("Ronda " + ronda);
         System.out.println("Jugador 1: " + puntosvida_1 + " " + vida_1);
         System.out.println("Jugador 2: " + puntosvida_2 + " " + vida_2);
         System.out.println("****************************************************************************************************************");
 
-        /*Comprobar que los jugadores aun tiene vida*/
+                                         /*Comprobar que los jugadores aún tiene vida*/
 
         while (puntosvida_1 != 0 && puntosvida_2 != 0) {
 
 
-            /* Jugado 1 empieza*/
+                           /* COMPROBADOR DE VELOCIDAD, EL QUE TIENE MAYOR VELOCIDAD ATACA PRIMERO*/
 
             if (velocidad_1 >= velocidad_2) {
 
-                                             /*ATAQUE ESPECIAL*/
-                /*SOLO SE ENTRA SI SE HA JUGADO TRES RONDAS Y NO SE HA GASTADO LA JUGADA ESPECIAL*/
+                                                         /*ATAQUE ESPECIAL*/
+                /*SOLO SE ENTRA SI SE HA JUGADO TRES RONDAS Y NO SE HA GASTADO LA JUGADA ESPECIAL Y TIENE PERSONAJE PREDEFINIDO*/
 
 
                 if (ronda >= 3 && jugada_especial_1 == 0 && personaje==true ) {
@@ -544,13 +567,21 @@ public class juego {
 
                                               /*Comprobar que los valores son correctos*/
 
-                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                            while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4) {
                                 System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
                                         "\nHas desbloqueado recarga, si deseas utilizarlo apreta 4");
                                 jugada_1 = in.nextInt();
                             }
+
                             switch (jugada_1) {
+
+
+                                /*En caso de apretar 1 (ataque, quita vida al contrincante), el personaje mirará sus estadisticas de ataque, si el
+                            jugador tiene menos de 50 su ataque será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
+                             será su ataque entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
+                             20 y 40 (random)*/
+
                                 case 1 -> {
                                     if (ataque_1 < 50) {
                                         int dano = random.nextInt(11);
@@ -566,6 +597,12 @@ public class juego {
                                         puntosvida_2 = puntosvida_2 - dano;
                                     }
                                 }
+
+                                /*En caso de apretar 2 (defensa, se da vida), el personaje mirará sus estadisticas de defensa, si el
+                            jugador tiene menos de 50 su defensa será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
+                             será su defensa entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
+                             20 y 40 (random)*/
+
                                 case 2 -> {
                                     if (defensa_1 < 50) {
                                         int vida = random.nextInt(11);
@@ -581,6 +618,12 @@ public class juego {
                                         puntosvida_1 = puntosvida_1 + vida;
                                     }
                                 }
+
+                                /*En caso de apretar 3 (critico, quita vida al contrincante), el personaje mirará sus estadisticas de ataque, si el
+                            jugador tiene menos de 50 su defensa será de 1 a 20 (radom), si tiene más de 50 pero menos de 150
+                             será su defensa entre 20 y 40 (random) y en caso de tener más de 150 su ataque será entre
+                             40 y 50 (random)*/
+
                                 case 3 -> {
                                     if (ataque_1 < 50) {
                                         int danox2 = random.nextInt(21);
@@ -600,8 +643,9 @@ public class juego {
                                     puntosvida_1 = puntosvida_1 + 20;
                                     ataque_1 = ataque_1 - 60;
 
-                                        /*Para que no se pueda hacer otro ataque especial se le suma 1*/
 
+                                        /*Para que no se pueda hacer otro ataque especial se le suma 1
+                                                  * y ya no podra entrar en el bucle*/
                                     jugada_especial_1++;
                                 }
                             }
@@ -612,7 +656,7 @@ public class juego {
                                     "Has desbloqueado protección, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
 
-                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                            while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4) {
                                 System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
                                         "\nHas desbloqueado protección, si deseas utilizarlo apreta 4");
@@ -678,7 +722,7 @@ public class juego {
                                     "Has desbloqueado rapidez, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
 
-                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                            while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4) {
                                 System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
                                         "\nHas desbloqueado rapidez, si deseas utilizarlo apreta 4");
@@ -744,7 +788,7 @@ public class juego {
                                     "Has desbloqueado fuerza, si deseas utilizarlo apreta 4");
                             jugada_1 = in.nextInt();
 
-                            while (jugada_1!=1 && jugada_1!=3 && jugada_1!=3 && jugada_1!=4) {
+                            while (jugada_1!=1 && jugada_1!=2 && jugada_1!=3 && jugada_1!=4) {
                                 System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                         " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3" +
                                         "\nHas desbloqueado fuerza, si deseas utilizarlo apreta 4");
@@ -824,7 +868,7 @@ public class juego {
 
                 switch (jugada_1) {
 
-                            /*En caso de apretar 1 (ataque), el personaje mirará sus estadisticas de ataque, si el
+                            /*En caso de apretar 1 (ataque, quita vida al contrincante), el personaje mirará sus estadisticas de ataque, si el
                             jugador tiene menos de 50 su ataque será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
                              será su ataque entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
                              20 y 40 (random)*/
@@ -844,6 +888,11 @@ public class juego {
                             puntosvida_2 = puntosvida_2 - dano;
                         }
                     }
+
+                    /*En caso de apretar 2 (defensa, se da vida), el personaje mirará sus estadisticas de defensa, si el
+                            jugador tiene menos de 50 su defensa será de 1 a 10 (radom), si tiene más de 50 pero menos de 150
+                             será su defensa entre 10 y 20 (random) y en caso de tener más de 150 su ataque será entre
+                             20 y 40 (random)*/
                     case 2 -> {
                         if (defensa_1 < 50) {
                             int vida = random.nextInt(11);
@@ -859,6 +908,11 @@ public class juego {
                             puntosvida_1 = puntosvida_1 + vida;
                         }
                     }
+
+                        /*En caso de apretar 3 (critico, quita vida al contrincante), el personaje mirará sus estadisticas de ataque, si el
+                            jugador tiene menos de 50 su defensa será de 1 a 20 (radom), si tiene más de 50 pero menos de 150
+                             será su defensa entre 20 y 40 (random) y en caso de tener más de 150 su ataque será entre
+                             40 y 50 (random)*/
                     case 3 -> {
                         if (ataque_1 < 50) {
                             int danox2 = random.nextInt(21);
@@ -881,7 +935,7 @@ public class juego {
                 if (puntosvida_2 <= 0) {
                     puntosvida_2 = 0;
                 }
-
+                                                 /*CABECERA*/
 
                 vida_1= String.valueOf(corazon).repeat(puntosvida_1/10);
                 vida_2= String.valueOf(corazon).repeat(puntosvida_2/10);
@@ -1252,6 +1306,9 @@ public class juego {
             } else {
                 ronda++;
 
+
+                                             /*Ataque especial*/
+
                 if (ronda>=3 && jugada_especial_2==0 && personaje==true ){
                     switch (name_2){
                         case "Mario"->{
@@ -1585,7 +1642,8 @@ public class juego {
                 }
 
 
-                /*Para que el valor de la vida no salga negativo*/
+                                        /*Para que el valor de la vida no salga negativo*/
+
                 if (puntosvida_1 <= 0) {
                     puntosvida_1 = 0;
                 }
@@ -1603,6 +1661,8 @@ public class juego {
                                                   /*JUGADOR 1 JUEGA*/
 
                 if (puntosvida_1 > 0) {
+
+                                                          /*Jugada especial*/
 
                     if (ronda >= 3 && jugada_especial_1 == 0 && personaje==true) {
                         switch (name_1) {
@@ -1884,7 +1944,6 @@ public class juego {
                             System.out.println("Jugardor 1, recuerda si deseas atacar apreta 1, si deseas defenderte apreta 2, si deseas" +
                                     " hacer un crítico\n(probabilidad de causar un ataque que genera el doble de daño) apreta 3");
                             jugada_1 = in.nextInt();
-
                         }
 
                         switch (jugada_1) {
@@ -1951,6 +2010,9 @@ public class juego {
                     System.out.println("****************************************************************************************************************");
                 }
             }
+
+
+                                       /* Se van sumando las rondas*/
             ronda++;
         }
         if (puntosvida_1 == 0) {
@@ -2290,6 +2352,7 @@ public class juego {
                 }
             }
         }
+        in.close();
     }
 
 }
