@@ -12,15 +12,18 @@ public class ejercicio_3 {
         System.out.println("Dime el radio");
         double radio= in.nextDouble();
         boolean comprobar=validRadio(radio);
-        if (comprobar==false){
-            System.out.println("Tu número no es valido");
-        }else {
+        while (comprobar!=true){
+            System.out.println("Tu número no es valido, debe de ser mayor a 0");
+            radio= in.nextDouble();
+            comprobar=validRadio(radio);
+        }
+
             double resultadoPerimetro=calculateCirclePerimete(radio);
             double resultadoArea=calculateCircleArea(radio);
-            System.out.println("Tu radio de " + radio + " entonces el perímetro de tu círculo es de "
+            System.out.println("Tu radio es de " + radio + " entonces el perímetro de tu círculo es de "
                     + resultadoPerimetro + " y el area es de " + resultadoArea);
         }
-    }
+
     public static boolean validRadio(double radio){
         if (radio<0){
             return false;
@@ -37,3 +40,4 @@ public class ejercicio_3 {
         return area;
     }
 }
+
