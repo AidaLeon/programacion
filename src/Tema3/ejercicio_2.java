@@ -14,14 +14,20 @@ public class ejercicio_2 {
             System.out.println("Dime tu edad");
             edad= in.nextInt();
         }
-        String mayor=isAdult(edad);
-        System.out.println(mayor);
-    }
-    public static String isAdult(int edad){
-        if (edad>=18){
-            return "Eres mayor de edad";
+        boolean mayor=isAdult(edad);
+        if (mayor==true){
+            System.out.println("Eres mayor de edad.");
         }else {
-            return "Eres menor de edad";
+            System.out.println("Eres menor de edad.");
+        }
+    }
+    public static boolean isAdult(int edad){
+        boolean mayor=true;
+        if (edad>=18){
+            mayor=false;
+            return mayor;
+        }else {
+            return mayor;
         }
     }
 }

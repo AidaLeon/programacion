@@ -11,7 +11,9 @@ public class ejercicio_1 {
         Scanner in=new Scanner(System.in);
         System.out.println("Dime el numero que quieras.");
         int numero= in.nextInt();
+
         int resultado=numberSign(numero);
+
         if (resultado==1){
             System.out.println("Tu número es positivo");
         } else if (resultado==-1) {
