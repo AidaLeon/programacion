@@ -29,15 +29,14 @@ public class ejercicio_8 {
         int ano= in.nextInt();
         while (ano<1){
             System.out.println("Tu año no es valido, recuerda debe de ser mayor a 0");
-            mes= in.nextInt();
+            ano= in.nextInt();
         }
-        compacionDia(dia, mes, ano);
-        anoBisiento(dia, ano);
+        comprobacionBisiesto(dia, mes, ano);
 
     }
 
 
-    public static void compacionDia(int dia, int mes,int ano){
+    public static void comprobacionBisiesto(int dia, int mes,int ano){
         switch (mes){
             case 1, 3, 5, 7, 8, 10, 12->{
                 if (dia<1 || dia>31){
@@ -54,21 +53,17 @@ public class ejercicio_8 {
                 }
             }
             case 2 ->{
-                if (dia<1 || dia<29){
-                    System.out.println("Tu fecha no es valida");
-                    anoBisiento(dia, ano);
-                }else {
+
+                if (dia<1 || dia>28){
+                    if (ano%4==0 && ano%100!=0 && dia==29 || ano%400==0){
+                        System.out.println("Tu fecha es valida");
+                    }else {
+                        System.out.println("Tu fecha no es valida");
+                    }
+                } else {
                     System.out.println("Tu fecha es valida");
                 }
             }
         }
     }
-    public static void anoBisiento (int dia, int ano){
-        if (ano%4==0 && ano%100!=0 || ano%400==0){
-            if (dia!=29){
-                System.out.println("Tu fecha no es valida");
-            }
-        }
-    }
-
 }

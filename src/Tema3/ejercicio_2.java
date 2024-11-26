@@ -23,7 +23,7 @@ public class ejercicio_2 {
     }
     public static boolean isAdult(int edad){
         boolean mayor=true;
-        if (edad>=18){
+        if (edad<18){
             mayor=false;
             return mayor;
         }else {
