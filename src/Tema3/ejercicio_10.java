@@ -18,15 +18,15 @@ public class ejercicio_10 {
         menu();
         String opcion = in.nextLine().toLowerCase();
 
-        /*
-        while (opcion!="a" || opcion!="b" ||opcion!="c" ||opcion!="d" ||opcion!="e" ||opcion!="f" ||opcion!="g" ||opcion!="h" ||opcion!="i" ){
+
+        while (!opcion.equals("a") && !opcion.equals("b") && !opcion.equals("c") && !opcion.equals("d") && !opcion.equals("e") && !opcion.equals("f") && !opcion.equals("g") && !opcion.equals("h") && !opcion.equals("i")){
             System.out.println("Valor no correcto, recuerda");
             menu();
             opcion=in.nextLine().toLowerCase();
         }
-        */
+
         switch (opcion) {
-            case "a" -> {
+            case "a"-> {
                 System.out.println("Dime el numero que quieras.");
                 int numero = in.nextInt();
                 int resultado = ejercicio_1.numberSign(numero);
@@ -152,6 +152,9 @@ public class ejercicio_10 {
                 System.out.println("Cuantas líneas en el triángulo deseas");
                 int lineas= in.nextInt();
                 ejercicio_9.dibujarTriangulo(caracter, lineas);
+            }
+            default -> {
+
             }
         }
         System.out.println("Adios");

@@ -17,9 +17,12 @@ public class ejercicio_9 {
 
     public static void dibujarTriangulo(char simbolo, int numLineas) {
         for (int i = 1; i <= numLineas; i++) {
-            String triangulo=String.copyValueOf(new char[]{simbolo}).repeat(i);
+            String blanco=" ".repeat(numLineas-i);
+            System.out.print(blanco);
+            String triangulo=String.copyValueOf(new char[]{simbolo}).repeat((i*2)-1);
             System.out.println(triangulo);
         }
+
     }
 }
 
