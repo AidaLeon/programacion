@@ -26,10 +26,15 @@ public class MyMath {
     }
     public static boolean comparacionPrimo (int numero){
         boolean primo=true;
-        for (int i = 2; i < numero; i++) {
-            if (numero % i != 0) {
-                return true;
+        while (primo=true) {
+            for (int i = 2; i < numero; i++) {
+                if (numero % i != 0) {
+                    return true;
+                }else {
+                    return false;
+                }
             }
+
         }
         return false;
     }
