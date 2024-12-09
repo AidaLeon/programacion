@@ -4,14 +4,6 @@ import java.util.Scanner;
 
 public class utils {
     public static void main(String[]args){
-        Scanner in=new Scanner(System.in);
-        System.out.println("Dime un numero");
-        double numero= in.nextDouble();
-        /*
-        System.out.println("Dime el iba");
-        double iba= in.nextDouble();
-        */
-        System.out.println(getCoins(numero));
 
     }
     public static double  miles2kilometers(double kilometros){
@@ -78,9 +70,56 @@ public class utils {
 
         return dos + uno + cincuenta + veinte + diez + cinco + dosCent + unCent;
     }
-    public static int getNIF (int dni){
-        int resultado =  dni/23;
-        return resultado;
+    public static char getNIF (int dni){
+        int resultado =  dni%23;
+        return switch (resultado){
+            case 0 -> 'T';
+            case 1->'R';
+            case 2->'W';
+            case 3->'A';
+            case 4->'G';
+            case 5->'M';
+            case 6 ->'Y';
+            case 7->'F';
+            case 8->'P';
+            case 9->'D';
+            case 10->'X';
+            case 11->'B';
+            case 12->'N';
+            case 13->'J';
+            case 14->'Z';
+            case 15->'S';
+            case 16->'Q';
+            case 17->'V';
+            case 18->'H';
+            case 19->'L';
+            case 20->'C';
+            case 21->'K';
+            case 22->'E';
+            default -> ' ';
+        };
     }
+    public static boolean isValidNIF (int numero, char letra){
+        boolean dni=true;
 
+        if (getNIF(numero)!=letra){
+            return !dni;
+        }else {
+            return dni;
+        }
+    }
+    public static double calculateIRPF (double sueldo){
+        if (sueldo <=12450){
+            return sueldo*0.19;
+        } else if (sueldo>12450 && sueldo<=20199) {
+            return sueldo*0.24;
+        }else if (sueldo>=20200 && sueldo<=35199){
+            return sueldo*0.30;
+        } else if (sueldo>=35200 && sueldo<=59999) {
+            return sueldo*0.37;
+        }else{
+            return 1;
+        }
+    }
 }
+
