@@ -3,9 +3,8 @@ package Tema3;
 import java.util.Scanner;
 
 public class MyMath {
-    public static void main(String[] args) {
+    public static void main(String[] args) {}
 
-    }
     public static double squarePerimeter (double lado){
         return lado+lado+lado+lado;
     }
@@ -24,19 +23,15 @@ public class MyMath {
     public static double circleArea (double radio){
         return radio*radio*3.14;
     }
+    //revisar
     public static boolean comparacionPrimo (int numero){
         boolean primo=true;
-        while (primo=true) {
             for (int i = 2; i < numero; i++) {
-                if (numero % i != 0) {
-                    return true;
-                }else {
+                if (numero % i == 0) {
                     return false;
                 }
             }
-
-        }
-        return false;
+            return true;
     }
 
     public static boolean noPrimo(int numero){

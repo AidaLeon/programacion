@@ -10,7 +10,7 @@ d) Conversor de euros a dólares y de dólares a euros.
 e) Mostrar tabla de multiplicar de un número.
 f) Mostrar tablas de multiplicar del 1 al 10.
 g) Comprobador de números primos.
-h) Comprobador de fechas.
+h) Comprobador de fechast.
 i) Dibujar triángulos.*/
 public class ejercicio_10 {
     public static void main(String[] args) {

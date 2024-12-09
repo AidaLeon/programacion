@@ -26,6 +26,7 @@ public class ejercicio_2 {
         if (edad<18){
             mayor=false;
             return mayor;
+            //return !mayor;
         }else {
             return mayor;
         }
