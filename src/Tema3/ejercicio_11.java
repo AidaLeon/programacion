@@ -50,7 +50,7 @@ public class ejercicio_11 {
         System.out.print("Tu factorial es de: ");
         System.out.println(MyMath.factorialRecursividad(numero1));
 
-        System.out.print("Tu factorial tienes este número de resultados: ");
+        System.out.print("Tu ecuación tiene este número de resultados: ");
         System.out.println(MyMath.ecuacionSegundo(numero1,numero2,numero3));
 
         System.out.print("La suma de todos los dígitos es de: ");

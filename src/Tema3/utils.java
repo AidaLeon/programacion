@@ -4,20 +4,47 @@ import java.util.Scanner;
 
 public class utils {
     public static void main(String[]args){
-
+        Scanner in=new Scanner(System.in);
+        System.out.println("Dime tu sueldo");
+        double sueldo= in.nextDouble();
+        System.out.println(calculateIRPF(sueldo));
     }
+
     public static double  miles2kilometers(double kilometros){
+
+        /*Añade a Utils una función miles2kilometers que convierta millas a
+        kilometros.*/
+
         return kilometros*1.60934;
     }
+
+
     public static double  getTaxes (double precio, double tasas){
+
+        /*Añade a Utils una función getTaxes que dada una cantidad en euros y un
+        porcentaje devuelva el valor del impuesto a aplicar. El valor debe
+        devolver siempre dos decimales.*/
+
         tasas=tasas/100;
         precio=precio*tasas;
         return Math.round(precio * 100) / 100.0;
     }
+
+
     public static double getNetPrice (double precio, double tasas){
+        /*Añade a Utils una función getNetPrice que recibe una cantidad en euros
+        y un porcentaje de impuestos y devuelve esa cantidad más el impuesto.*/
+
         return getTaxes(precio,tasas)+precio;
     }
+
+
     public static String getCoins (double euros){
+
+        /*Añade a Utils una función getCoins que le pases una cantidad en euros y
+        te devuelve las monedas con las que llegar a esa cantidad en un único
+        número entero.*/
+
         int contador2=0;
         int contador1=0;
         int contador50=0;
@@ -70,7 +97,14 @@ public class utils {
 
         return dos + uno + cincuenta + veinte + diez + cinco + dosCent + unCent;
     }
+
+
     public static char getNIF (int dni){
+
+        /*Añade a Utils una función llamada getNIF que te calcule el NIF (o la letra
+        del DNI). Para obtenerla se divide el número del entre 23 y el resto se
+        codifica con una letra. Siendo la correspondencia:*/
+
         int resultado =  dni%23;
         return switch (resultado){
             case 0 -> 'T';
@@ -99,7 +133,13 @@ public class utils {
             default -> ' ';
         };
     }
+
+
     public static boolean isValidNIF (int numero, char letra){
+
+        /*Añade a Utils una función que reciba el número del DNI y NIF y
+        compruebe si dicho par son correctos. Llama a la función isValidNIF*/
+
         boolean dni=true;
 
         if (getNIF(numero)!=letra){
@@ -108,7 +148,13 @@ public class utils {
             return dni;
         }
     }
+
+
     public static double calculateIRPF (double sueldo){
+
+        /*(OPCIONAL) Haz una función que calcule el IRPF a partir de un salario
+        anual. Llama a la función calculateIRPF*/
+
         if (sueldo <=12450){
             return sueldo*0.19;
         } else if (sueldo>12450 && sueldo<=20199) {
@@ -117,8 +163,10 @@ public class utils {
             return sueldo*0.30;
         } else if (sueldo>=35200 && sueldo<=59999) {
             return sueldo*0.37;
-        }else{
-            return 1;
+        }else if(sueldo>=60000 && sueldo<=299999) {
+          return sueldo*0.45;
+        }else {
+            return sueldo*0.47;
         }
     }
 }
