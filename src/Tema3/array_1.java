@@ -5,23 +5,13 @@ import java.util.Scanner;
 
 public class array_1 {
     public static void main(String[] args) {
-        Scanner in=new Scanner(System.in);
-        mostrar();
-        int mayor=mayor();
-        System.out.println(mayor);
-        int menor=menor();
-        System.out.println(menor);
-        double media=media();
-        System.out.println(media);
-        String esta=esta();
-        System.out.println(esta);
+
     }
-    public static void mostrar(){
-        int [] num ={1, 2, 3, 4, 5, 6};
-        System.out.println(Arrays.toString(num));
+    public static String mostrar(int[]num){
+        String array=Arrays.toString(num);
+        return array;
     }
-    public static int mayor(){
-        int [] num ={1, 2, 3, 4, 5, 6};
+    public static int mayor(int[]num){
         /*coger el primer numero*/
         int may=num[0];
         /*pasar por todos los numero de la array*/
@@ -33,8 +23,7 @@ public class array_1 {
         }
         return may;
     }
-    public static int menor(){
-        int [] num ={1, 2, 3, 4, 5, 6};
+    public static int menor(int[]num){
         /*coger el primer numero*/
         int men=num[0];
         /*pasar por todos los numero de la array*/
@@ -46,8 +35,7 @@ public class array_1 {
         }
         return men;
     }
-    public static double media (){
-        int [] num ={1, 2, 3, 4, 5, 6};
+    public static double media (int[]num){
         int suma=0;
         int contador=0;
         for (int i=0; i<num.length; i++){
@@ -57,9 +45,8 @@ public class array_1 {
         double med= (double) suma /contador;
         return med;
     }
-    public static String esta (){
+    public static String esta (int[]num){
         Scanner in=new Scanner(System.in);
-        int [] num ={1, 2, 3, 4, 5, 6};
         boolean noEsta=true;
         System.out.println("Dime el número que quieras");
         int numero= in.nextInt();
@@ -72,6 +59,63 @@ public class array_1 {
             return "Tu numero si esta";
         }else {
             return "Tu número no esta";
+        }
+    }
+    public static int[] suma(int[]num, int[]num2) {
+        int [] num3=new int[6];
+        for (int i=0; i<num.length; i++){
+        num3[i]=num[i]+num2[i];
+        }
+        return num3;
+    }
+    public static int[] resta(int[]num, int[]num2) {
+        int [] num3=new int[6];
+        for (int i=0; i<num.length; i++){
+            num3[i]=num[i]-num2[i];
+        }
+        return num3;
+    }
+    public static int productoEscalar(int[]num, int[]num2) {
+        int [] num3=new int[6];
+        int resultado=0;
+        for (int i=0; i<num.length; i++){
+            num3[i]=num[i]*num2[i];
+            resultado=resultado+num3[i];
+        }
+        return resultado;
+    }
+    public static int[] invertir(int[]num) {
+        int [] num2=new int[6];
+        int contador=0;
+        for (int i=num.length-1; contador<num.length; i--){
+            num2[contador]=num[i];
+            contador++;
+        }
+        return num2;
+    }
+    public static void invertir2(int[]num) {
+        int [] num2=new int[6];
+        int contador=0;
+        for (int i=num.length-1; contador<num.length; i--){
+            num2[contador]=num[i];
+            contador++;
+        }
+        System.out.println("El orden invertido de tus numero "+ Arrays.toString(num)+ " es " + Arrays.toString(num2));
+    }
+    public static void capicua(int[]num){
+        int contador=num.length-1;
+        boolean capicua=true;
+        for (int i=0; i<num.length; i++){
+            if (num[i]!=num[contador]){
+            capicua=false;
+            }else {
+                contador--;
+            }
+        }
+        if (capicua==true){
+            System.out.println("Tu número es capicua");
+        }else {
+            System.out.println("Tu número no es capicua");
         }
     }
 
