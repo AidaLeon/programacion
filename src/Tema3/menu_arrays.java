@@ -9,6 +9,7 @@ public class menu_arrays {
         int [] array1= new int[6];
         int [] array2= new int[6];
         System.out.println("Dime los seis números enteros que desees");
+        /*for*/
         array1[0]= in.nextInt();
         array1[1]= in.nextInt();
         array1[2]= in.nextInt();
