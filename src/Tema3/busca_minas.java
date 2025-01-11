@@ -17,13 +17,34 @@ public class busca_minas {
 
         /*puestas ayudas*/
         array=ayuda(array);
+        System.out.println(Arrays.toString(array));
 
         int posicion;
         int contador=0;
         do {
-            System.out.println("Dime la posición que quieras");
+            System.out.println("Dime la posición que quieras del 1 al 20");
             posicion= in.nextInt();
+
+            /*Rango del 1 al 20*/
+            posicion=comprabacionNum(posicion);
+
+            /*coincidir con el array*/
             posicion=posicion-1;
+
+            /*Remarcar que se ha dicho ya ese número*/
+
+            if (array[posicion]==arrayno[posicion]) {
+                while (arrayno[posicion] == '0' || arrayno[posicion] == '1' || arrayno[posicion] == '2') {
+                    System.out.println("Esta posicion ya la has dicho.\nDime otra");
+                    posicion = in.nextInt();
+                    posicion=comprabacionNum(posicion);
+
+                    /*coincidir con el array*/
+                    posicion=posicion-1;
+                }
+            }
+
+
 
             mostrar(array, posicion);
             arrayno[posicion]=array[posicion];
@@ -104,6 +125,14 @@ public class busca_minas {
                     return '?';
                 }
             }
+    }
+    public static int comprabacionNum(int posicion){
+        Scanner in=new Scanner(System.in);
+        while (posicion<1 || posicion>20){
+            System.out.println("Tu posición es incorrecta.\nRecuerda es del 1 al 20");
+            posicion= in.nextInt();
+        }
+        return posicion;
     }
 }
 
