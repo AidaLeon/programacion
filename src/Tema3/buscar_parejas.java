@@ -15,8 +15,8 @@ public class buscar_parejas {
         int posicion2;
         System.out.println(Arrays.toString(noVisible));
         do {
-            todo
-        } while (esta(visiable, 0))
+            /*todo*/
+        } while (esta(visiable, 0));
         do {
             do {
                 System.out.println("Dime la posición que quieras del 1 al 20");
