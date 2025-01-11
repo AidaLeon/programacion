@@ -13,37 +13,58 @@ public class buscar_parejas {
         int [] visiable=new int[20];
         int posicion1;
         int posicion2;
+        int contador=0;
         System.out.println(Arrays.toString(noVisible));
+
         do {
-            /*todo*/
-        } while (esta(visiable, 0));
-        do {
-            do {
-                System.out.println("Dime la posición que quieras del 1 al 20");
-                posicion1=in.nextInt();
-            }while (!entre1_20(posicion1));
+
+                do {
+                    System.out.println();
+                    System.out.println("Dime la posición que quieras del 1 al 20");
+                    posicion1=in.nextInt();
+                    /*comprobar valor correcto*/
+                }while (!entre1_20(posicion1));
 
             do {
-                System.out.println("Dime otra posición distinta del 1 al 20");
-                posicion2= in.nextInt();
-            }while (!entre1_20(posicion2));
-        }while (!requisito(posicion1, posicion2));
-        System.out.println("Tus posiciones son " + posicion1 + " y " + posicion2);
+                do {
+                    System.out.println("Dime otra posición distinta del 1 al 20");
+                    posicion2= in.nextInt();
+                }while (!entre1_20(posicion2));
+                /*comprobar que no se el mismo número*/
+            }while (!requisito(posicion1, posicion2));
 
-        System.out.printf(mostrar(noVisible[posicion1])+ " " + mostrar(noVisible[posicion2]) + " \n" );
-        System.out.println("Pulsa enter para continuar");
-        in.nextLine();
-        in.nextLine();
-        if (noVisible[posicion1]==noVisible[posicion2] ){
-            visiable[posicion1]=noVisible[posicion1];
-            visiable[posicion2]=noVisible[posicion2];
-        }
-        for (int i = 1; i < 10; i++) {
-            System.out.println("\n\n\n");
-        }
-        for (int i = 0; i < visiable.length; i++) {
-            System.out.printf(mostrar(visiable[i]));
-        }
+            System.out.println("Tus posiciones son " + posicion1 + " y " + posicion2);
+
+            /*Para que coincidan con los nuúmero de las arrays*/
+            posicion1=posicion1-1;
+            posicion2=posicion2-1;
+
+            /*Mostrar animales*/
+            System.out.printf(mostrar(noVisible[posicion1])+ " " + mostrar(noVisible[posicion2]) + " \n" );
+            System.out.println("Pulsa enter para continuar");
+            in.nextLine();
+            in.nextLine();
+            if (noVisible[posicion1]==noVisible[posicion2] ){
+                visiable[posicion1]=noVisible[posicion1];
+                visiable[posicion2]=noVisible[posicion2];
+            }
+
+            /*intro largo en blanco*/
+            for (int i = 1; i < 10; i++) {
+                System.out.println("\n\n\n");
+            }
+
+            /*mostrar animales iguales (cartas)*/
+            for (int i = 0; i < visiable.length; i++) {
+                System.out.printf(mostrar(visiable[i]));
+            }
+            contador++;
+
+            /*bucle hasta conseguir las 10 parejas*/
+        } while (contador<10);
+
+        System.out.println("Lo has conseguido");
+
 
     }
 
@@ -83,34 +104,34 @@ public class buscar_parejas {
                 return " ? ";
             }
             case 1->{
-                return "León";
+                return " León ";
             }
             case 2->{
-                return "Tigre";
+                return " Tigre ";
             }
             case 3->{
-                return "Zebra";
+                return " Zebra ";
             }
             case 4->{
-                return "Elefante";
+                return " Elefante ";
             }case 5->{
-                return "Perro";
+                return " Perro ";
             }case 6->{
-                return "Gato";
+                return " Gato ";
             }case 7->{
-                return "Pingüino";
+                return " Pingüino ";
             }
             case 8->{
-                return "Foca";
+                return " Foca ";
             }
             case 9->{
-                return "Hormiga";
+                return " Hormiga ";
             }
             case 10->{
-                return "Rata";
+                return " Rata ";
             }
             default -> {
-                return "Valor incorrecto";
+                return " Valor incorrecto ";
             }
         }
     }
