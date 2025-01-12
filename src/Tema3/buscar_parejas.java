@@ -1,5 +1,7 @@
 package Tema3;
 
+import com.sun.source.tree.WhileLoopTree;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,52 +18,55 @@ public class buscar_parejas {
         int contador=0;
         System.out.println(Arrays.toString(noVisible));
 
-        do {
-
-                do {
-                    System.out.println();
-                    System.out.println("Dime la posición que quieras del 1 al 20");
-                    posicion1=in.nextInt();
-                    /*comprobar valor correcto*/
-                }while (!entre1_20(posicion1));
-
             do {
-                do {
-                    System.out.println("Dime otra posición distinta del 1 al 20");
-                    posicion2= in.nextInt();
-                }while (!entre1_20(posicion2));
-                /*comprobar que no se el mismo número*/
-            }while (!requisito(posicion1, posicion2));
+                /*comprobar valor del 1-20*/
+                    do {
+                        System.out.println();
+                        System.out.println("Dime la posición que quieras del 1 al 20");
+                        posicion1=in.nextInt();
+                        /*comprobar valor correcto*/
+                    }while (!entre1_20(posicion1));
 
-            System.out.println("Tus posiciones son " + posicion1 + " y " + posicion2);
+                    /*valor 2 no coincide con valor 1*/
 
-            /*Para que coincidan con los nuúmero de las arrays*/
-            posicion1=posicion1-1;
-            posicion2=posicion2-1;
+                    do {
+                        do {
+                            System.out.println("Dime otra posición distinta del 1 al 20");
+                            posicion2= in.nextInt();
+                        }while (!entre1_20(posicion2));
+                        /*comprobar que no se el mismo número*/
+                    }while (!requisito(posicion1, posicion2));
 
-            /*Mostrar animales*/
-            System.out.printf(mostrar(noVisible[posicion1])+ " " + mostrar(noVisible[posicion2]) + " \n" );
-            System.out.println("Pulsa enter para continuar");
-            in.nextLine();
-            in.nextLine();
-            if (noVisible[posicion1]==noVisible[posicion2] ){
-                visiable[posicion1]=noVisible[posicion1];
-                visiable[posicion2]=noVisible[posicion2];
-            }
 
-            /*intro largo en blanco*/
-            for (int i = 1; i < 10; i++) {
-                System.out.println("\n\n\n");
-            }
+                System.out.println("Tus posiciones son " + posicion1 + " y " + posicion2);
 
-            /*mostrar animales iguales (cartas)*/
-            for (int i = 0; i < visiable.length; i++) {
-                System.out.printf(mostrar(visiable[i]));
-            }
-            contador++;
+                /*Para que coincidan con los números con las posiciones de las arrays*/
+                posicion1=posicion1-1;
+                posicion2=posicion2-1;
 
-            /*bucle hasta conseguir las 10 parejas*/
-        } while (contador<10);
+                /*Mostrar animales*/
+                System.out.printf(mostrar(noVisible[posicion1])+ " " + mostrar(noVisible[posicion2]) + " \n" );
+                System.out.println("Pulsa enter para continuar");
+                in.nextLine();
+                in.nextLine();
+                if (noVisible[posicion1]==noVisible[posicion2] ){
+                    visiable[posicion1]=noVisible[posicion1];
+                    visiable[posicion2]=noVisible[posicion2];
+                }
+
+                /*intro largo en blanco*/
+                for (int i = 1; i < 10; i++) {
+                    System.out.println("\n\n\n");
+                }
+
+                /*mostrar animales iguales (cartas)*/
+                for (int i = 0; i < visiable.length; i++) {
+                    System.out.printf(mostrar(visiable[i]));
+                }
+                contador++;
+
+                /*bucle hasta conseguir las 10 parejas*/
+            } while (contador<10);
 
         System.out.println("Lo has conseguido");
 
@@ -151,5 +156,12 @@ public class buscar_parejas {
     }
     public static boolean comprobarIguales(int animal1, int animal2){
         return animal1==animal2;
+    }
+    public static boolean comprobarParejadas(int [] visibles, int posicion1, int posicion2){
+        if (visibles[posicion1]==visibles[posicion2] && visibles[posicion1]!=0){
+            System.out.println("Recuerda.\nYa has emparejado este número");
+            return false;
+        }
+        return true;
     }
 }
