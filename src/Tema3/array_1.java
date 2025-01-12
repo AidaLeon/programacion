@@ -48,7 +48,7 @@ public class array_1 {
     public static String esta (int[]num){
         Scanner in=new Scanner(System.in);
         boolean noEsta=true;
-        System.out.println("Dime el número que quieras");
+        System.out.println("Dime el número que quieras comprobar si esta");
         int numero= in.nextInt();
         for (int i=0; i<num.length; i++){
             if (numero==num[i]){
