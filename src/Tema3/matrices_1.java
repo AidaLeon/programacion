@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class matrices_1 {
     public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
         int [][] matriz=new int[3][3];
         matriz=mostrar();
         System.out.println(Arrays.deepToString(matriz));
@@ -17,6 +18,9 @@ public class matrices_1 {
         System.out.println("Tu media es " + media);
         String esta=esta(matriz);
         System.out.println(esta);
+        System.out.println("Dime un número");
+        int numero= in.nextInt();
+        double repeticion=repetido(matriz, numero);
         int [][] matriz2=new int[3][3];
         matriz2=mostrar();
         System.out.println(Arrays.deepToString(matriz2));
@@ -99,12 +103,10 @@ public class matrices_1 {
             return falso;
         }
     }
-    public static double repetido (int [][] matriz){
+    public static double repetido (int [][] matriz,  int numero){
 
         /*NO ME SALE*/
 
-        int media;
-        int numero=0;
         int contador = 0;
         for (int i = 0; i <matriz.length ; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
