@@ -11,7 +11,6 @@ public class caja_blanca {
         char[] cadena=new char[1];
         for (int i = 0; i < cadena.length; i++) {
             ejercicio1[i]=in.nextLine().charAt(0);
-
         }
         System.out.println("Dime la letra que quieras");
         char letra=in.nextLine().charAt(0);
