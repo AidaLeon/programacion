@@ -83,7 +83,7 @@ public class busca_minas {
     }
     public static char[] ayuda(char[] array){
         for (int i = 1; i < array.length-1; i++) {
-                if (array[i-1]=='*' && array[i+1]=='*' && array[i]!='+'){
+                if (array[i-1]=='*' && array[i+1]=='*' && array[i]!='*'){
                     if (array[i]=='*'){
                         array[i]='*';
                     }else {
@@ -92,7 +92,7 @@ public class busca_minas {
                 }
         }
         for (int j = 1; j <array.length-1 ; j++) {
-            if (array[j-1]=='*' || array[j+1]=='*' && array[j]!='+'){
+            if (array[j-1]=='*' || array[j+1]=='*' && array[j]!='*'){
                 if (array[j]=='*'){
                     array[j]='*';
                 }else if (array[j]=='2') {
