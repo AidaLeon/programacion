@@ -21,6 +21,7 @@ public class MyString {
         String telefono=in.nextLine();
         telefono=numero(telefono);
         System.out.println(telefono);
+        histograma(cadena);
     }
     public static String invertidaMayusculas(String cadena){
         /*clase en Java que se utiliza para manipular cadenas de caracteres de manera eficiente.
@@ -49,10 +50,11 @@ public class MyString {
         max=palabra.split(" ");
         String palabro= max[0];
         for (int i = 0; i < max.length; i++) {
-            /*
-            if (max[i].length()>palabro.substring(0,palabro.indexOf(" ")).length()){
+
+            if (max[i].length()>palabro.length()){
                 palabro=max[i];
             }
+            /*
             if (max[i].length()==palabro.substring(0,palabro.indexOf(" ")).length()){
                 palabro=palabro + " "+ max[i];
             }
@@ -71,22 +73,14 @@ public class MyString {
         return contador;
     }
     public static int cuantasPalabra(String cadena){
-        int contador=0;
-        for (int i = 0; i < cadena.length(); i++) {
-           /*
-            if (cadena.charAt(0)!=" "){
+        /*pasar las palabras en posiciones de un array*/
+        String [] contador=cadena.split(" ");
+        int contador_palabras=0;
 
-            }
-            while (cadena.charAt(i)==' '){
-                if (cadena.charAt(i-1)!=' ' && cadena.charAt(i+1)!=' '){
-                    contador++;
-                }
-            }
-
-            */
-
+        for (int i = 0; i < contador.length; i++) {
+            contador_palabras++;
         }
-        return contador;
+        return contador_palabras;
     }
     public static String numero(String telefono){
         Scanner in=new Scanner(System.in);
@@ -100,7 +94,47 @@ public class MyString {
         String numero = telefono.substring(5);
         String numeroTelf="(+"+codigoPais+")-"+codigoArea+"-"+numero;
         return numeroTelf;
+    }
+    public static void histograma(String cadena){
+        System.out.println(cadena);
+        cadena=cadena.toUpperCase();
+        int contador_A=0;
+        int contador_E=0;
+        int contador_I=0;
+        int contador_O=0;
+        int contador_U=0;
+        String estrella="*";
+        for (int i = 0; i < cadena.length(); i++) {
+            switch (cadena.charAt(i)){
+                case 'A'->{
+                    contador_A++;
+                }
+                case 'E'->{
+                    contador_E++;
+                }
+                case 'I'->{
+                    contador_I++;
+                }
+                case 'O'->{
+                    contador_O++;
+                }
+                case 'U'->{
+                    contador_U++;
+                }
+
+            }
+
         }
+        String cuantasA= String.valueOf(estrella).repeat(contador_A);
+        String cuantasE= String.valueOf(estrella).repeat(contador_E);
+        String cuantasI= String.valueOf(estrella).repeat(contador_I);
+        String cuantasO= String.valueOf(estrella).repeat(contador_O);
+        String cuantasU= String.valueOf(estrella).repeat(contador_U);
 
-
+        System.out.println("A " + contador_A + " " + cuantasA + "\n"+
+                "E " + contador_E + " " + cuantasE + "\n"+
+                "I " + contador_I + " " + cuantasI + "\n"+
+                "O " + contador_O + " " + cuantasO + "\n"+
+                "U " + contador_U + " " + cuantasU + "\n");
+    }
 }
