@@ -40,8 +40,8 @@ public class Objeto_Reloj {
         }while (formato!=12 && formato!=24);
 
         reloj.setFormato(ampm);
-        reloj.mostrarHora(hora,minutos,segundos,ampm);
+        reloj.mostrarHora();
 
-
+        Reloj reloj2=new Reloj(hora,minutos,segundos);
     }
 }

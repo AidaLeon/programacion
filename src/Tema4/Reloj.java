@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Reloj {
     /*atributos*/
-    public int hora;
-    public int minutos;
-    public int segundos;
-    public boolean formato;
+    private int hora;
+    private int minutos;
+    private int segundos;
+    private boolean formato;
 
     /*constructor vacio*/
     public Reloj() {
@@ -60,6 +60,7 @@ public class Reloj {
     public void setFormato(boolean formato){
         this.formato=formato;
     }
+    /*
     public void mostrarHora(int hora, int minutos, int segundos, boolean formato) {
         String ampm= "AM";
         if (formato) {
@@ -77,4 +78,23 @@ public class Reloj {
             System.out.println(hora +":"+ minutos +":"+ segundos +" "+ ampm);
         }
     }
+     */
+    public void mostrarHora() {
+        String ampm= "AM";
+        if (formato) {
+            if (hora>12){
+                ampm="PM";
+                System.out.println(hora +":"+ minutos +":"+ segundos +" "+ ampm);
+            }else {
+                System.out.println(hora +":"+ minutos +":"+ segundos +" "+ ampm);
+            }
+        } else {
+            while (hora>12){
+                hora=hora-12;
+                ampm="PM";
+            }
+            System.out.println(hora +":"+ minutos +":"+ segundos +" "+ ampm);
+        }
+    }
+
 }

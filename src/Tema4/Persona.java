@@ -1,10 +1,10 @@
 package Tema4;
 
 public class Persona {
-    public String dni, nombre, apellidos;
-    public int edad;
-    public static final int adultAge=18;
-    public static final int retiredAge=65;
+    private String dni, nombre, apellidos;
+    private int edad;
+    private static final int adultAge=18;
+    private static final int retiredAge=65;
     public Persona(){
         this.dni="12345678A";
         this.nombre="Pepe";
@@ -60,7 +60,7 @@ public class Persona {
             this.edad=edad;
         }
     }
-    public void mostrar (String dni, String nombre, String apellidos, int edad){
+    public void mostrar (){
         System.out.println("Estos son tus datos\n" +
                 "DNI = " + dni + "\n" +
                 "Nombre = " + nombre + "\n" +

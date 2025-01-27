@@ -20,6 +20,7 @@ public class Programa_Persona {
 
         persona.setDNI(dni);
 
+
         System.out.println("Dime tu nombre");
         String nombre = in.nextLine();
         persona.setNombre(nombre);
@@ -33,10 +34,7 @@ public class Programa_Persona {
         persona.setEdad(edad);
         in.nextLine();
 
-        persona.mostrar(dni, nombre, apellidos, edad);
-
-
-
+        persona.mostrar();
 
 
 
@@ -60,7 +58,7 @@ public class Programa_Persona {
         int edad2 = in.nextInt();
         persona2.setEdad(edad2);
 
-        persona2.mostrar(dni2, nombre2, apellidos2, edad2);
+        persona2.mostrar();
 
         System.out.println("La diferencia de edad es de " + Persona.ageDifference(edad, edad2));
 
