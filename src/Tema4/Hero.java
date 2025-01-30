@@ -2,30 +2,48 @@ package Tema4;
 
 import java.util.Random;
 
+import static java.lang.Math.max;
 import static java.lang.Math.random;
 
 public class Hero {
-    private String nombre;
-    private int level, health, maxHealth, experience, attack, defense;
 
+
+    private String nombre;
+
+
+
+    private int level, health, maxHealth, experience, attack, defense;
+    /*constructor vacio*/
     public Hero(){
         this.nombre="Anya";
         this.level=0;
-        this.health=0;
         this.maxHealth=0;
+        this.health=maxHealth;
         this.experience=0;
         this.attack=0;
         this.defense=0;
     }
-    public Hero(String nombre, int level, int health, int maxHealth, int experience, int attack, int defense){
-        this.nombre=nombre;
-        this.level=level;
-        this.health=health;
-        this.maxHealth=maxHealth;
-        this.experience=experience;
-        this.attack=attack;
-        this.defense=defense;
+    /*constructor completo*/
+    public Hero(String nombre, int level, int health, int maxHealth, int experience, int attack, int defense) {
+        this.nombre = nombre;
+        this.level = level;
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.experience = experience;
+        this.attack = attack;
+        this.defense = defense;
     }
+    //constructor con 4 parametros (main)
+    public Hero(String nombre,  int maxHealth,  int attack, int defense){
+        setNombre(nombre);
+        setMaxHealth(maxHealth);
+        setAttack(attack);
+        setDefense(defense);
+        this.health=maxHealth;
+        this.level=0;
+        this.experience=0;
+    }
+
     public String getNombre(){
         return nombre;
     }
@@ -105,39 +123,50 @@ public class Hero {
             this.defense=defense;
         }
     }
-    public static int drinkPotion(int health){
+    public void drinkPotion(){
         health=+10;
-        if (health>100){
-            health=100;
+        if (health>maxHealth){
+            health=maxHealth;
         }
-        return health;
     }
-    public static int rest(int health){
+    public void rest(){
         health=+50;
-        if (health>100){
-            health=100;
+        if (health>maxHealth){
+            health=maxHealth;
+        }
+    }
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "nombre='" + nombre + '\'' +
+                ", level=" + level +
+                ", health=" + health +
+                ", maxHealth=" + maxHealth +
+                ", experience=" + experience +
+                ", attack=" + attack +
+                ", defense=" + defense +
+                '}';
+    }
+
+    public void attack(Hero atacado){
+        /*formula para saber cuanto daño haces*/
+        atacado.health -=Math.max(attack - atacado.defense,10);
+        experience+=10;
+        if (experience>=50){
+            levelUp();
         }
 
-        return health;
-    }
-    public static void mostrar(String nombre, int level, int health, int maxHealth, int experience, int attack, int defense){
-        System.out.println(nombre + "\n"+
-                "Nivel -> "+level + "\n"+
-                "Vida -> "+health + "\n"+
-                "Máximo de vida -> "+maxHealth + "\n"+
-                "Experiencia -> "+experience + "\n"+
-                "Ataque -> "+attack + "\n"+
-                "Defensa ->"+defense + "\n");
-    }
-    public static int attack(int health, int attack, int defense){
-        Random random=new Random();
-        int dano;
-        dano=random.nextInt(attack-defense);
-        health=-dano;
-        if (health<0){
-            health=0;
+        if (atacado.health<0){
+            atacado.health=0;
         }
-        return health;
     }
+    public void levelUp(){
+        experience=0;
+        level+=1;
+        health+=5;
+        attack+=1;
+        defense+=1;
+    }
+
 
 }

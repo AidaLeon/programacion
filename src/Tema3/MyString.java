@@ -77,10 +77,11 @@ public class MyString {
         String [] contador=cadena.split(" ");
         int contador_palabras=0;
 
+        //sobra
         for (int i = 0; i < contador.length; i++) {
             contador_palabras++;
         }
-        return contador_palabras;
+        return contador.length;
     }
     public static String numero(String telefono){
         Scanner in=new Scanner(System.in);

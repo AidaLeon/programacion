@@ -33,9 +33,9 @@ public class Lingo {
                 for (int j = 0; j < palabra.length; j++) {
                     if (palabraJugador.charAt(i)==palabra[j]) {
                         if (i == j) {
-                            mostrar[j] = palabra[j];
+                            mostrar[i] = palabra[i];
                         } else {
-                            mostrar[j] = '*';
+                            mostrar[i] = '*';
                         }
                     }
                 }
