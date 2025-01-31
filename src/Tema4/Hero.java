@@ -72,7 +72,7 @@ public class Hero {
         return health;
     }
     public void setHealth(int health){
-        if (health<1 || health>100){
+        if (health<0 || health>100){
             System.out.println("Tus puntos de vida no son correctos");
         }else {
             this.health=health;
@@ -167,6 +167,5 @@ public class Hero {
         attack+=1;
         defense+=1;
     }
-
 
 }
