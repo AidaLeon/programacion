@@ -59,8 +59,9 @@ public class Programa_Persona {
         persona2.setEdad(edad2);
 
         persona2.mostrar();
+        persona2.ageDifference(persona.getEdad());
 
-        System.out.println("La diferencia de edad es de " + Persona.ageDifference(edad, edad2));
+        System.out.println("La diferencia de edad es de " + persona.ageDifference(edad2));
 
 
     }

@@ -1,12 +1,13 @@
 package Tema4;
 
 public class Persona {
-    private String dni, nombre, apellidos;
+    private String nombre, apellidos;
+    private final String dni="12345678";
     private int edad;
     private static final int adultAge=18;
     private static final int retiredAge=65;
     public Persona(){
-        this.dni="12345678A";
+        //this.dni="12345678A";
         this.nombre="Pepe";
         this.apellidos="López García";
         this.edad=35;
@@ -21,7 +22,7 @@ public class Persona {
         if (dni.length()!=9){
             System.out.println("Tu DNI no es valido");
         }else {
-            this.dni=dni;
+            //this.dni=dni;
         }
     }
 
@@ -54,7 +55,7 @@ public class Persona {
         return edad;
     }
     public void setEdad(int edad){
-        if (edad>120){
+        if (edad<0){
             System.out.println("Tu edad no es valida");
         }else {
             this.edad=edad;
@@ -82,20 +83,21 @@ public class Persona {
 
 
     }
-    public static boolean isAdult(int edad){
+    public boolean isAdult(int edad){
         if (edad<adultAge){
             return false;
         }
         return true;
     }
-    public static boolean isRetired(int edad){
+    public boolean isRetired(int edad){
         if (edad<retiredAge){
             return false;
         }
         return true;
     }
-    public static int ageDifference(int edad, int edad2){
-        if (edad<edad2){
+
+    public int ageDifference(int edad2){
+        if (this.edad<edad2){
             return edad2-edad;
         }else {
             return edad-edad2;

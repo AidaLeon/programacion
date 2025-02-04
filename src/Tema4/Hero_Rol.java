@@ -95,7 +95,7 @@ public class Hero_Rol {
         /*no hace falta crearse una variable, lo pones dentro de la comprobación*/
         if (random.nextInt(1, 10)==2) {
             malo.setHealth(0);
-            System.out.println("Un enemigo a huido");
+            System.out.println("Un enemigo ha huido");
         }
     }
     public static int primerMalo(Hero [] malo){
