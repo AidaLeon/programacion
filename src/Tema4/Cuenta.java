@@ -48,9 +48,8 @@ public class Cuenta {
 
     @Override
     public String toString() {
-        return "Cuenta{" +
+        return "Cuenta \n"+
                 "Saldo = " + saldo +"\n"+
-                "Numero de Cuenta = '" + numCuenta + '\'' +
-                '}';
+                "Numero de Cuenta = " + numCuenta ;
     }
 }
