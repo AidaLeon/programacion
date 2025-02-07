@@ -1,5 +1,7 @@
 package Tema4;
 
+import java.util.Arrays;
+
 public class Persona_Banco {
 
     private String dni;
@@ -52,13 +54,13 @@ public class Persona_Banco {
         }
         if (contador<3){
             asociadas[contador].setNumCuenta(cuenta.getNumCuenta());
-        }else {
-            System.out.println("No puedes añadir más cuentas");
         }
-
-
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Persona_Banco " +
+                "dni='" + dni + '\'' +
+                ", asociadas=" + Arrays.toString(asociadas);
+    }
 }
