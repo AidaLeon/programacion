@@ -3,24 +3,25 @@ package Tema4;
 import java.util.Arrays;
 
 public class Persona_Banco {
-
     private String dni;
-    // creas array de todas las cuentas
-    private Cuenta[] asociadas = new Cuenta[3];
+    private Cuenta[]cuentas;
+    private final int nomina=1200;
 
-
-    public Persona_Banco() {
-        dni="000000000";
-        this.asociadas [0]= new Cuenta();
-        this.asociadas [1] = new Cuenta();
-        this.asociadas [2] = new Cuenta();
+    public Persona_Banco(){
+        dni="00000000A";
+        cuentas=new Cuenta[3];
+    }
+    public Persona_Banco(String dni){
+        this.dni=dni;
+        this.cuentas=new Cuenta[3];
     }
 
-    public Persona_Banco(String dni, Cuenta cuen1, Cuenta cuen2, Cuenta cuen3) {
-        this.dni = dni;
-        this.asociadas [0]= cuen1;
-        this.asociadas [1] = cuen2;
-        this.asociadas [2] = cuen3;
+    public Cuenta[] getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(Cuenta[] cuentas) {
+           this.cuentas = cuentas;
     }
 
     public String getDni() {
@@ -31,36 +32,48 @@ public class Persona_Banco {
         if (dni.length()!=9){
             System.out.println("Tu DNI no es valido");
         }else {
-            this.dni=dni;
+            this.dni = dni;
+        }
+    }
+    public void anyadirCuenta(Cuenta cuenta){
+        boolean cuentaAnyadida=false;
+        for (int i = 0; i < cuentas.length; i++) {
+            if (cuentas[i]==null && !cuentaAnyadida){
+                cuentas[i]=cuenta;
+                cuentaAnyadida=true;
+                System.out.println(cuenta);
+            }
+        }
+        if (!cuentaAnyadida) {
+            System.out.println("No se ha añadido tu cuenta");
         }
     }
 
-    public Cuenta[] getAsociadas() {
-        return asociadas;
+    public boolean estanumcuenta(Cuenta cuenta){
+        boolean cuentaEsta=false;
+        for (int i = 0; i < cuentas.length; i++) {
+            if (cuentas[i]==cuenta){
+                cuentaEsta=true;
+            }
+        }
+        return cuentaEsta;
     }
 
-    public void setAsociadas(Cuenta[] asociadas) {
-        if (asociadas.length>3){
-            System.out.println("No puedes tener más de 3 cuentas");
-        }else {
-            this.asociadas = asociadas;
+    public void mororsos(Cuenta cuenta){
+        boolean moroso=false;
+        for (int i = 0; i < cuentas.length; i++) {
+            if (cuentas[i]!=null && cuentas[i].getSaldo()<0){
+                moroso=true;
+            }
         }
-    }
-    public void aniadirCuenta(Cuenta cuenta){
-        int contador= 0;
-        //compruebas la posicion contador de las cuentas asociadas y compara su numero de cuenta con 0
-        while (asociadas[contador].getNumCuenta()!=0){
-            contador++;
-        }
-        if (contador<3){
-            asociadas[contador].setNumCuenta(cuenta.getNumCuenta());
+        if (moroso){
+            System.out.println("");
         }
     }
 
-    @Override
-    public String toString() {
-        return "Persona_Banco " +
-                "dni='" + dni + '\'' +
-                ", asociadas=" + Arrays.toString(asociadas);
+
+    public String toString(){
+        return "Tu dni " + dni+ "\n" +
+                "Tiene estas " + cuentas ;
     }
 }

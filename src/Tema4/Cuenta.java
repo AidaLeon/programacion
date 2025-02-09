@@ -1,27 +1,18 @@
 package Tema4;
 
 public class Cuenta {
-    private int saldo;
     private int numCuenta;
+    private double saldo;
+    private final int nomina=1200;
+    private final int pago=100;
 
-    public Cuenta(int saldo, int numCuenta) {
-        this.saldo = saldo;
-        this.numCuenta = numCuenta;
-    }
     public Cuenta(){
-        saldo=0;
         numCuenta=0;
+        saldo=0.0;
     }
-    public int getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(int saldo) {
-        if (saldo<0){
-            System.out.println("Tu saldo no es correcto");
-        }else {
-            this.saldo = saldo;
-        }
+    public Cuenta(int numCuenta, double saldo){
+        this.numCuenta=numCuenta;
+        this.saldo=saldo;
     }
 
     public int getNumCuenta() {
@@ -29,27 +20,28 @@ public class Cuenta {
     }
 
     public void setNumCuenta(int numCuenta) {
-        if (numCuenta<0){
-            System.out.println("Tu número de cuenta no es valido");
-        }else {
-            this.numCuenta = numCuenta;
-        }
-    }
-    public void getAbono(int abono){
-        saldo+=abono;
-    }
-    public void payRecibo(int recibo){
-        if (saldo>recibo){
-            saldo-=recibo;
-        }else {
-            System.out.println("No puedes pagar el recibo");
-        }
+        this.numCuenta = numCuenta;
     }
 
-    @Override
-    public String toString() {
-        return "Cuenta \n"+
-                "Saldo = " + saldo +"\n"+
-                "Numero de Cuenta = " + numCuenta ;
+    public double getSaldo() {
+        return saldo;
     }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String toString(){
+        return "Tu numero de cuenta es " + numCuenta + "\n" +
+                "Y tu salgo de es " + saldo;
+    }
+    public int recibirNomina(int saldo, int nomina){
+        return saldo+=nomina;
+    }
+    public int pagos(int saldo, int pago){
+        return saldo+=pago;
+    }
+
+
+
 }
