@@ -62,16 +62,20 @@ public class Gym {
     public static void abonados(Map<String, Usuario> abonados ){
         Scanner in = new Scanner(System.in);
         System.out.println("Dime tu nombre");
-        String nombre = in.nextLine();
+        String nombre = in.nextLine().toUpperCase();
+
         System.out.println("Dime tu edad");
         int edad = in.nextInt();
         in.nextLine();
+
         /*creas usuario*/
         Usuario usuario = new Usuario(nombre, edad);
         System.out.println(usuario);
+
         System.out.println("Dime tu DNI");
         String dni = in.nextLine();
         dni = comprobarDNI(dni);
+
         /*añades en el map*/
         abonados.put(dni, usuario);
     }
@@ -80,6 +84,7 @@ public class Gym {
         System.out.println("Dime tu DNI");
         String dni=in.nextLine();
         dni=comprobarDNI(dni);
+
         if (abonados.containsKey(dni)){
             abonados.remove(dni);
             System.out.println("Te has dado de baja");

@@ -10,35 +10,33 @@ public class Cesta {
         int opcion = 0;
         /**/
         Set<String> cesta = new HashSet<>();
+        Set<String> cestaCompra=new HashSet<>();
+
+        cestaCompra.add("MANZANA");
+        cestaCompra.add("AVENA");
 
 
-        while (opcion != 2) {
+        while (opcion < 2) {
             opcion = menu();
-            if (opcion == 1) {
-                System.out.println("Dime un producto");
-                String producto = in.nextLine();
-
-                // Añadir el producto a la cesta si no existe
-                if (!cesta.add(producto)) {
-                    System.out.println("Ya está este producto en la cesta.");
-                } else {
-                    System.out.println("Producto añadido.");
+            switch(opcion){
+            case 1 ->{
+                anadir(cesta,in);
+            }case 2->{
+                    System.out.println("Tus productos comprados son "+cestaCompra);
+                    quitar(cesta,cestaCompra);
                 }
-            } else if (opcion == 2) {
-                System.out.println("Saliendo de la lista de la compra.");
-                //mostrar cesta
-                System.out.println("Tu lista de la compra es "+cesta);
-            } else {
-                System.out.println("Opción no válida. Intenta nuevamente.");
             }
         }
+        System.out.println("Adios");
+
     }
 
     public static int menu() {
         Scanner in = new Scanner(System.in);
         System.out.println("--Lista de la compra--");
         System.out.println("1. Añadir producto");
-        System.out.println("2. Salir");
+        System.out.println("2. Que productos faltan por comprar");
+        System.out.println("3. Salir");
 
         int opcion = in.nextInt();
         opcion=comprobacion(opcion);
@@ -48,10 +46,28 @@ public class Cesta {
     }
     public static int comprobacion(int opcion){
         Scanner in = new Scanner(System.in);
-        while (opcion>2){
+        while (opcion>3){
             System.out.println("Tu opción no es correcta");
             opcion=in.nextInt();
         }
         return opcion;
+    }
+    public static void anadir(Set<String> cesta, Scanner in){
+        System.out.println("Dime un producto");
+        String producto = in.nextLine().toUpperCase();
+
+        // Añadir el producto a la cesta si no existe
+        if (!cesta.add(producto)) {
+            System.out.println("Ya está este producto en la cesta.");
+        } else {
+            System.out.println("Producto añadido.");
+        }
+    }
+    public static void quitar( Set<String> cesta, Set<String> cestaCompra){
+        /*creas una lista nueva con los valores de lo que quieres comprar*/
+        Set<String> resta=new HashSet<>(cesta);
+        /*quita todos los repetidos*/
+        resta.removeAll(cestaCompra);
+        System.out.println("Te falta por comprar "+resta);
     }
 }
