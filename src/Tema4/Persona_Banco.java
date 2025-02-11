@@ -45,15 +45,6 @@ public class Persona_Banco {
         }
     }
 
-    public boolean estanumcuenta(Cuenta cuenta){
-        boolean cuentaEsta=false;
-        for (int i = 0; i < cuentas.length; i++) {
-            if (cuentas[i]==cuenta){
-                cuentaEsta=true;
-            }
-        }
-        return cuentaEsta;
-    }
 
     public boolean mororsos(){
         for (int i = 0; i < posicionCuenta; i++) {
