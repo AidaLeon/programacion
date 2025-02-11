@@ -5,11 +5,12 @@ import java.util.Arrays;
 public class Persona_Banco {
     private String dni;
     private Cuenta[]cuentas;
-    private final int nomina=1200;
+    private int posicionCuenta;
 
     public Persona_Banco(){
         dni="00000000A";
         cuentas=new Cuenta[3];
+        posicionCuenta=0;
     }
     public Persona_Banco(String dni){
         this.dni=dni;
@@ -36,15 +37,10 @@ public class Persona_Banco {
         }
     }
     public void anyadirCuenta(Cuenta cuenta){
-        boolean cuentaAnyadida=false;
-        for (int i = 0; i < cuentas.length; i++) {
-            if (cuentas[i]==null && !cuentaAnyadida){
-                cuentas[i]=cuenta;
-                cuentaAnyadida=true;
-                System.out.println(cuenta);
-            }
-        }
-        if (!cuentaAnyadida) {
+        if (posicionCuenta<cuentas.length){
+            cuentas[posicionCuenta]=cuenta;
+            posicionCuenta++;
+        }else {
             System.out.println("No se ha añadido tu cuenta");
         }
     }
@@ -59,21 +55,24 @@ public class Persona_Banco {
         return cuentaEsta;
     }
 
-    public void mororsos(Cuenta cuenta){
-        boolean moroso=false;
-        for (int i = 0; i < cuentas.length; i++) {
-            if (cuentas[i]!=null && cuentas[i].getSaldo()<0){
-                moroso=true;
+    public boolean mororsos(){
+        for (int i = 0; i < posicionCuenta; i++) {
+            if (cuentas[i].getSaldo()<0){
+                return true;
             }
         }
-        if (moroso){
-            System.out.println("");
-        }
+        return false;
     }
 
-
+@Override
     public String toString(){
-        return "Tu dni " + dni+ "\n" +
-                "Tiene estas " + cuentas ;
+    String resultado = "DNI: " + dni + "\nCuentas:\n";
+    for (Cuenta cuenta : cuentas) {
+        /*muestra las que no estan nulas*/
+        if (cuenta != null) {
+            resultado += cuenta.toString() + "\n"; // Concatenación directa
+        }
+    }
+    return resultado;
     }
 }
