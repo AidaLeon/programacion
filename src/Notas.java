@@ -10,15 +10,17 @@ public class Notas {
         System.out.println(nota1);
     }
     public static String opciones(double nota){
-        if (nota<5){
+        if (nota>0&&nota<5){
             return "Insuficiente";
-        }else if (nota<=6) {
+        }else if (nota>=5&&nota<=6) {
             return "Suficiente";
-        } else if (nota<=8) {
+        } else if (nota>6&&nota<9) {
             return "Notable";
-        }else{
+        }else if (nota>=9&&nota<=10){
             return "Sobresaliente";
-        }
+        }else {
+        return "Error";}
+
     }
     public static double comprobacion(double nota, Scanner in){
         while (nota<0||nota>10){

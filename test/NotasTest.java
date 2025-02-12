@@ -20,5 +20,10 @@ public class NotasTest {
   public void testSobresaliente(){
     assertEquals("Sobresaliente", Notas.opciones(10));
   }
+  @Test
+  public void testerror(){
+    assertEquals("Error", Notas.opciones(-1));
+    assertEquals("Error", Notas.opciones(11));
+  }
 
 }
