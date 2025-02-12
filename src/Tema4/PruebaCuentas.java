@@ -6,7 +6,6 @@ public class PruebaCuentas {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Persona_Banco[] personas = new Persona_Banco[5];
-        double saldo;
         int numCuenta;
         int personaTotal = 0;
         String dni;
@@ -62,10 +61,29 @@ public class PruebaCuentas {
                         }else {
                             System.out.println("No tenemos registro de tu DNI");
                         }
+                    } case 6 ->{
 
+                        System.out.println("Dime tu DNI");
+                        dni= in.nextLine();
+                        if (estaDNI(personas,dni)){
+                            System.out.println("Dime tu numero de cuenta");
+                            numCuenta= in.nextInt();
+                            tranferencia1(in,personas,dni,numCuenta);
+                        }else {
+                            System.out.println("No tenemos registro de tu DNI");
+
+                        }
+                    } case 7->{
+                        for (Persona_Banco personaBanco:personas){
+                            if (personaBanco!=null&&personaBanco.mororsos2()){
+                                System.out.println(personaBanco);
+                            }
+                        }
                     }
                 }
             }while (opcion!=8);
+
+        System.out.println("Adios");
 
 
     }
@@ -83,6 +101,21 @@ public class PruebaCuentas {
 
         int opcion = in.nextInt();
         in.nextLine();
+        while (opcion>8||opcion<1){
+            System.out.println("Opcion no valida, recuerda");
+            System.out.println("-----Menu-----\n" +
+                    "1-> Añadir persona\n" +
+                    "2-> Añadir cuenta\n" +
+                    "3-> Mostrar datos de tu cuenta\n" +
+                    "4-> Recibir la nomina\n" +
+                    "5-> Recibir un pago\n" +
+                    "6-> Realizar transferencia\n" +
+                    "7-> Imprimir gente morosa\n" +
+                    "8-> Salir");
+
+            opcion = in.nextInt();
+            in.nextLine();
+        }
         return opcion;
     }
     public static boolean estaDNI(Persona_Banco[] personas, String dni){
@@ -158,6 +191,31 @@ public class PruebaCuentas {
         }
 
     }
-
-
+    public static void tranferencia1(Scanner in, Persona_Banco[]personaBancos,String dni, int numCuenta){
+        Persona_Banco personaBanco=esta(personaBancos,dni);
+        if (personaBanco!=null){
+            for (Cuenta cuenta:personaBanco.getCuentas()){
+                if (cuenta!=null && cuenta.getNumCuenta()==numCuenta){
+                    System.out.println("Cuanto dinero vas a transpasar");
+                    double pago= in.nextDouble();
+                    in.nextLine();
+                    System.out.println("Dime el DNI del otro cliente");
+                    dni= in.nextLine();
+                    Persona_Banco personaBanco1=esta(personaBancos,dni);
+                    System.out.println("Dime su numero de cuenta");
+                    numCuenta= in.nextInt();
+                    in.nextLine();
+                    if (personaBanco1!=null){
+                        for (Cuenta cuenta1: personaBanco1.getCuentas()){
+                            if (cuenta1!=null&&cuenta1.getNumCuenta()==numCuenta) {
+                                /*cuenta que paga/metodo/cuenta que recibe*/
+                                cuenta.transferencia(cuenta1, pago);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+

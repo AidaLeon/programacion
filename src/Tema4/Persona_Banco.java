@@ -46,9 +46,9 @@ public class Persona_Banco {
     }
 
 
-    public boolean mororsos(){
+    public boolean mororsos2(){
         for (int i = 0; i < posicionCuenta; i++) {
-            if (cuentas[i].getSaldo()<0){
+            if (cuentas[i]!=null&&cuentas[i].getSaldo()<0){
                 return true;
             }
         }

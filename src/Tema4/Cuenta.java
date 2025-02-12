@@ -3,7 +3,6 @@ package Tema4;
 public class Cuenta {
     private int numCuenta;
     private double saldo;
-    private final int nomina=1200;
 
     public Cuenta(){
         numCuenta=0;
