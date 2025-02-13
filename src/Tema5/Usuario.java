@@ -10,8 +10,8 @@ public class Usuario {
         edad=0;
     }
     public Usuario(String nombre, int edad) {
-        setNombre(nombre);
-        setEdad(edad);
+        this.setNombre(nombre);
+        this.setEdad(edad);
     }
 
     public String getNombre() {
