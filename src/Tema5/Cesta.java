@@ -9,21 +9,28 @@ public class Cesta {
         Scanner in = new Scanner(System.in);
         int opcion = 0;
         /**/
-        Set<String> cesta = new HashSet<>();
-        Set<String> cestaCompra=new HashSet<>();
+        Set<String> cesta = new HashSet<>();//lista
+        Set<String> cestaCompra=new HashSet<>();//cesta
 
+
+        cesta.add("MANZANA");
+        cesta.add("AVENA");
         cestaCompra.add("MANZANA");
         cestaCompra.add("AVENA");
 
 
-        while (opcion < 2) {
+        while (opcion < 5) {
             opcion = menu();
             switch(opcion){
-            case 1 ->{
-                anadir(cesta,in);
-            }case 2->{
-                    System.out.println("Tus productos comprados son "+cestaCompra);
-                    quitar(cesta,cestaCompra);
+                case 1 ->{
+                    anadir(cesta,in);
+                }case 2->{
+                        quitar(cesta,cestaCompra);
+                }case 3->{
+                    System.out.println("Tu lista es " + cesta);
+                }
+                case 4->{
+                    System.out.println("Tu cesta tiene "+ cestaCompra);
                 }
             }
         }
@@ -36,7 +43,9 @@ public class Cesta {
         System.out.println("--Lista de la compra--");
         System.out.println("1. Añadir producto");
         System.out.println("2. Que productos faltan por comprar");
-        System.out.println("3. Salir");
+        System.out.println("3. Mostrar Lista");
+        System.out.println("4. Mostrar Cesta");
+        System.out.println("5. Salir");
 
         int opcion = in.nextInt();
         opcion=comprobacion(opcion);
@@ -46,7 +55,7 @@ public class Cesta {
     }
     public static int comprobacion(int opcion){
         Scanner in = new Scanner(System.in);
-        while (opcion>3){
+        while (opcion>5){
             System.out.println("Tu opción no es correcta");
             opcion=in.nextInt();
         }
@@ -70,4 +79,5 @@ public class Cesta {
         resta.removeAll(cestaCompra);
         System.out.println("Te falta por comprar "+resta);
     }
+
 }

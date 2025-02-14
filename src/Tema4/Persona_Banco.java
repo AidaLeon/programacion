@@ -15,6 +15,7 @@ public class Persona_Banco {
     public Persona_Banco(String dni){
         this.dni=dni;
         this.cuentas=new Cuenta[3];
+        posicionCuenta=0;
     }
 
     public Cuenta[] getCuentas() {
@@ -26,7 +27,7 @@ public class Persona_Banco {
     }
 
     public String getDni() {
-        return dni;
+        return this.dni;
     }
 
     public void setDni(String dni) {

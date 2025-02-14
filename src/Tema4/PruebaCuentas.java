@@ -28,6 +28,7 @@ public class PruebaCuentas {
                     case 2 -> {
                         System.out.println("Dime tu DNI");
                         dni = in.nextLine();
+                        //Persona p = estaDni(personas, dni);
                         if (estaDNI(personas,dni)){
                             ponercuenta(dni,personas);
                         }else {
@@ -200,16 +201,16 @@ public class PruebaCuentas {
                     double pago= in.nextDouble();
                     in.nextLine();
                     System.out.println("Dime el DNI del otro cliente");
-                    dni= in.nextLine();
-                    Persona_Banco personaBanco1=esta(personaBancos,dni);
+                    String dni2= in.nextLine();
+                    Persona_Banco personaBanco2=esta(personaBancos,dni2);
                     System.out.println("Dime su numero de cuenta");
-                    numCuenta= in.nextInt();
+                    int numCuenta2= in.nextInt();
                     in.nextLine();
-                    if (personaBanco1!=null){
-                        for (Cuenta cuenta1: personaBanco1.getCuentas()){
-                            if (cuenta1!=null&&cuenta1.getNumCuenta()==numCuenta) {
+                    if (personaBanco2!=null){
+                        for (Cuenta cuenta2: personaBanco2.getCuentas()){
+                            if (cuenta2!=null&&cuenta2.getNumCuenta()==numCuenta2) {
                                 /*cuenta que paga/metodo/cuenta que recibe*/
-                                cuenta.transferencia(cuenta1, pago);
+                                cuenta.transferencia(cuenta2, pago);
                             }
                         }
                     }

@@ -14,7 +14,7 @@ public class Cuenta {
     }
 
     public int getNumCuenta() {
-        return numCuenta;
+        return this.numCuenta;
     }
 
     public void setNumCuenta(int numCuenta) {
@@ -36,7 +36,7 @@ public class Cuenta {
     }
     public double recibirNomina(double pago){
 
-        return saldo+=pago;
+        return this.saldo+=pago;
     }
     public double pagos( double pago){
         return saldo-=pago;
