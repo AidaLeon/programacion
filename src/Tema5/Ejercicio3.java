@@ -17,6 +17,7 @@ public class Ejercicio3 {
                 numero = in.nextDouble();
 
 
+
             } catch (InputMismatchException e) {
                 System.out.println("Input");
                 System.out.println("Valor no correcto");
