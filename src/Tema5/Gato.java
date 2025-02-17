@@ -37,8 +37,6 @@ public class Gato {
     }
     @Override
     public String toString(){
-        return "---------Información sobre tu gato---------\n"+
-                "El nombre de tu gato es " + nombre + "\n" +
-                "Y su edad es " + edad ;
+        return nombre +" "+ edad ;
     }
 }
