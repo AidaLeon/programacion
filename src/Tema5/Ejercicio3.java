@@ -5,7 +5,8 @@ import java.util.*;
 public class Ejercicio3 {
     public static void main(String[] args) {
         Scanner in= new Scanner(System.in);
-        Vector<Double> nota =new Vector<>(5);
+        //Vector<Double> nota =new Vector<>(5);
+        Double arrayEjer3[] = new Double[5];
 
         double numero=0;
 
@@ -23,7 +24,8 @@ public class Ejercicio3 {
                 System.out.println("Valor no correcto");
                 System.out.println(e.getMessage());
                 in.nextLine();
-            }finally {
+            }catch (IndexOutOfBoundsException ex)
+            finally {
                 nota.add(numero);
 
             }

@@ -6,12 +6,23 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Ejercicio5 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Scanner in = new Scanner(System.in);
         List<Integer>numerop=new ArrayList<>();
         List<Integer>numeron=new ArrayList<>();
         int p=0;
         int n=0;
+
+
+        try {
+            p= in.nextInt();
+            imprimePositivo(p);
+            imprimeNegativo(p);
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+
+        }
 
         for (int i = 0; i < 6; i++) {
             imprimePositivo(p,in,numerop);
@@ -24,8 +35,13 @@ public class Ejercicio5 {
         System.out.println("Tu lista de numeros negativos es "+numeron);
 
     }
-    public static void imprimePositivo(int p,Scanner in, List<Integer>numerop){
+    public static void imprimePositivo(int p) throws Exception{
         System.out.println("Dime el numero que quieras");
+        System.out.println(p);
+        if(p<0){
+            throw new Exception("El numero que me has ingtroducido es negativo");
+        }
+        /*
         try {
             p= in.nextInt();
             in.nextLine();
@@ -41,6 +57,8 @@ public class Ejercicio5 {
         }finally {
             numerop.add(p);
         }
+
+         */
 
     }
     public static void imprimeNegativo(Scanner in, int n,List<Integer>numeron){
