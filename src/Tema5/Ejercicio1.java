@@ -14,6 +14,7 @@ public class Ejercicio1 {
         } catch (InputMismatchException e) {
             num=5;
             System.out.println("No has puesto un valor correcto ");
+
         }finally {
             System.out.println("Tu número va a ser " + num );
         }

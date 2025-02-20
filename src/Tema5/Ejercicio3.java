@@ -4,18 +4,18 @@ import java.util.*;
 
 public class Ejercicio3 {
     public static void main(String[] args) {
-        Scanner in= new Scanner(System.in);
-        Vector<Double> nota =new Vector<>(5);
+        Scanner in = new Scanner(System.in);
+        //Vector<Double> nota =new Vector<>(5);
+        Double arrayEjer3[] = new Double[5];
 
-        double numero=0;
+        double numero = 0;
 
 
         for (int i = 0; i < 5; i++) {
-            System.out.println("Dime el numero: "+i);
+            System.out.println("Dime el numero: " + i);
             try {
 
                 numero = in.nextDouble();
-
 
 
             } catch (InputMismatchException e) {
@@ -23,15 +23,20 @@ public class Ejercicio3 {
                 System.out.println("Valor no correcto");
                 System.out.println(e.getMessage());
                 in.nextLine();
-            }finally {
+
+            }
+            /*
+                HACER EJERCICIO catch (IndexOutOfBoundsException ex)
+            finally {
                 nota.add(numero);
 
             }
         }
         System.out.println(nota);
 
+                 */
 
 
-
+        }
     }
 }

@@ -10,12 +10,17 @@ public class Ejercicio4 {
         Random random=new Random();
         Scanner in = new Scanner(System.in);
         int largo= random.nextInt(101);
+
         int aleatorio=0;
         int posicion;
         int contador=0;
         System.out.println(largo);
         Vector<Integer>numeros=new Vector<>();
         Vector<Integer>mostrar=new Vector<>();
+        /*
+        Integer arratEjer4[] = new Integer[n];
+
+         */
         escondido(mostrar,largo);
         crearVector(numeros,aleatorio,random,largo);
         do {
@@ -27,7 +32,7 @@ public class Ejercicio4 {
                 System.out.println(e.getMessage());
                 posicion=5;
                 in.nextLine();
-            }catch (ArrayIndexOutOfBoundsException a){
+            }catch (IndexOutOfBoundsException a){
                 System.out.println("Te has pasado, pon un numero menor la proxima vez. Ahora tu valor pasa a ser 5");
                 System.out.println(a.getMessage());
                 posicion=5;
