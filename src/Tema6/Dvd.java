@@ -26,5 +26,7 @@ public class Dvd extends Ficha{
                 "Su año de estreno es " + this.anio + "\n"+
                 "Y su genero es " + this.tipo + "\n"+
                 this.leer();
+
+
     }
 }
