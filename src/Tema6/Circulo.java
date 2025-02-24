@@ -11,6 +11,7 @@ public class Circulo extends Figura2D {
         double resultadoArea= (Math.PI*lado)*2;
         return resultadoArea;
 
+
     }
     @Override
     public double perimetro(){
