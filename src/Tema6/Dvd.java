@@ -27,6 +27,5 @@ public class Dvd extends Ficha{
                 "Y su genero es " + this.tipo + "\n"+
                 this.leer();
 
-
     }
 }
