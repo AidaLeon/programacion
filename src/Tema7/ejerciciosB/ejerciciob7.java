@@ -32,7 +32,7 @@ public class ejerciciob7 {
 
         }
 
-
+        //te lo divide en lineas Split
         lineas=texto.split("\n").length;
 
         palabras=texto.split(" ").length;
@@ -44,11 +44,15 @@ public class ejerciciob7 {
         String[] textoPalabras= texto.split("[ \\n]");
 
         for (String palabra: textoPalabras){
-            if (!mapaPalabras.contains(palabra)){
+            if (!(mapaPalabras.containsKey(palabra))){
                 mapaPalabras.put(palabra,1);
             }else {
-                mapaPalabras.replace(palabra,mapaPalabras.get(palabra)+1);
+                int contador= mapaPalabras.get(palabra)+1;
+                mapaPalabras.remove(palabra);
+                mapaPalabras.put(palabra,contador);
             }
         }
+
+
     }
 }
