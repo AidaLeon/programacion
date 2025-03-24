@@ -1,0 +1,4 @@
+Nombre: Ximo
+Edad: 25
+Nombre: Aida
+Edad: 29
