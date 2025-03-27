@@ -1,8 +1,10 @@
 package Tema7.ejerciciosC;
 
-import java.io.FileNotFoundException;
+import Tema7.serializacion.Contacto;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class ejercicio4C {
@@ -19,7 +21,21 @@ public class ejercicio4C {
 
         //crear objeto
         Persona persona=new Persona(nombre,edad);
+        Escribir_Personas salida = new Escribir_Personas();
 
+        try {
+            salida.abrirDocumento();
+
+            salida.escribirDocumento(persona);
+
+            salida.cerrarDocumento();
+            
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+/**
+ * @deprecated
         //escribir fichero binario
 
         try (FileOutputStream escritor=new FileOutputStream("resources/persona.dat")){
@@ -35,6 +51,13 @@ public class ejercicio4C {
             throw new RuntimeException(e);
         }
 
+ */
+
 
     }
+    /*
+    llamamos al objeto FileOutputStream (crea documento)
+    y el objeto ObjectOutputStream (el texto que vamos a copiar)
+     */
+    
 }
