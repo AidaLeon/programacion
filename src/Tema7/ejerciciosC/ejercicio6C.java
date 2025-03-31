@@ -36,6 +36,7 @@ public class ejercicio6C {
             //recorremos el array y vamos escribiendo uno a uno
             for (Persona persona1:array){
                 escribirPersonas.escribirDocumento(persona1);
+                //probar a pasarle el array directamente a escriirDocumento
             }
             escribirPersonas.cerrarDocumento();
 
