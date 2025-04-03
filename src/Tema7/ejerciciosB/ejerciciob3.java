@@ -33,7 +33,7 @@ public class ejerciciob3 {
             personas.forEach(linea -> {
                 try {
                     /*cogiendo cada linea lo copia en el documento dandole la ruta*/
-                    Files.writeString(Paths.get(documentoCopiado), linea + "\n", StandardOpenOption.APPEND);
+                    Files.writeString(Paths.get(documentoCopiado), linea + "\n", StandardOpenOption.APPEND, StandardOpenOption.CREATE);
                     System.out.println(linea);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

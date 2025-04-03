@@ -12,9 +12,9 @@ public class Alumnos {
     public Alumnos(String alumno) {
 
 
-        String[] datosAlumnos=new String[alumno.split(" ").length];
+        String[] datosAlumnos=alumno.split(" ");
+
         /*split -> separa la string por el caracter que tu quieras*/
-        datosAlumnos=alumno.split(" ");
 
 
         double calculoMedia=0;

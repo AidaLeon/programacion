@@ -8,9 +8,7 @@ public class Funko {
     protected double precioFunko;
     protected String codigoFunko;
     protected String nombreFunko;
-    protected enum modelo{
-        Disney, Marvel, Anime
-    }
+    protected Modelos modelo;
     LocalDate fecha=LocalDate.now();
 
     public Funko() {
@@ -19,11 +17,13 @@ public class Funko {
         this.nombreFunko = "ABC";
     }
 
-    public Funko(double precioFunko, String codigoFunko, String nombreFunko, String fecha) throws Exception {
+    public Funko(double precioFunko, String codigoFunko, String nombreFunko, String fecha, String modelo) throws Exception {
         this.precioFunko = precioFunko;
         this.codigoFunko = codigoFunko;
         this.nombreFunko = nombreFunko;
         setFecha(fecha);
+        //convertirmos la string en un enum
+        this.modelo=Modelos.valueOf(modelo);
     }
 
     public double getPrecioFunko() {

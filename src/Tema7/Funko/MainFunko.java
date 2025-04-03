@@ -1,15 +1,57 @@
 package Tema7.Funko;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainFunko {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+
+
+
         int opcion=0;
+
+        //documento ruta
+        String documento="resources/funkos.csv";
+        Path ruta=Paths.get(documento);
+
+        // leer documento
+
+        List<Funko>listaFunkos=new ArrayList<>();
+
+
+        try {
+            boolean primeraLinea=true;
+            List<List<String>>listaFunkoDocumento= Files.lines(ruta).map(linea -> Arrays.asList(linea.split(","))).toList();
+            for (List<String> linea: listaFunkoDocumento){
+
+                if (!primeraLinea) {
+                    double precio = Double.valueOf(linea.get(3));
+                    String codigoFunko = linea.get(0);
+                    String nombre = linea.get(1);
+                    String modelo = linea.get(2);
+                    String fecha = linea.get(4);
+                    listaFunkos.add(new Funko(precio,codigoFunko,nombre,modelo,fecha));
+                }else {
+                    primeraLinea=false;
+                }
+
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
 
         opcion=menu(opcion,in);
 
-        opciones(opcion);
+        opciones(opcion,listaFunkos,in);
 
 
 
@@ -36,10 +78,21 @@ public class MainFunko {
 
     }
 
-    public static void opciones(int opcion){
+    public static void opciones(int opcion, List<Funko>listaFunkos, Scanner in){
+        boolean esta=true;
         switch (opcion){
             case 1 ->{
                 System.out.println("Añadir Funko");
+                try {
+                    esta=revisarFunkos(listaFunkos);
+                    if (esta==true){
+                        System.out.println("Tu Funko ya existe");
+                    }else {
+                        listaFunkos.add(anyadir(in));
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
             case 2->{
                 System.out.println("Borrar Funko");
@@ -67,13 +120,16 @@ public class MainFunko {
         String codigo=in.nextLine();
 
         String modelo="A";
+
         do {
             System.out.println("Dime el modelo del Funko. Disney, Marvel o Anime");
              modelo=in.nextLine().toUpperCase();
-            if (modelo!="DISNEY" || modelo!="MARVEL" || modelo!="ANIME"){
+
+            if (!modelo.equals("DISNEY") && !modelo.equals("MARVEL") && !modelo.equals("ANIME")){
                 System.out.println("Tu modelo no es valido");
             }
-        }while (modelo!="DISNEY" || modelo!="MARVEL" || modelo!="ANIME");
+
+        }while (!modelo.equals("DISNEY") && !modelo.equals("MARVEL") && !modelo.equals("ANIME"));
 
         System.out.println("Dime el precio del Funko");
         double precio=in.nextDouble();
@@ -81,9 +137,21 @@ public class MainFunko {
         System.out.println("Dime la fecha de creación del Funko Formato 01/01/2025");
         String  fecha=in.nextLine();
 
-        Funko funko=new Funko(precio,codigo,nombre,fecha);
+        Funko funko=new Funko(precio,codigo,nombre,modelo,fecha);
 
         return funko;
 
+    }
+    public static boolean revisarFunkos(List<Funko>listaFunko){
+        for (Funko funko : listaFunko){
+            try {
+                if (listaFunko.contains(funko.getCodigoFunko())){
+                    return true;
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
     }
 }

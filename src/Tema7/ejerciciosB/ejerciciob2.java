@@ -23,7 +23,8 @@ public class ejerciciob2 {
         }
 
 
-        /*ordenar el array de menor a mayor*/
+        /*ordenar el array de menor a mayor
+        ###################CHULETAAAAAAAAAA###############*/
         Collections.sort(alumnoLista,Comparator.comparingDouble(alumno -> alumno.getMedia()));
 
         /*invertir el orden de mayor a menor*/
