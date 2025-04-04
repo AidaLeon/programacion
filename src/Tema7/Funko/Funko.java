@@ -1,7 +1,6 @@
 package Tema7.Funko;
 
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.format.DateTimeFormatter;
 
 public class Funko {
@@ -9,7 +8,8 @@ public class Funko {
     protected String codigoFunko;
     protected String nombreFunko;
     protected Modelos modelo;
-    LocalDate fecha=LocalDate.now();
+    protected LocalDate fecha=LocalDate.now();
+    protected String anio;
 
     public Funko() {
         this.precioFunko = 15;
@@ -21,6 +21,8 @@ public class Funko {
         this.precioFunko = precioFunko;
         this.codigoFunko = codigoFunko;
         this.nombreFunko = nombreFunko;
+        //cogemos solo el año
+        this.anio =fecha.substring(0,4);
         setFecha(fecha);
         //convertirmos la string en un enum
         this.modelo=Modelos.valueOf(modelo);
@@ -67,13 +69,43 @@ public class Funko {
 
     public void setFecha(String fechaTexto) throws Exception {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fecha=LocalDate.parse(fechaTexto,formato);
-        if (fecha.isAfter(this.fecha)||fecha.isBefore( LocalDate.parse("2010-01-10",formato))){
-            throw new Exception("Fecha no valida. Fecha predefinida la de hoy");
-        }else {
-            this.fecha = fecha;
-        }
+        LocalDate nuevaFecha = LocalDate.parse(fechaTexto, formato);
+        LocalDate fechaMinima = LocalDate.parse("2010-01-10", formato);
 
+        if (nuevaFecha.isAfter(LocalDate.now()) || nuevaFecha.isBefore(fechaMinima)) {
+            throw new Exception("Fecha no valida. Fecha predefinida la de hoy");
+        }
+        this.fecha = nuevaFecha;
+    }
+
+    public String getAnio() {
+        return anio;
+    }
+
+    public void setAnio(String anio) {
+        this.anio = anio;
+    }
+
+    public Modelos getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelos modelo) {
+        this.modelo = modelo;
+    }
+
+    @Override
+    public String toString() {
+        return "Funko \n "+
+                "Nombre Funko =" + nombreFunko + "\n" +
+                "Codigo Funko= " + codigoFunko + "\n" +
+                "Modelo= " + modelo + "\n" +
+                "Funko= " + precioFunko +"\n"+
+                "Fecha= " + fecha +"\n";
+    }
+
+    public String escribirCSV(){
+        return codigoFunko +","+nombreFunko+","+modelo+","+precioFunko+","+fecha ;
     }
 }
 
