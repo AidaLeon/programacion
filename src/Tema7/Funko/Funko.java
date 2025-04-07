@@ -1,9 +1,10 @@
 package Tema7.Funko;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Funko {
+public class Funko  implements Serializable {
     protected double precioFunko;
     protected String codigoFunko;
     protected String nombreFunko;

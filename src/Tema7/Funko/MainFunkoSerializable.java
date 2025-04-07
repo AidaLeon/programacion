@@ -1,24 +1,35 @@
 package Tema7.Funko;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.*;
 
-public class MainFunko {
+public class MainFunkoSerializable {
     public static Scanner in=new Scanner(System.in);
     public static Funko funko;
-    public static List<Funko>listaFunkos=new ArrayList<>();
+    public static List<Funko> listaFunkos=new ArrayList<>();
     public static void main(String[] args) {
 
 
         int opcion=0;
 
+        File funkoSerializado = new File("funko.dat");
+        funkoSerializado.delete();
+
+        FunkoOutput funkoEscribir=new FunkoOutput();
+
+
+        /*todo
+        ver si el fichero dat existe, y si es si leerlo de ahi
+        FunkoInput
+         */
+
         //documento ruta
         String documento="resources/funkos.csv";
-        Path ruta=Paths.get(documento);
+        Path ruta= Paths.get(documento);
 
         // leer documento
 
@@ -52,16 +63,23 @@ public class MainFunko {
             opcion=menu(opcion);
             opciones(opcion,listaFunkos);
         }while (opcion!=8);
-        List<String> guardarCSV=new ArrayList<>();
-        guardarCSV.add("COD,NOMBRE,MODELO,PRECIO,FECHA_LANZAMIENTO");
-        for (Funko funko1 : listaFunkos) {
-            guardarCSV.add(funko1.escribirCSV());
-        }
+
         try {
-            Files.write(ruta, guardarCSV);
+            funkoEscribir.abrir();
+            listaFunkos.forEach(funko1 ->{
+                if(funko1!=null){
+                    try {
+                        funkoEscribir.escribir(funko1);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+            funkoEscribir.cerrar();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
 
     }
     public static int menu(int opcion){
@@ -168,7 +186,7 @@ public class MainFunko {
 
         do {
             System.out.println("Dime el modelo del Funko. Disney, Marvel o Anime");
-             modelo=in.nextLine().toUpperCase();
+            modelo=in.nextLine().toUpperCase();
 
             if (!modelo.equals("DISNEY") && !modelo.equals("MARVEL") && !modelo.equals("ANIME")){
                 System.out.println("Tu modelo no es valido");
@@ -233,3 +251,4 @@ public class MainFunko {
     }
 
 }
+
