@@ -1,17 +1,18 @@
 package Tema7.RakingVideojuegos;
 
-public class VideojuegoFisico {
+public class VideojuegoFisico extends Videojuego implements Ijugable {
     protected String tiendaCompra;
     protected String estado;
 
     public VideojuegoFisico() {
-        this.tiendaCompra = "MediaMark";
-        this.estado = "Nuevo";
+        this.tiendaCompra="MediaMarkt";
+        this.estado="Nuevo";
     }
 
-    public VideojuegoFisico(String tiendaCompra, String estado) {
-        this.tiendaCompra = tiendaCompra;
-        this.estado = estado;
+    public VideojuegoFisico(String titulo, String plataforma, int nota, String tiendaCompra, String estado) throws Exception {
+        super(titulo, plataforma, nota);
+        setTiendaCompra(tiendaCompra);
+        setEstado(estado);
     }
 
     public String getTiendaCompra() {
@@ -19,7 +20,7 @@ public class VideojuegoFisico {
     }
 
     public void setTiendaCompra(String tiendaCompra) throws Exception {
-        if (tiendaCompra.isEmpty()){
+        if (tiendaCompra==null){
             throw new Exception("Tu tienda no es valida. Por defecto ponemos MediaMark");
         }else {
             this.tiendaCompra = tiendaCompra;
@@ -37,5 +38,31 @@ public class VideojuegoFisico {
         }else {
             this.estado = estado;
         }
+    }
+
+    @Override
+    public String getTipo() {
+        return "Físico";
+    }
+
+    @Override
+    public String toString() {
+        return "Videojuego Físico\n" +
+                "TiendaCompra= " + tiendaCompra + '\n' +
+                "Estado= " + estado + '\n' +
+                "Título= " + titulo + '\n' +
+                "Plataforma= " + plataforma + '\n' +
+                "Nota= " + nota;
+    }
+
+    @Override
+    public String escribirCSV() {
+        return titulo+","+plataforma+","+nota+","+tiendaCompra+","+estado +"/n";
+    }
+
+
+    @Override
+    public void jugarDemo() {
+        System.out.println("Estoy jugando a un juego físico");
     }
 }
