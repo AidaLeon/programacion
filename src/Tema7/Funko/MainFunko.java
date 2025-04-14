@@ -180,7 +180,7 @@ public class MainFunko {
         double precio=in.nextDouble();
         in.nextLine();
 
-        System.out.println("Dime la fecha de creación del Funko Formato 01/01/2025");
+        System.out.println("Dime la fecha de creación del Funko Formato 2023-02-02");
         String  fecha=in.nextLine();
 
         funko=new Funko(precio,codigo,nombre,fecha,modelo);
