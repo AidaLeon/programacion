@@ -19,13 +19,10 @@ public class MainFunkoSerializable {
         File funkoSerializado = new File("funko.dat");
         funkoSerializado.delete();
 
+        //leer y escribir documento binario
         FunkoOutput funkoEscribir=new FunkoOutput();
+        FunkoInput leerFunko=new FunkoInput();
 
-
-        /*todo
-        ver si el fichero dat existe, y si es si leerlo de ahi
-        FunkoInput
-         */
 
         //documento ruta
         String documento="resources/funkos.csv";
@@ -76,6 +73,23 @@ public class MainFunkoSerializable {
                 }
             });
             funkoEscribir.cerrar();
+            leerFunko.abrir();
+
+            try {
+                for (Funko funko1 : listaFunkos) {
+                    funko1=leerFunko.leer();
+                    try {
+                        System.out.println(funko1.getCodigoFunko() +", "+ funko1.getNombreFunko()+", "+funko1.getModelo()+", "+funko1.getPrecioFunko()+", "+funko1.getFecha());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            leerFunko.cerrar();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -198,7 +212,7 @@ public class MainFunkoSerializable {
         double precio=in.nextDouble();
         in.nextLine();
 
-        System.out.println("Dime la fecha de creación del Funko Formato 01/01/2025");
+        System.out.println("Dime la fecha de creación del Funko Formato 2010-01-10");
         String  fecha=in.nextLine();
 
         funko=new Funko(precio,codigo,nombre,fecha,modelo);
