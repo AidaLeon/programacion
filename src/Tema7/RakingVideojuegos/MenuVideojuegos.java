@@ -207,7 +207,7 @@ public class MenuVideojuegos {
         try {
             lector.abrir();
             Videojuego videojuego=null;
-            do {
+            do {//cambiar por un while, porque cuando lee el ultimo videojuego, vuelve a entrar, y peta. No deberia entrar, si ya ha leído el último videojuebo
                 try {
                     videojuego=lector.leer();
                     if (videojuego!=null) {

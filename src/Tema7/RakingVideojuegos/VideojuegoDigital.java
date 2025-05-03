@@ -57,7 +57,7 @@ public class VideojuegoDigital extends Videojuego implements Ijugable {
 
     @Override
     public String escribirCSV() {
-        return titulo +","+ plataforma +","+ nota+","+tiendaOnline+","+tamanoGB +"/n";
+        return titulo +","+ plataforma +","+ nota+","+tiendaOnline+","+tamanoGB +'\n';
     }
 
     @Override

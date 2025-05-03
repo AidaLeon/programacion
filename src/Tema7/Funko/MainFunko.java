@@ -103,6 +103,9 @@ public class MainFunko {
                     }else {
                         listaFunkos.add(funko);
                         System.out.println("Funko añadido");
+                        if (listaFunkos.contains(funko)){
+                            System.out.println("El funko si que está");
+                        }
                     }
                 } catch (Exception e) {
                     throw new RuntimeException(e);

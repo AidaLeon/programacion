@@ -7,8 +7,12 @@ public class Leer_Juego {
     private ObjectInputStream texto;
 
     public void abrir() throws IOException {
-        documento=new FileInputStream("resources/juegosBI.dat");
-        texto=new ObjectInputStream(documento);
+        try {
+            documento = new FileInputStream("resources/juegosBI.dat");
+            texto = new ObjectInputStream(documento);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public Videojuego leer() throws IOException, ClassNotFoundException {
