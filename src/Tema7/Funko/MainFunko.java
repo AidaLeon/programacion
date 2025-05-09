@@ -11,6 +11,8 @@ public class MainFunko {
     public static Scanner in=new Scanner(System.in);
     public static Funko funko;
     public static List<Funko>listaFunkos=new ArrayList<>();
+
+
     public static void main(String[] args) {
 
 

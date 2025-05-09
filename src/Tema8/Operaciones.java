@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class Operaciones {
     //jdbc:postgresql:// se pone siempre al principio
-    // :5432 numeros habilitados para sql (manejarlo) ponemos /
+    // :5432 numeros habilitados para sql (manejarlo) PUERTO ponemos /
     // nombre de la base de datos
     public static String url="jdbc:postgresql://ad-postgres.crot2bctbvas.us-east-1.rds.amazonaws.com:5432/hogwarts";
     /*lo he sacado de aws-> aurora (Configuracion)*/
@@ -68,7 +68,7 @@ public class Operaciones {
                 PreparedStatement sentencia = connection.prepareStatement(consulta)){
 
 
-                sentencia.setString(1, nombre );
+                sentencia.setString( 1,nombre );
                 sentencia.setString(2, apellido );
 
                 //resultado de la busqueda
@@ -76,7 +76,7 @@ public class Operaciones {
 
                 // mientras haya un resultado printeara de nuevo
                 while(resultado.next()){
-                    String nombre_mascota = resultado.getString("nombre");
+                    String nombre_mascota = resultado.getString("Nombre");
                     System.out.println("Nombre del animal de "+nombre+" " + apellido+" es : " + nombre_mascota);
                 }
             } catch (SQLException e) {
